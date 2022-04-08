@@ -28,10 +28,12 @@ public class MainFormController implements Initializable {
         List<Collection> collectionList = (List<Collection>) serverResponse[1];
 
 
-        if(serverResponse[0] == "ok"){
+        if(serverResponse[0] == "OK"){
             for(Collection col : collectionList){
                 System.out.println(col.getName());
             }
+        }else if(serverResponse[0] == "SQLE Error"){
+            System.out.println("Error al obtener las colecciones");
         }
 
     }

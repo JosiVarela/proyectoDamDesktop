@@ -7,10 +7,17 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class Launch extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("forms/main_form.fxml"));
+        Locale.setDefault(new Locale("gl", "ES"));
+
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("data.language.language");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("forms/main_form.fxml"), resourceBundle);
         Parent root = fxmlLoader.load();
 
         Scene scene = new Scene(root, 1000, 500);

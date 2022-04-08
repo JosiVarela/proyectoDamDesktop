@@ -12,7 +12,7 @@ public class CollectionDAO implements ICollectionDAO{
     public Object[] getCollectionList() {
         Object[] returnObject = new Object[2];
 
-        String message = "ok";
+        String message = "OK";
 
         returnObject[0] = message;
 
