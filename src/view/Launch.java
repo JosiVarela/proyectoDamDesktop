@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Launch extends Application {
@@ -14,6 +15,7 @@ public class Launch extends Application {
 
         Scene scene = new Scene(root, 1000, 500);
         stage.setTitle("Hello!");
+        stage.getIcons().add(new Image("/data/images/app_icon.png"));
         stage.setMinWidth(1000);
         stage.setMinHeight(500);
         stage.setScene(scene);
