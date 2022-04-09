@@ -23,6 +23,8 @@ import java.util.ResourceBundle;
 public class MainFormController implements Initializable {
     private JButton swingButton;
 
+    private ResourceBundle rb;
+
     @FXML
     private AnchorPane mainPane;
 
@@ -35,20 +37,10 @@ public class MainFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        this.rb = resources;
+
         swingButton = new JButton();
-
-        Object[] serverResponse = CollectionManagement.getCollections();
-        List<Collection> collectionList = (List<Collection>) serverResponse[1];
-
-
-        if(serverResponse[0] == "OK"){
-            for(Collection col : collectionList){
-                System.out.println(col.getName());
-            }
-        }else if(serverResponse[0] == "SQLE Error"){
-            System.out.println("Error al obtener las colecciones");
-        }
-
     }
 
     @FXML
@@ -60,7 +52,7 @@ public class MainFormController implements Initializable {
     void btnCollectionAction(ActionEvent event) {
         Node node;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_presentation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_presentation.fxml"), rb);
 
         try {
             node = fxmlLoader.load();

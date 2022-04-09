@@ -26,5 +26,6 @@ public class MockData {
         collections.add(new Collection("The Rising of Shield Hero"));
         collections.add(new Collection("One Punch Man"));
         collections.add(new Collection("Daemon Slayer"));
+        collections.add(new Collection("Comic de prueba con un titulo que probablemente sea demasiado largo para comprobar el correcto funcionamiento del programa"));
     }
 }

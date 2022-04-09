@@ -1,26 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.CollectionPresentationController">
    <top>
       <BorderPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <left>
-            <Label text="Label" BorderPane.alignment="CENTER" />
+            <Label style="-fx-font-weight: bold;" text="%mainForm.btnCol" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="10.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
          </left>
          <right>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <right>
-                  <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />
-               </right>
+            <BorderPane prefHeight="200.0" BorderPane.alignment="CENTER">
+               <left>
+                  <TextField prefWidth="300.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="3.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </left>
                <center>
-                  <TextField BorderPane.alignment="CENTER" />
+                  <Button mnemonicParsing="false" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="10.0" />
+                     </BorderPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../data/images/search_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </center>
+               <right>
+                  <Button mnemonicParsing="false" BorderPane.alignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../data/images/add_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <BorderPane.margin>
+                        <Insets right="10.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </right>
             </BorderPane>
          </right>
       </BorderPane>
