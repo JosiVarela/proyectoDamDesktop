@@ -49,7 +49,7 @@
                   <Insets left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="200.0" styleClass="left_content" stylesheets="@../css/main_form.css" text="%mainForm.btnCol">
+            <Button fx:id="btnCollection" mnemonicParsing="false" onAction="#btnCollectionAction" prefWidth="200.0" styleClass="left_content" stylesheets="@../css/main_form.css" text="%mainForm.btnCol">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
@@ -62,4 +62,7 @@
          </children>
       </VBox>
    </left>
+   <center>
+      <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

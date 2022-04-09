@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.CollectionPresentationController">
+   <top>
+      <BorderPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <left>
+            <Label text="Label" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <right>
+                  <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />
+               </right>
+               <center>
+                  <TextField BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </right>
+      </BorderPane>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" style="-fx-fit-to-width: true;" BorderPane.alignment="CENTER">
+         <content>
+            <TilePane fx:id="cardsPane" />
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
