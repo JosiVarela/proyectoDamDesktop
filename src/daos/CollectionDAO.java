@@ -1,6 +1,13 @@
 package daos;
 
+import controller.ServerConnection;
 import data.MockData;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.Socket;
 
 public class CollectionDAO implements ICollectionDAO{
     /**
@@ -9,14 +16,28 @@ public class CollectionDAO implements ICollectionDAO{
      * processed successfully and Object[1] is a list of Collection.
      */
     @Override
-    public Object[] getCollectionList() {
+    public Object[] getCollectionList() throws IOException, ClassNotFoundException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        ObjectInputStream objectInputStream;
+
+        Socket socket = ServerConnection.getConnection();
+
         Object[] returnObject = new Object[2];
 
-        String message = "OK";
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
+        dataOutputStream.writeUTF("getCollectionList");
+
+        dataInputStream = new DataInputStream(socket.getInputStream());
+
+        String message = dataInputStream.readUTF();
 
         returnObject[0] = message;
 
-        returnObject[1] = MockData.getCollections();
+        objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+        returnObject[1] = objectInputStream.readObject();
 
         return returnObject;
     }

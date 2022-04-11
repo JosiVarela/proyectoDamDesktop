@@ -25,7 +25,15 @@ public class CollectionPresentationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
 
-        Object[] serverResponse = CollectionManagement.getCollections();
+        Object[] serverResponse = new Object[0];
+        try {
+            serverResponse = CollectionManagement.getCollections();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         List<Collection> collectionList = (List<Collection>) serverResponse[1];
 
 
@@ -45,7 +53,7 @@ public class CollectionPresentationController implements Initializable {
 
                 CollectionPaneController paneController = fxmlLoader.getController();
 
-                paneController.innitData(1, col.getName());
+                paneController.innitData(col);
 
                 TilePane.setMargin(node, new Insets(5));
 

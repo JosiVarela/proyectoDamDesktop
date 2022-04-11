@@ -6,8 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
+import model.entities.Collection;
 
 import java.net.URL;
+
 import java.util.ResourceBundle;
 
 public class CollectionPaneController implements Initializable {
@@ -22,9 +24,11 @@ public class CollectionPaneController implements Initializable {
     private BorderPane comicPane;
 
 
-    public void innitData(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public void innitData(Collection collection) {
+        this.id = collection.getId();
+        this.name = collection.getName();
+
+
 
 
         lblName.setText(this.name);
