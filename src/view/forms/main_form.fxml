@@ -16,7 +16,7 @@
          <children>
             <BorderPane prefHeight="50.0" prefWidth="300.0" styleClass="left_content" stylesheets="@../css/main_form.css">
                <right>
-                  <Button mnemonicParsing="false" BorderPane.alignment="CENTER">
+                  <Button fx:id="btnConfigMenu" mnemonicParsing="false" onAction="#btnConfigMenuAction" BorderPane.alignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
