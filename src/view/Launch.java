@@ -1,5 +1,6 @@
 package view;
 
+import controller.AppConfigurations;
 import controller.ServerConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +16,11 @@ public class Launch extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        ServerConnection.startConnection("localhost", 8080);
+        AppConfigurations.generateConfig();
 
-        Locale.setDefault(new Locale("gl", "ES"));
+        AppConfigurations.switchLanguage(AppConfigurations.getTranslations());
+
+        ServerConnection.startConnection("localhost", 8080);
 
         ResourceBundle resourceBundle = ResourceBundle.getBundle("data.language.language");
 

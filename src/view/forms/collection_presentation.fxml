@@ -13,7 +13,7 @@
    <top>
       <BorderPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <left>
-            <Label style="-fx-font-weight: bold;" text="%mainForm.btnCol" BorderPane.alignment="CENTER">
+            <Label fx:id="lblPanel" style="-fx-font-weight: bold;" text="%mainForm.btnCol" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="10.0" />
                </BorderPane.margin>
@@ -24,14 +24,14 @@
          <right>
             <BorderPane prefHeight="200.0" BorderPane.alignment="CENTER">
                <left>
-                  <TextField prefWidth="300.0" BorderPane.alignment="CENTER">
+                  <TextField fx:id="txtBusqueda" prefWidth="300.0" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets right="3.0" />
                      </BorderPane.margin>
                   </TextField>
                </left>
                <center>
-                  <Button mnemonicParsing="false" BorderPane.alignment="CENTER">
+                  <Button fx:id="btnBuscar" mnemonicParsing="false" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets right="10.0" />
                      </BorderPane.margin>
@@ -44,7 +44,7 @@
                      </graphic></Button>
                </center>
                <right>
-                  <Button mnemonicParsing="false" BorderPane.alignment="CENTER">
+                  <Button fx:id="btnAnhadir" mnemonicParsing="false" BorderPane.alignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>

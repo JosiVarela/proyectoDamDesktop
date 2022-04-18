@@ -1,10 +1,15 @@
 package view.controllers;
 
+import controller.Translatable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.TilePane;
 import model.CollectionManagement;
 import model.entities.Collection;
@@ -14,16 +19,29 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CollectionPresentationController implements Initializable {
+public class CollectionPresentationController implements Initializable, Translatable {
     private ResourceBundle rb;
 
     @FXML
     private TilePane cardsPane;
 
+    @FXML
+    private Button btnAnhadir;
+
+    @FXML
+    private Label lblPanel;
+
+    @FXML
+    private TextField txtBusqueda;
+
+    @FXML
+    private Button btnBuscar;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
+        loadHints();
 
         Object[] serverResponse = new Object[0];
         try {
@@ -65,5 +83,18 @@ public class CollectionPresentationController implements Initializable {
         }
     }
 
+    @Override
+    public void translate(ResourceBundle resources) {
+        this.rb = resources;
 
+        //Controls
+        lblPanel.setText(rb.getString("mainForm.btnCol"));
+        //Load Hints
+        loadHints();
+    }
+
+    private void loadHints(){
+        btnBuscar.setTooltip(new Tooltip(rb.getString("buscar")));
+        btnAnhadir.setTooltip(new Tooltip(rb.getString("collectionPresentation.anhadir")));
+    }
 }

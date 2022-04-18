@@ -44,7 +44,7 @@
                   </Button>
                </left>
             </BorderPane>
-            <Button mnemonicParsing="false" prefWidth="200.0" styleClass="left_content" stylesheets="@../css/main_form.css" text="%mainForm.btnInicio">
+            <Button fx:id="btnInicio" mnemonicParsing="false" prefWidth="200.0" styleClass="left_content" stylesheets="@../css/main_form.css" text="%mainForm.btnInicio">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="10.0" />
                </VBox.margin>

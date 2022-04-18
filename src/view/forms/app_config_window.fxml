@@ -27,7 +27,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <RadioButton mnemonicParsing="false">
+                              <RadioButton fx:id="rdLangGal" mnemonicParsing="false" onAction="#rdLangGalAction">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="rdGroupLanguage" />
                                  </toggleGroup>
@@ -39,7 +39,7 @@
                                     </ImageView>
                                  </graphic>
                               </RadioButton>
-                              <RadioButton mnemonicParsing="false" toggleGroup="$rdGroupLanguage" GridPane.columnIndex="1">
+                              <RadioButton fx:id="rdLangEsp" mnemonicParsing="false" onAction="#rdLangEspAction" toggleGroup="$rdGroupLanguage" GridPane.columnIndex="1">
                                  <graphic>
                                     <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -51,7 +51,7 @@
                               <HBox alignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                  <children>
                                     <Label text="Idioma seleccionado:" HBox.hgrow="NEVER" />
-                                    <Label style="-fx-font-weight: bold;" text="Galego">
+                                    <Label fx:id="txtLangSelec" style="-fx-font-weight: bold;" text="Galego">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -107,7 +107,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Button">
+            <Button fx:id="btnClose" mnemonicParsing="false" text="%cerrar">
                <HBox.margin>
                   <Insets bottom="5.0" right="5.0" top="5.0" />
                </HBox.margin></Button>
