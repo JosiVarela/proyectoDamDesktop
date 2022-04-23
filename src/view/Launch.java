@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import view.controllers.MainFormController;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -15,17 +16,18 @@ import java.util.ResourceBundle;
 public class Launch extends Application {
     @Override
     public void start(Stage stage) throws Exception {
+        MainFormController mainFormController;
+        FXMLLoader fxmlLoader;
 
         AppConfigurations.generateConfig();
 
         AppConfigurations.switchLanguage(AppConfigurations.getTranslations());
 
-        ServerConnection.startConnection("localhost", 8080);
-
         ResourceBundle resourceBundle = ResourceBundle.getBundle("data.language.language");
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("forms/main_form.fxml"), resourceBundle);
+        fxmlLoader = new FXMLLoader(getClass().getResource("forms/main_form.fxml"), resourceBundle);
         Parent root = fxmlLoader.load();
+        mainFormController = fxmlLoader.getController();
 
         Scene scene = new Scene(root, 1000, 500);
         stage.setTitle("Hello!");
@@ -34,6 +36,8 @@ public class Launch extends Application {
         stage.setMinHeight(500);
         stage.setScene(scene);
         stage.show();
+
+        mainFormController.startConnection();
     }
 
     public static void main(String[] args) {

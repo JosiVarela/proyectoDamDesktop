@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.layout.TilePane;
 import model.CollectionManagement;
 import model.entities.Collection;
@@ -47,9 +44,12 @@ public class CollectionPresentationController implements Initializable, Translat
         try {
             serverResponse = CollectionManagement.getCollections();
         } catch (IOException e) {
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Parece que no hay conexión con el servidor");
+            alert.showAndWait();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
 
         List<Collection> collectionList = (List<Collection>) serverResponse[1];

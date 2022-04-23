@@ -1,5 +1,6 @@
 package view.controllers;
 
+import controller.ServerConnection;
 import controller.Translatable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,8 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -20,6 +20,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -53,6 +54,7 @@ public class MainFormController implements Initializable {
         swingButton = new JButton();
 
         loadHints();
+
     }
 
     @FXML
@@ -136,5 +138,33 @@ public class MainFormController implements Initializable {
     private void loadHints(){
         btnHelp.setTooltip(new Tooltip(rb.getString("ayuda")));
         btnConfigMenu.setTooltip(new Tooltip(rb.getString("configuracion")));
+    }
+
+    public void startConnection(){
+        try {
+            ServerConnection.startConnection("localhost", 8080);
+        } catch (IOException e) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Parece que no hay conexión con el servidor");
+
+
+            alert.getDialogPane().getButtonTypes().clear();
+
+            ButtonType restart = new ButtonType("Reiniciar", ButtonBar.ButtonData.OTHER);
+            alert.getDialogPane().getButtonTypes().add(restart);
+
+
+
+
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if(result.isPresent() && result.get() == restart){
+                startConnection();
+            }
+        }
     }
 }
