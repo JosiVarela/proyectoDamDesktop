@@ -1,6 +1,5 @@
 package view.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +19,7 @@ import java.util.ResourceBundle;
 
 public class CollectionPaneController implements Initializable {
 
+    private ResourceBundle resourceBundle;
     private int id;
     private String name;
 
@@ -32,7 +32,7 @@ public class CollectionPaneController implements Initializable {
 
     public void innitData(Collection collection) {
         this.id = collection.getId();
-        this.name = collection.getName();
+        this.name = collection.getTitle();
 
 
 
@@ -43,11 +43,12 @@ public class CollectionPaneController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.resourceBundle = resources;
         comicPane.setOnMouseClicked(event -> mouseClickEvent());
     }
 
     private void mouseClickEvent(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_info.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_info.fxml"), resourceBundle);
 
         try{
             Parent root = fxmlLoader.load();

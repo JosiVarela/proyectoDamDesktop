@@ -26,7 +26,7 @@
                   <RowConstraints minHeight="10.0" vgrow="NEVER" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label fx:id="lblComicTitle" alignment="CENTER" maxWidth="1.7976931348623157E308" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </GridPane.margin>
@@ -34,26 +34,26 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label text="50 Números" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Label fx:id="lblNumbers" text="%collectionInfo.numeros" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Button" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
+                  <Button fx:id="btnModifyCol" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="%collectionInfo.modificar" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="50.0" right="50.0" top="20.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                  <Button fx:id="btnDelCol" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="%collectionInfo.eliminar" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label text="Primera publicacion: 19/05/1997" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Label fx:id="lblFirstPublish" text="%collectionInfo.primPublicacion" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label text="Argumento:" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                  <Label fx:id="lblArgument" text="%collectionInfo.argumento" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets left="50.0" />
                      </GridPane.margin>
@@ -61,7 +61,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextArea editable="false" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." wrapText="true" GridPane.rowIndex="4">
+                  <TextArea fx:id="txtArgument" editable="false" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>

@@ -1,17 +1,24 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Collection implements Serializable {
-    int id;
-    String name;
+    private int id;
+    private String title;
+    private Date publishDate;
+    private String argument;
+    private int comicQuantity;
+
 
     public Collection() {
     }
 
-    public Collection(int id, String name) {
+    public Collection(int id, String title, Date publishDate, String argument) {
         this.id = id;
-        this.name = name;
+        this.title = title;
+        this.publishDate = publishDate;
+        this.argument = argument;
     }
 
     public int getId() {
@@ -22,11 +29,35 @@ public class Collection implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public String getArgument() {
+        return argument;
+    }
+
+    public void setArgument(String argument) {
+        this.argument = argument;
+    }
+
+    public int getComicQuantity() {
+        return comicQuantity;
+    }
+
+    public void setComicQuantity(int comicQuantity) {
+        this.comicQuantity = comicQuantity;
     }
 }

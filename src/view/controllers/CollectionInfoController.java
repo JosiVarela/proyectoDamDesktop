@@ -4,10 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.entities.Collection;
 import model.entities.ComicNumber;
 
 import javax.swing.text.DateFormatter;
@@ -22,6 +21,27 @@ import java.util.TimeZone;
 
 public class CollectionInfoController implements Initializable {
     private ObservableList<ComicNumber> comicNumbersList;
+    private Collection collection;
+
+    //<editor-fold desc="FXML vars definition">
+    @FXML
+    private Button btnModifyCol;
+
+    @FXML
+    private Button btnDelCol;
+
+    @FXML
+    private Label lblArgument;
+
+    @FXML
+    private Label lblComicTitle;
+
+    @FXML
+    private Label lblNumbers;
+
+    @FXML
+    private Label lblFirstPublish;
+
     @FXML
     private TableView<ComicNumber> comicsTable;
 
@@ -39,6 +59,19 @@ public class CollectionInfoController implements Initializable {
 
     @FXML
     private TableColumn<ComicNumber, String> tbColCover;
+
+    @FXML
+    private TextArea txtArgument;
+    //</editor-fold>
+
+    public void setCollection(Collection collection){
+        this.collection = collection;
+
+        lblComicTitle.setText(collection.getTitle());
+        lblFirstPublish.setText(lblFirstPublish.getText() + " " + collection.getPublishDate());
+        lblNumbers.setText(collection.getComicQuantity() + " " + lblNumbers.getText());
+        txtArgument.setText(collection.getArgument());
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

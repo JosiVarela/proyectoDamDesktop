@@ -35,9 +35,11 @@ public class CollectionDAO implements ICollectionDAO{
 
         returnObject[0] = message;
 
-        objectInputStream = new ObjectInputStream(socket.getInputStream());
+        if(!message.equals("SQLE Error")){
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
 
-        returnObject[1] = objectInputStream.readObject();
+            returnObject[1] = objectInputStream.readObject();
+        }
 
         return returnObject;
     }

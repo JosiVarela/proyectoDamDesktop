@@ -17,7 +17,7 @@ public class MockData {
     }
 
     private static void populateData(){
-        collections = new ArrayList<>();
+        /*collections = new ArrayList<>();
 
         collections.add(new Collection(1, "Naruto"));
         collections.add(new Collection(2, "Naruto Shippuden"));
@@ -26,6 +26,6 @@ public class MockData {
         collections.add(new Collection(5, "The Rising of Shield Hero"));
         collections.add(new Collection(6, "One Punch Man"));
         collections.add(new Collection(7, "Daemon Slayer"));
-        collections.add(new Collection(8, "Comic de prueba con un titulo que probablemente sea demasiado largo para comprobar el correcto funcionamiento del programa"));
+        collections.add(new Collection(8, "Comic de prueba con un titulo que probablemente sea demasiado largo para comprobar el correcto funcionamiento del programa"));*/
     }
 }

@@ -13,10 +13,14 @@ import model.entities.Collection;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class CollectionPresentationController implements Initializable, Translatable {
+
+    List<Collection> collectionList;
+
     private ResourceBundle rb;
 
     @FXML
@@ -52,19 +56,31 @@ public class CollectionPresentationController implements Initializable, Translat
         } catch (ClassNotFoundException e) {
         }
 
-        List<Collection> collectionList = (List<Collection>) serverResponse[1];
+        collectionList = (List<Collection>) serverResponse[1];
 
 
-        if(serverResponse[0] == "SQLE Error"){
-            System.out.println("Error al obtener las colecciones");
+        if(serverResponse[0].equals("SQLE Error")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Error al obtener las colecciones");
+            alert.showAndWait();
             return;
         }
 
+        loadCollections();
+    }
+
+    private void loadCollections(){
         FXMLLoader fxmlLoader;
         Node node;
 
+        cardsPane.getChildren().remove(0, cardsPane.getChildren().size());
+
         for(Collection col : collectionList){
-           fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_pane_form.fxml"));
+
+            fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_pane_form.fxml"), rb);
+
             try {
 
                 node = fxmlLoader.load();
@@ -91,6 +107,8 @@ public class CollectionPresentationController implements Initializable, Translat
         lblPanel.setText(rb.getString("mainForm.btnCol"));
         //Load Hints
         loadHints();
+        //Translate sub-forms
+        loadCollections();
     }
 
     private void loadHints(){
