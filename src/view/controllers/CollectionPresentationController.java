@@ -12,6 +12,7 @@ import model.CollectionManagement;
 import model.entities.Collection;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +48,14 @@ public class CollectionPresentationController implements Initializable, Translat
         Object[] serverResponse = new Object[0];
         try {
             serverResponse = CollectionManagement.getCollections();
-        } catch (IOException e) {
+        } catch (SocketException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error");
             alert.setContentText("Parece que no hay conexión con el servidor");
             alert.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
         }
 
@@ -62,8 +65,8 @@ public class CollectionPresentationController implements Initializable, Translat
         if(serverResponse[0].equals("SQLE Error")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Error al obtener las colecciones");
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.ObtenerColecciones"));
             alert.showAndWait();
             return;
         }
@@ -93,7 +96,11 @@ public class CollectionPresentationController implements Initializable, Translat
 
                 cardsPane.getChildren().add(node);
             } catch (IOException e) {
-                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle(rb.getString("error"));
+                alert.setContentText(rb.getString("err.ObtenerColecciones"));
+                alert.showAndWait();
                 return;
             }
         }

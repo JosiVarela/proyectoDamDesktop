@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
@@ -14,13 +15,14 @@ import model.CollectionManagement;
 import model.entities.Collection;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.URL;
 
 import java.util.ResourceBundle;
 
 public class CollectionPaneController implements Initializable {
 
-    private ResourceBundle resourceBundle;
+    private ResourceBundle rb;
     private Collection collection;
 
     @FXML
@@ -42,13 +44,13 @@ public class CollectionPaneController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.resourceBundle = resources;
+        this.rb = resources;
         comicPane.setOnMouseClicked(event -> mouseClickEvent());
     }
 
     private void mouseClickEvent(){
         Object[] requestCol;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_info.fxml"), resourceBundle);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_info.fxml"), rb);
 
         try{
             Parent root = fxmlLoader.load();
@@ -58,7 +60,11 @@ public class CollectionPaneController implements Initializable {
             requestCol = CollectionManagement.getCollectionInfoById(this.collection.getId());
 
             if(requestCol[0].equals("SQLE ERROR") || requestCol[1] == null){
-                //TODO SHOW MESSAGE ERROR
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle(rb.getString("error"));
+                alert.setContentText("err.CargarInfoColeccion");
+                alert.showAndWait();
                 return;
             }
 
@@ -70,14 +76,15 @@ public class CollectionPaneController implements Initializable {
             stage.setScene(scene);
             stage.showAndWait();
 
+        } catch (SocketException e){
+            System.out.println("SOCKET ERROR");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText("err.cargarPantalla");
+            alert.showAndWait();
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
-
-        System.out.println(this.collection.getTitle());
-        System.out.println(this.collection.getComicQuantity());
-
     }
 }

@@ -80,7 +80,11 @@ public class MainFormController implements Initializable {
 
             mainPane.getChildren().add(node);
         } catch (IOException e) {
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.cargarPantalla"));
+            alert.showAndWait();
         }
 
 
@@ -106,7 +110,11 @@ public class MainFormController implements Initializable {
             stage.setScene(scene);
             stage.showAndWait();
         } catch (IOException e) {
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.cargarPantalla"));
+            alert.showAndWait();
             return;
         }
 
