@@ -36,15 +36,13 @@ public class AppConfigWindow implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            if(AppConfigurations.getTranslations().equals("es")){
-                rdLangEsp.setSelected(true);
-            }else{
-                rdLangGal.setSelected(true);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+        if(AppConfigurations.getTranslations().equals("es")){
+            rdLangEsp.setSelected(true);
+        }else{
+            rdLangGal.setSelected(true);
         }
+
     }
 
     private void loadConfigurations(){

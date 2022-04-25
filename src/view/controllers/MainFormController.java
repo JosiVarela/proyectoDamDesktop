@@ -1,5 +1,6 @@
 package view.controllers;
 
+import controller.AppConfigurations;
 import controller.ServerConnection;
 import controller.Translatable;
 import javafx.event.ActionEvent;
@@ -14,10 +15,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.entities.ServerConfig;
 
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Optional;
@@ -79,6 +82,8 @@ public class MainFormController implements Initializable {
             AnchorPane.setRightAnchor(node, 0d);
 
             mainPane.getChildren().add(node);
+        } catch (SocketException e){
+            System.out.println("SOCKET EXCEPTION");
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -109,7 +114,7 @@ public class MainFormController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
-        } catch (IOException e) {
+        }catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
@@ -149,8 +154,10 @@ public class MainFormController implements Initializable {
     }
 
     public void startConnection(){
+
         try {
-            ServerConnection.startConnection("localhost", 8080);
+            ServerConfig serverConfig = AppConfigurations.getServerConfig();
+            ServerConnection.startConnection(serverConfig.getIp(), serverConfig.getPort());
         } catch (IOException e) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
