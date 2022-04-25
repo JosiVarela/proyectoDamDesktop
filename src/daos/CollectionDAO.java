@@ -35,7 +35,43 @@ public class CollectionDAO implements ICollectionDAO{
 
         returnObject[0] = message;
 
-        if(!message.equals("SQLE Error")){
+        if(message.equals("OK")){
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+            returnObject[1] = objectInputStream.readObject();
+        }
+
+        return returnObject;
+    }
+    /**
+     * This method returns collection info by id;
+     * @return Object[]. Object[0] is a String which is a server message that indicates if the request has been
+     * processed successfully and Object[1] is a Collection.
+     */
+    @Override
+    public Object[] getCollectionInfoById(int id) throws IOException, ClassNotFoundException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        ObjectInputStream objectInputStream;
+        String message;
+
+        Socket socket = ServerConnection.getConnection();
+
+        Object[] returnObject = new Object[2];
+
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
+        dataOutputStream.writeUTF("getCollectionInfoById");
+
+        dataOutputStream.writeInt(id);
+
+        dataInputStream = new DataInputStream(socket.getInputStream());
+
+        message = dataInputStream.readUTF();
+
+        returnObject[0] = message;
+
+        if(message.equals("OK")){
             objectInputStream = new ObjectInputStream(socket.getInputStream());
 
             returnObject[1] = objectInputStream.readObject();
