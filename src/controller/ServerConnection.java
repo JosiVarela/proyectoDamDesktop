@@ -12,6 +12,7 @@ public class ServerConnection {
 
     public static void closeConnection() throws IOException {
         socket.close();
+        socket = null;
     }
 
     public static Socket getConnection(){

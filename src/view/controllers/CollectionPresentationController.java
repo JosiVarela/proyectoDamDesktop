@@ -1,5 +1,6 @@
 package view.controllers;
 
+import controller.ServerConnection;
 import controller.Translatable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +46,7 @@ public class CollectionPresentationController implements Initializable, Translat
         this.rb = resources;
         loadHints();
 
-        Object[] serverResponse = new Object[0];
+        Object[] serverResponse;
         try {
             serverResponse = CollectionManagement.getCollections();
         } catch (SocketException e){
@@ -54,9 +55,12 @@ public class CollectionPresentationController implements Initializable, Translat
             alert.setTitle("Error");
             alert.setContentText("Parece que no hay conexión con el servidor");
             alert.showAndWait();
+            return;
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         } catch (ClassNotFoundException e) {
+            return;
         }
 
         collectionList = (List<Collection>) serverResponse[1];

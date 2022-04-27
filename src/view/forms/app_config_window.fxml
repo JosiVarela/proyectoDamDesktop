@@ -79,22 +79,34 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="IP:">
+                              <Label text="Dirección:">
                                  <GridPane.margin>
-                                    <Insets left="10.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextField GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                              <TextField fx:id="txtHost" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                                  <GridPane.margin>
                                     <Insets right="10.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <TextField maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <TextField fx:id="txtPort" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                               <Label text="Puerto:" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Label>
+                              <VBox maxWidth="1.7976931348623157E308" prefHeight="112.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+                                 <children>
+                                    <Button fx:id="btnConnect" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnConnectAction" text="Conectar" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </VBox.margin></Button>
+                                    <Button fx:id="btnReconnect" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnReconnectAction" text="Reconectar">
+                                       <VBox.margin>
+                                          <Insets left="20.0" right="20.0" top="20.0" />
+                                       </VBox.margin></Button>
+                                 </children>
+                              </VBox>
                            </children>
                         </GridPane>
                      </center>

@@ -39,7 +39,7 @@ public class AppConfigurations {
         ){
             Properties properties = new Properties();
             properties.putAll(CONFIG);
-            properties.store(outputStream, null);
+            properties.store(outputStream, "This file is generated automatically. Please, don't modify it.");
         }
     }
 
