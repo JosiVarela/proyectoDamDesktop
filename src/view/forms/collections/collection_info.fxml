@@ -10,7 +10,7 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.collections.CollectionInfoController">
   <tabs>
-    <Tab text="Untitled Tab 1">
+    <Tab text="%collectionInfo.coleccion">
          <content>
             <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
               <columnConstraints>
@@ -70,7 +70,7 @@
             </GridPane>
          </content>
     </Tab>
-    <Tab text="Untitled Tab 2">
+    <Tab text="%collectionInfo.numerosTab">
          <content>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
@@ -80,7 +80,6 @@
                            <columns>
                               <TableColumn fx:id="tbColIsbn" prefWidth="75.0" text="ISBN" />
                               <TableColumn fx:id="tbColNumber" prefWidth="75.0" text="Número" />
-                              <TableColumn fx:id="tbColPurDate" prefWidth="75.0" text="Fecha Adquisición" />
                               <TableColumn fx:id="tbColCover" prefWidth="75.0" text="Tapa" />
                               <TableColumn fx:id="tbColCopies" prefWidth="75.0" text="Ejemplares" />
                            </columns>

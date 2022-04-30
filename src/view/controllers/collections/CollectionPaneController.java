@@ -26,11 +26,13 @@ public class CollectionPaneController implements Initializable {
     private ResourceBundle rb;
     private Collection collection;
 
+    //<editor-fold desc="FXML vars Definition">
     @FXML
     private Label lblName;
 
     @FXML
     private BorderPane comicPane;
+    //</editor-fold>
 
 
     public void innitData(Collection collection) {
@@ -64,7 +66,7 @@ public class CollectionPaneController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
                 alert.setTitle(rb.getString("error"));
-                alert.setContentText("err.CargarInfoColeccion");
+                alert.setContentText(rb.getString("err.CargarInfoColeccion"));
                 alert.showAndWait();
                 return;
             }
@@ -84,7 +86,7 @@ public class CollectionPaneController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
-            alert.setContentText("err.cargarPantalla");
+            alert.setContentText(rb.getString("err.cargarPantalla"));
             alert.showAndWait();
         } catch (ClassNotFoundException e) {
         }

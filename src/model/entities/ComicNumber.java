@@ -6,17 +6,15 @@ import java.util.Date;
 public class ComicNumber implements Serializable {
     String isbn;
     int comicNumber;
-    Date date;
     String cover;
     int copies;
 
     public ComicNumber() {
     }
 
-    public ComicNumber(String isbn, int comicNumber, Date date, String cover, int copies) {
+    public ComicNumber(String isbn, int comicNumber, String cover, int copies) {
         this.isbn = isbn;
         this.comicNumber = comicNumber;
-        this.date = date;
         this.cover = cover;
         this.copies = copies;
     }
@@ -35,14 +33,6 @@ public class ComicNumber implements Serializable {
 
     public void setComicNumber(int comicNumber) {
         this.comicNumber = comicNumber;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getCover() {

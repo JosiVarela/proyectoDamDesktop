@@ -34,6 +34,9 @@ public class MainFormController implements Initializable {
 
     private ResourceBundle rb;
 
+    private Stage thisStage;
+
+    //<editor-fold desc="FXML vars Definition">
     @FXML
     private AnchorPane mainPane;
 
@@ -48,6 +51,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     private Button btnInicio;
+    //</editor-fold>
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -110,7 +114,7 @@ public class MainFormController implements Initializable {
             Stage stage = new Stage();
             stage.setMaxWidth(700);
             stage.setMaxHeight(900);
-            stage.setTitle("Configuración");
+            stage.setTitle(rb.getString("configuracion"));
             stage.getIcons().add(new Image("/data/images/app_icon.png"));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
@@ -144,6 +148,7 @@ public class MainFormController implements Initializable {
         //Controls
         btnInicio.setText(rb.getString("mainForm.btnInicio"));
         btnCollection.setText(rb.getString("mainForm.btnCol"));
+        thisStage.setTitle(rb.getString("titulo.principal"));
 
         //Load hints
         loadHints();
@@ -152,6 +157,10 @@ public class MainFormController implements Initializable {
     private void loadHints(){
         btnHelp.setTooltip(new Tooltip(rb.getString("ayuda")));
         btnConfigMenu.setTooltip(new Tooltip(rb.getString("configuracion")));
+    }
+
+    public void setStaqe(Stage thisStage){
+        this.thisStage = thisStage;
     }
 
     public void startConnection(){
@@ -171,10 +180,6 @@ public class MainFormController implements Initializable {
 
             ButtonType restart = new ButtonType("Reiniciar", ButtonBar.ButtonData.OTHER);
             alert.getDialogPane().getButtonTypes().add(restart);
-
-
-
-
 
             Optional<ButtonType> result = alert.showAndWait();
 

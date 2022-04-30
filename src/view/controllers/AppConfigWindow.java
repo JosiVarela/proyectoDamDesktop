@@ -20,10 +20,9 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class AppConfigWindow implements Initializable {
+    //<editor-fold desc="FXML vars Definition">
     @FXML
     private Button btnConnect;
-    @FXML
-    private Button btnReconnect;
     @FXML
     private TextField txtPort;
     @FXML
@@ -42,6 +41,7 @@ public class AppConfigWindow implements Initializable {
 
     @FXML
     private RadioButton rdLangEsp;
+    //</editor-fold>
 
 
     @Override

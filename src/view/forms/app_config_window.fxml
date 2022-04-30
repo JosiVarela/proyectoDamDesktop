@@ -12,7 +12,7 @@
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab text="Idioma">
+          <Tab text="%appConfig.idioma">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
@@ -50,7 +50,7 @@
                               </RadioButton>
                               <HBox alignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                  <children>
-                                    <Label text="Idioma seleccionado:" HBox.hgrow="NEVER" />
+                                    <Label text="%appConfig.idiomaSelec" HBox.hgrow="NEVER" />
                                     <Label fx:id="txtLangSelec" style="-fx-font-weight: bold;" text="Galego">
                                        <HBox.margin>
                                           <Insets left="10.0" />
@@ -64,7 +64,7 @@
                   </BorderPane>
                </content>
           </Tab>
-          <Tab text="Servidor">
+          <Tab text="%appConfig.servidor">
                <content>
                   <BorderPane>
                      <center>
@@ -79,7 +79,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Dirección:">
+                              <Label text="%appConfig.direccion">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
@@ -90,20 +90,16 @@
                                  </GridPane.margin>
                               </TextField>
                               <TextField fx:id="txtPort" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                              <Label text="Puerto:" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                              <Label text="%appConfig.puerto" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Label>
                               <VBox maxWidth="1.7976931348623157E308" prefHeight="112.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
                                  <children>
-                                    <Button fx:id="btnConnect" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnConnectAction" text="Conectar" VBox.vgrow="ALWAYS">
+                                    <Button fx:id="btnConnect" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnConnectAction" text="%appConfig.conectar" VBox.vgrow="ALWAYS">
                                        <VBox.margin>
                                           <Insets left="20.0" right="20.0" />
-                                       </VBox.margin></Button>
-                                    <Button fx:id="btnReconnect" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnReconnectAction" text="Reconectar">
-                                       <VBox.margin>
-                                          <Insets left="20.0" right="20.0" top="20.0" />
                                        </VBox.margin></Button>
                                  </children>
                               </VBox>

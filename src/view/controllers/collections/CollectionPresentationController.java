@@ -23,6 +23,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
     private ResourceBundle rb;
 
+    //<editor-fold desc="FXML vars Definition">
     @FXML
     private TilePane cardsPane;
 
@@ -37,6 +38,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
     @FXML
     private Button btnBuscar;
+    //</editor-fold>
 
 
     @Override
@@ -50,8 +52,8 @@ public class CollectionPresentationController implements Initializable, Translat
         } catch (SocketException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Parece que no hay conexión con el servidor");
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.noConexion"));
             alert.showAndWait();
             return;
         } catch (IOException e) {

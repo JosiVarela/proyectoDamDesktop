@@ -31,13 +31,14 @@ public class Launch extends Application {
         mainFormController = fxmlLoader.getController();
 
         Scene scene = new Scene(root, 1000, 500);
-        stage.setTitle("Hello!");
+        stage.setTitle(resourceBundle.getString("titulo.principal"));
         stage.getIcons().add(Resources.APP_ICON);
         stage.setMinWidth(1000);
         stage.setMinHeight(500);
         stage.setScene(scene);
         stage.show();
 
+        mainFormController.setStaqe(stage);
         mainFormController.startConnection();
     }
 
