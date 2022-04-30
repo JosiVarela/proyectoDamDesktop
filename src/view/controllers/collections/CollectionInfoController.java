@@ -9,18 +9,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.entities.Collection;
 import model.entities.ComicNumber;
 
-import javax.swing.text.DateFormatter;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.TimeZone;
 
 public class CollectionInfoController implements Initializable {
-    private ObservableList<ComicNumber> comicNumbersList;
+    private ObservableList<ComicNumber> numberList;
     private Collection collection;
 
     //<editor-fold desc="FXML vars definition">
@@ -52,6 +45,9 @@ public class CollectionInfoController implements Initializable {
     private TableColumn<ComicNumber, Integer> tbColNumber;
 
     @FXML
+    private TableColumn<ComicNumber, String> tbColName;
+
+    @FXML
     private TableColumn<ComicNumber, Integer> tbColCopies;
 
     @FXML
@@ -68,26 +64,34 @@ public class CollectionInfoController implements Initializable {
         lblFirstPublish.setText(lblFirstPublish.getText() + " " + collection.getPublishDate());
         lblNumbers.setText(collection.getComicQuantity() + " " + lblNumbers.getText());
         txtArgument.setText(collection.getArgument());
+        populateNumberList();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        comicNumbersList = FXCollections.observableArrayList();
+        numberList = FXCollections.observableArrayList();
 
         this.tbColIsbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         this.tbColNumber.setCellValueFactory(new PropertyValueFactory<>("comicNumber"));
+        this.tbColName.setCellValueFactory(new PropertyValueFactory<>("name"));
         this.tbColCover.setCellValueFactory(new PropertyValueFactory<>("cover"));
         this.tbColCopies.setCellValueFactory(new PropertyValueFactory<>("copies"));
 
-        //for(int x = 0; x < 30; x++){
-            comicNumbersList.add(new ComicNumber("XXXXXXXXXX", 1, "Blanda", 5));
-            comicNumbersList.add(new ComicNumber("XXXXXXXXXX", 2, "Blanda", 5));
-            comicNumbersList.add(new ComicNumber("XXXXXXXXXX", 3, "Blanda", 5));
-            comicNumbersList.add(new ComicNumber("XXXXXXXXXX", 4, "Blanda", 5));
-            comicNumbersList.add(new ComicNumber("XXXXXXXXXX", 5, "Blanda", 5));
-        //}
 
 
-        comicsTable.setItems(comicNumbersList);
+        /*numberList.add(new ComicNumber("XXXXXXXXXX", 1, "Blanda", 5));
+        numberList.add(new ComicNumber("XXXXXXXXXX", 2, "Blanda", 5));
+        numberList.add(new ComicNumber("XXXXXXXXXX", 3, "Blanda", 5));
+        numberList.add(new ComicNumber("XXXXXXXXXX", 4, "Blanda", 5));
+        numberList.add(new ComicNumber("XXXXXXXXXX", 5, "Blanda", 5));*/
+
+
+
+
+    }
+
+    private void populateNumberList(){
+        numberList.addAll(collection.getNumberList());
+        comicsTable.setItems(numberList);
     }
 }

@@ -1,22 +1,25 @@
 package model.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class ComicNumber implements Serializable {
     String isbn;
     int comicNumber;
+    String name;
     String cover;
     int copies;
+    int colId;
 
     public ComicNumber() {
     }
 
-    public ComicNumber(String isbn, int comicNumber, String cover, int copies) {
+    public ComicNumber(String isbn, int comicNumber, String name, String cover, int copies, int colId) {
         this.isbn = isbn;
         this.comicNumber = comicNumber;
         this.cover = cover;
         this.copies = copies;
+        this.colId = colId;
+        this.name = name;
     }
 
     public String getIsbn() {
@@ -49,5 +52,21 @@ public class ComicNumber implements Serializable {
 
     public void setCopies(int copies) {
         this.copies = copies;
+    }
+
+    public int getColId() {
+        return colId;
+    }
+
+    public void setColId(int colId) {
+        this.colId = colId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

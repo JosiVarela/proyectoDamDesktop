@@ -83,6 +83,7 @@ public class CollectionPaneController implements Initializable {
         } catch (SocketException e){
             System.out.println("SOCKET ERROR");
         } catch (IOException e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));

@@ -2,6 +2,7 @@ package model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Collection implements Serializable {
     private int id;
@@ -9,6 +10,7 @@ public class Collection implements Serializable {
     private Date publishDate;
     private String argument;
     private int comicQuantity;
+    private List<ComicNumber> numberList;
 
 
     public Collection() {
@@ -59,5 +61,13 @@ public class Collection implements Serializable {
 
     public void setComicQuantity(int comicQuantity) {
         this.comicQuantity = comicQuantity;
+    }
+
+    public List<ComicNumber> getNumberList() {
+        return numberList;
+    }
+
+    public void setNumberList(List<ComicNumber> numberList) {
+        this.numberList = numberList;
     }
 }
