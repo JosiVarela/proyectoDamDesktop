@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.CollectionPresentationController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.collections.CollectionPresentationController">
    <top>
       <BorderPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <left>
@@ -38,7 +38,7 @@
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../data/images/search_icon.png" />
+                              <Image url="@../../../data/images/search_icon.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
@@ -48,7 +48,7 @@
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../data/images/add_icon.png" />
+                              <Image url="@../../../data/images/add_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>

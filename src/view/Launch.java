@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import services.Resources;
 import view.controllers.MainFormController;
 
 import java.util.Locale;
@@ -31,7 +32,7 @@ public class Launch extends Application {
 
         Scene scene = new Scene(root, 1000, 500);
         stage.setTitle("Hello!");
-        stage.getIcons().add(new Image("/data/images/app_icon.png"));
+        stage.getIcons().add(Resources.APP_ICON);
         stage.setMinWidth(1000);
         stage.setMinHeight(500);
         stage.setScene(scene);

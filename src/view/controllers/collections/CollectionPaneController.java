@@ -1,4 +1,4 @@
-package view.controllers;
+package view.controllers.collections;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.CollectionManagement;
 import model.entities.Collection;
+import services.Resources;
 
 import java.io.IOException;
 import java.net.SocketException;
@@ -50,7 +51,7 @@ public class CollectionPaneController implements Initializable {
 
     private void mouseClickEvent(){
         Object[] requestCol;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_info.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_info.fxml"), rb);
 
         try{
             Parent root = fxmlLoader.load();
@@ -74,6 +75,7 @@ public class CollectionPaneController implements Initializable {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
+            stage.getIcons().add(Resources.APP_ICON);
             stage.showAndWait();
 
         } catch (SocketException e){

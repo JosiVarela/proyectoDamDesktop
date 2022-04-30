@@ -1,6 +1,5 @@
-package view.controllers;
+package view.controllers.collections;
 
-import controller.ServerConnection;
 import controller.Translatable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +14,6 @@ import model.entities.Collection;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -86,7 +84,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
         for(Collection col : collectionList){
 
-            fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_pane_form.fxml"), rb);
+            fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_pane_form.fxml"), rb);
 
             try {
 

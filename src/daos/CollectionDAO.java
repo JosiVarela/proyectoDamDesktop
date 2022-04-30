@@ -1,7 +1,6 @@
 package daos;
 
 import controller.ServerConnection;
-import data.MockData;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

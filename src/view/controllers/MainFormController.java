@@ -69,7 +69,7 @@ public class MainFormController implements Initializable {
     void btnCollectionAction(ActionEvent event) {
         Node node;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collection_presentation.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collections/collection_presentation.fxml"), rb);
 
         currentLoadedWindow = fxmlLoader;
 
@@ -85,6 +85,7 @@ public class MainFormController implements Initializable {
         } catch (SocketException e){
             System.out.println("SOCKET EXCEPTION");
         } catch (IOException e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
