@@ -20,6 +20,8 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class AppConfigWindow implements Initializable {
+    ResourceBundle rb;
+
     //<editor-fold desc="FXML vars Definition">
     @FXML
     private Button btnConnect;
@@ -46,6 +48,8 @@ public class AppConfigWindow implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        this.rb = resources;
 
         if(AppConfigurations.getTranslations().equals("es")){
             rdLangEsp.setSelected(true);
@@ -86,16 +90,24 @@ public class AppConfigWindow implements Initializable {
         int port;
 
         if(host.isBlank() || portStr.isBlank()){
-            //TODO ALERT NO DATA
-            System.out.println("Debes introducir todos los datos");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.completarDatos"));
+            alert.showAndWait();
             return;
         }
 
         if(host.equals(AppConfigurations.getServerConfig().getIp()) &&
                 portStr.equals(String.valueOf(AppConfigurations.getServerConfig().getPort())) &&
                         isConnected()){
-            //TODO ALERT SAME CONFIG
-            System.out.println("Ya estás conectado a este servidor");
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("appConfigErr.yaConectado"));
+            alert.showAndWait();
+
             return;
         }
 
@@ -107,15 +119,26 @@ public class AppConfigWindow implements Initializable {
             AppConfigurations.storeServerConfig(new ServerConfig(host, port));
 
         } catch (NumberFormatException e) {
-            //TODO ALERT PORT NOT VALID
-            System.out.println("Puerto no válido");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("appConfigErr.puertoNoValido"));
+            alert.showAndWait();
+            return;
         } catch (IOException e) {
-            System.out.println("No se pudo conectar con el servidor");
-            //TODO ALERT CAN'T CONNECT TO THE SERVER
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("appConfigErr.noConServidor"));
+            alert.showAndWait();
             return;
         }
 
-        System.out.println("Te has conectado al servidor correctamente");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle(rb.getString("mensaje"));
+        alert.setContentText(rb.getString("appConfig.conexionOk"));
+        alert.showAndWait();
     }
 
     @FXML
