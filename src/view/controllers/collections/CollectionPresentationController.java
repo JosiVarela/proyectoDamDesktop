@@ -121,7 +121,11 @@ public class CollectionPresentationController implements Initializable, Translat
             alert.showAndWait();
             return;
         } catch (IOException e) {
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.ObtenerColecciones"));
+            alert.showAndWait();
             return;
         } catch (ClassNotFoundException e) {
             return;
@@ -154,19 +158,32 @@ public class CollectionPresentationController implements Initializable, Translat
 
         try {
             serverResponse = CollectionManagement.getCollectionsByName(colName);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (SocketException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.noConexion"));
+            alert.showAndWait();
+            return;
+        }catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.ObtenerColecciones"));
+            alert.showAndWait();
             return;
 
 
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
             return;
         }
 
         if(serverResponse[0].equals("SQLE Error")){
-            //TODO METER ALERTA SQLERROR
-            System.out.println("SQL ERROR");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.ObtenerColecciones"));
+            alert.showAndWait();
             return;
         }
 
