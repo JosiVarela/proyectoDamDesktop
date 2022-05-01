@@ -1,13 +1,13 @@
 package model.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Collection implements Serializable {
     private int id;
     private String title;
-    private Date publishDate;
+    private LocalDate publishDate;
     private String argument;
     private int comicQuantity;
     private List<ComicNumber> numberList;
@@ -16,7 +16,7 @@ public class Collection implements Serializable {
     public Collection() {
     }
 
-    public Collection(int id, String title, Date publishDate, String argument) {
+    public Collection(int id, String title, LocalDate publishDate, String argument) {
         this.id = id;
         this.title = title;
         this.publishDate = publishDate;
@@ -39,11 +39,11 @@ public class Collection implements Serializable {
         this.title = title;
     }
 
-    public Date getPublishDate() {
+    public LocalDate getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(Date publishDate) {
+    public void setPublishDate(LocalDate publishDate) {
         this.publishDate = publishDate;
     }
 

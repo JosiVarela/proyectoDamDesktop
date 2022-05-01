@@ -38,7 +38,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Button fx:id="btnModifyCol" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="%collectionInfo.modificar" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
+                  <Button fx:id="btnModifyCol" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnModifyAction" prefHeight="50.0" text="%collectionInfo.modificar" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="50.0" right="50.0" top="20.0" />
                      </GridPane.margin>

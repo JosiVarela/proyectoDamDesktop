@@ -38,11 +38,9 @@ public class CollectionPaneController implements Initializable {
     public void innitData(Collection collection) {
         this.collection = collection;
 
-
-
-
         lblName.setText(this.collection.getTitle());
         lblName.setTooltip(new Tooltip(this.collection.getTitle()));
+        System.out.println("Actualizo");
     }
 
     @Override
@@ -79,6 +77,10 @@ public class CollectionPaneController implements Initializable {
             stage.setScene(scene);
             stage.getIcons().add(Resources.APP_ICON);
             stage.showAndWait();
+
+            if(controller.isNeededUpdate()){
+                innitData(controller.getCollection());
+            }
 
         } catch (SocketException e){
             System.out.println("SOCKET ERROR");

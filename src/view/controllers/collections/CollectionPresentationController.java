@@ -173,7 +173,6 @@ public class CollectionPresentationController implements Initializable, Translat
             alert.showAndWait();
             return;
 
-
         } catch (ClassNotFoundException e) {
             return;
         }

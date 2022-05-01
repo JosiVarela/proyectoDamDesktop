@@ -2,19 +2,29 @@ package view.controllers.collections;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.entities.Collection;
 import model.entities.ComicNumber;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CollectionInfoController implements Initializable {
     private ObservableList<ComicNumber> numberList;
     private Collection collection;
+    private ResourceBundle rb;
+    private boolean neededUpdate;
 
     //<editor-fold desc="FXML vars definition">
     @FXML
@@ -64,11 +74,23 @@ public class CollectionInfoController implements Initializable {
         lblFirstPublish.setText(lblFirstPublish.getText() + " " + collection.getPublishDate());
         lblNumbers.setText(collection.getComicQuantity() + " " + lblNumbers.getText());
         txtArgument.setText(collection.getArgument());
-        populateNumberList();
+        if(!this.neededUpdate){
+            populateNumberList();
+        }
+    }
+
+    public boolean isNeededUpdate(){
+        return this.neededUpdate;
+    }
+
+    public Collection getCollection(){
+        return this.collection;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.rb = resources;
+
         numberList = FXCollections.observableArrayList();
 
         this.tbColIsbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
@@ -76,6 +98,9 @@ public class CollectionInfoController implements Initializable {
         this.tbColName.setCellValueFactory(new PropertyValueFactory<>("name"));
         this.tbColCover.setCellValueFactory(new PropertyValueFactory<>("cover"));
         this.tbColCopies.setCellValueFactory(new PropertyValueFactory<>("copies"));
+
+        comicsTable.setPlaceholder(new Label(""));
+        neededUpdate = false;
 
 
 
@@ -88,6 +113,34 @@ public class CollectionInfoController implements Initializable {
 
 
 
+    }
+
+    @FXML
+    void btnModifyAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_create_mod.fxml"), rb);
+
+        Parent root;
+        try{
+            root = fxmlLoader.load();
+
+            CollectionCreateMod collectionCreateMod = fxmlLoader.getController();
+
+            collectionCreateMod.modifyOption(this.collection);
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            if(collectionCreateMod.isNeededUpdate()){
+                this.neededUpdate = true;
+                setCollection(collectionCreateMod.getCollection());
+            }
+
+        } catch (IOException e) {
+
+        }
     }
 
     private void populateNumberList(){
