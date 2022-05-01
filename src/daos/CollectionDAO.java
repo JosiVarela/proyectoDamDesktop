@@ -78,4 +78,31 @@ public class CollectionDAO implements ICollectionDAO{
 
         return returnObject;
     }
+
+    @Override
+    public Object[] getCollectionsByName(String name) throws IOException, ClassNotFoundException {
+        DataInputStream dataInputStream;
+        DataOutputStream dataOutputStream;
+        ObjectInputStream objectInputStream;
+        Object[] serverData = new Object[2];
+
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("getCollectionsByName");
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF(name);
+
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        serverData[0] = dataInputStream.readUTF();
+
+        if(serverData[0].equals("OK")){
+            objectInputStream = new ObjectInputStream(ServerConnection.getConnection().getInputStream());
+            serverData[1] = objectInputStream.readObject();
+        }
+
+
+
+        return serverData;
+    }
 }

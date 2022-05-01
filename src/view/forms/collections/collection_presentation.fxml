@@ -24,14 +24,14 @@
          <right>
             <BorderPane prefHeight="200.0" BorderPane.alignment="CENTER">
                <left>
-                  <TextField fx:id="txtBusqueda" prefWidth="300.0" BorderPane.alignment="CENTER">
+                  <TextField fx:id="txtSearch" onAction="#txtSearchAction" prefWidth="300.0" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets right="3.0" />
                      </BorderPane.margin>
                   </TextField>
                </left>
                <center>
-                  <Button fx:id="btnBuscar" mnemonicParsing="false" BorderPane.alignment="CENTER">
+                  <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchAction" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets right="10.0" />
                      </BorderPane.margin>
@@ -44,7 +44,7 @@
                      </graphic></Button>
                </center>
                <right>
-                  <Button fx:id="btnAnhadir" mnemonicParsing="false" BorderPane.alignment="CENTER">
+                  <Button fx:id="btnAdd" mnemonicParsing="false" BorderPane.alignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
