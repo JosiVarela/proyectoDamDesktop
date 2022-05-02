@@ -15,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Collection;
 import model.entities.ComicNumber;
+import services.Resources;
 
 import java.io.IOException;
 import java.net.URL;
@@ -130,6 +131,8 @@ public class CollectionInfoController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setTitle(rb.getString("collectionCreateMod.modColeccion"));
+            stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 

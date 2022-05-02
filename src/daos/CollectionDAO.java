@@ -117,7 +117,7 @@ public class CollectionDAO implements ICollectionDAO{
         Object[] serverResponse = new Object[2];
 
         dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
-        dataOutputStream.writeUTF("existCollectionWithName");
+        dataOutputStream.writeUTF("existCollectionWithNameNotId");
 
 
         dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
@@ -139,28 +139,80 @@ public class CollectionDAO implements ICollectionDAO{
         return serverResponse;
 
     }
-
+    /**
+     * This method returns true if exists another collection with same name;
+     * @return Object[]. Object[0] is a String which is a server message that indicates if the request has been
+     * processed successfully and Object[1] is a boolean.
+     */
     @Override
-    public String updateCollection(Collection collection) {
+    public Object[] existsCollectionWithName(String name) throws IOException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        Object[] response = new Object[2];
+
+
+            dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+            dataOutputStream.writeUTF("existCollectionWithSameName");
+
+            dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+            dataOutputStream.writeUTF(name);
+
+            dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+            response[0] = dataInputStream.readUTF();
+
+            if(response[0].equals("OK")){
+                dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+                response[1] = dataInputStream.readBoolean();
+            }
+
+            return response;
+
+    }
+
+    /**
+     * This method updates a collection
+     * @param collection Is the collection that we want to update
+     * @return String is a message indicating if the collection has been updated successfully
+     */
+    @Override
+    public String updateCollection(Collection collection) throws IOException {
         DataInputStream dataInputStream;
         DataOutputStream dataOutputStream;
         ObjectOutputStream objectOutputStream;
         String serverResponse;
 
-        try{
-            dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
-            dataOutputStream.writeUTF("updateCollection");
 
-            objectOutputStream = new ObjectOutputStream(ServerConnection.getConnection().getOutputStream());
-            objectOutputStream.writeObject(collection);
-            objectOutputStream.flush();
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("updateCollection");
 
-            dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
-            serverResponse = dataInputStream.readUTF();
+        objectOutputStream = new ObjectOutputStream(ServerConnection.getConnection().getOutputStream());
+        objectOutputStream.writeObject(collection);
+        objectOutputStream.flush();
 
-            return serverResponse;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        serverResponse = dataInputStream.readUTF();
+
+        return serverResponse;
+
+    }
+
+    @Override
+    public String insertCollection(Collection collection) throws IOException {
+        DataInputStream dataInputStream;
+        DataOutputStream dataOutputStream;
+        ObjectOutputStream objectOutputStream;
+        String response;
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("insertCollection");
+
+        objectOutputStream = new ObjectOutputStream(ServerConnection.getConnection().getOutputStream());
+        objectOutputStream.writeObject(collection);
+        objectOutputStream.flush();
+
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        response = dataInputStream.readUTF();
+
+        return response;
     }
 }

@@ -44,7 +44,7 @@
                      </graphic></Button>
                </center>
                <right>
-                  <Button fx:id="btnAdd" mnemonicParsing="false" BorderPane.alignment="CENTER">
+                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddAction" BorderPane.alignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>

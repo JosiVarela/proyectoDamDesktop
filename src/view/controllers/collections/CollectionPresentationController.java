@@ -7,10 +7,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.TilePane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.CollectionManagement;
 import model.entities.Collection;
+import services.Resources;
+
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
@@ -191,5 +197,34 @@ public class CollectionPresentationController implements Initializable, Translat
         collectionList.addAll((List<Collection>) serverResponse[1]);
 
         loadCollections();
+    }
+
+    @FXML
+    void btnAddAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_create_mod.fxml"), rb);
+
+        Parent root;
+
+        try{
+            root = fxmlLoader.load();
+
+            CollectionCreateMod controller = fxmlLoader.getController();
+            controller.createOption();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle(rb.getString("collectionInfo.altaColeccion"));
+            stage.getIcons().add(Resources.APP_ICON);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            if(controller.isNeededUpdate()){
+                loadDefaultCollections();
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

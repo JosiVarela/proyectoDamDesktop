@@ -75,6 +75,7 @@ public class CollectionPaneController implements Initializable {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
+            stage.setTitle(rb.getString("collectionInfo.infoColeccion"));
             stage.getIcons().add(Resources.APP_ICON);
             stage.showAndWait();
 

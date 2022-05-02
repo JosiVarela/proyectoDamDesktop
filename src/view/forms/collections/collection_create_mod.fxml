@@ -58,7 +58,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnAcept" mnemonicParsing="false" onAction="#btnAceptAction" prefWidth="70.0" text="%aceptar">
+            <Button fx:id="btnAccept" mnemonicParsing="false" onAction="#btnAcceptAction" prefWidth="70.0" text="%aceptar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>

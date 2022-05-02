@@ -23,7 +23,15 @@ public class CollectionManagement {
         return new CollectionDAO().existsCollectionWithName(id, name);
     }
 
-    public static String updateCollection(Collection collection){
+    public static String updateCollection(Collection collection) throws IOException {
         return new CollectionDAO().updateCollection(collection);
+    }
+
+    public static Object[] existsCollectionWithName(String name) throws IOException {
+        return new CollectionDAO().existsCollectionWithName(name);
+    }
+
+    public static String insertCollection(Collection collection) throws IOException {
+        return new CollectionDAO().insertCollection(collection);
     }
 }
