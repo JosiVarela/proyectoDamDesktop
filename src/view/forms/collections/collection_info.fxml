@@ -78,11 +78,11 @@
                      <center>
                         <TableView fx:id="comicsTable" BorderPane.alignment="CENTER">
                            <columns>
-                              <TableColumn fx:id="tbColIsbn" prefWidth="75.0" text="ISBN" />
-                              <TableColumn fx:id="tbColNumber" prefWidth="75.0" text="Número" />
-                              <TableColumn fx:id="tbColName" prefWidth="75.0" text="Nombre" />
-                              <TableColumn fx:id="tbColCover" prefWidth="75.0" text="Tapa" />
-                              <TableColumn fx:id="tbColCopies" prefWidth="75.0" text="Ejemplares" />
+                              <TableColumn fx:id="tbColIsbn" prefWidth="75.0" text="%collectionInfo.isbn" />
+                              <TableColumn fx:id="tbColNumber" prefWidth="75.0" text="%collectionInfo.numero" />
+                              <TableColumn fx:id="tbColName" prefWidth="75.0" text="%collectionInfo.nombre" />
+                              <TableColumn fx:id="tbColCover" prefWidth="75.0" text="%collectionInfo.tapa" />
+                              <TableColumn fx:id="tbColCopies" prefWidth="75.0" text="%collectionInfo.ejemplares" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

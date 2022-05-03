@@ -219,6 +219,10 @@ public class CollectionPresentationController implements Initializable, Translat
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setWidth(620);
+            stage.setHeight(450);
+            stage.setMinHeight(450);
+            stage.setMinWidth(620);
             stage.setTitle(rb.getString("collectionInfo.altaColeccion"));
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);

@@ -30,9 +30,11 @@ public class Launch extends Application {
         Parent root = fxmlLoader.load();
         mainFormController = fxmlLoader.getController();
 
-        Scene scene = new Scene(root, 1000, 500);
+        Scene scene = new Scene(root);
         stage.setTitle(resourceBundle.getString("titulo.principal"));
         stage.getIcons().add(Resources.APP_ICON);
+        stage.setWidth(1000);
+        stage.setHeight(500);
         stage.setMinWidth(1000);
         stage.setMinHeight(500);
         stage.setScene(scene);

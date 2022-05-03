@@ -132,6 +132,10 @@ public class CollectionInfoController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle(rb.getString("collectionCreateMod.modColeccion"));
+            stage.setWidth(620);
+            stage.setHeight(450);
+            stage.setMinHeight(450);
+            stage.setMinWidth(620);
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
