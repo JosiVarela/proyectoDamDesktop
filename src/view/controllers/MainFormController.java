@@ -77,6 +77,15 @@ public class MainFormController implements Initializable {
 
         currentLoadedWindow = fxmlLoader;
 
+        if(ServerConnection.getConnection() == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.noConexion"));
+            alert.showAndWait();
+            return;
+        }
+
         try {
             node = fxmlLoader.load();
 
@@ -87,7 +96,11 @@ public class MainFormController implements Initializable {
 
             mainPane.getChildren().add(node);
         } catch (SocketException e){
-            System.out.println("SOCKET EXCEPTION");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.noConexion"));
+            alert.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -168,24 +181,18 @@ public class MainFormController implements Initializable {
         try {
             ServerConfig serverConfig = AppConfigurations.getServerConfig();
             ServerConnection.startConnection(serverConfig.getIp(), serverConfig.getPort());
-        } catch (IOException e) {
-
+        }catch (SocketException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Parece que no hay conexión con el servidor");
-
-
-            alert.getDialogPane().getButtonTypes().clear();
-
-            ButtonType restart = new ButtonType("Reiniciar", ButtonBar.ButtonData.OTHER);
-            alert.getDialogPane().getButtonTypes().add(restart);
-
-            Optional<ButtonType> result = alert.showAndWait();
-
-            if(result.isPresent() && result.get() == restart){
-                startConnection();
-            }
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.noConexion"));
+            alert.showAndWait();
+        }catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.inesperado"));
+            alert.showAndWait();
         }
     }
 }

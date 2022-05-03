@@ -40,7 +40,6 @@ public class CollectionPaneController implements Initializable {
 
         lblName.setText(this.collection.getTitle());
         lblName.setTooltip(new Tooltip(this.collection.getTitle()));
-        System.out.println("Actualizo");
     }
 
     @Override
@@ -84,15 +83,23 @@ public class CollectionPaneController implements Initializable {
             }
 
         } catch (SocketException e){
-            System.out.println("SOCKET ERROR");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.noConexion"));
+            alert.showAndWait();
         } catch (IOException e) {
-            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.cargarPantalla"));
             alert.showAndWait();
         } catch (ClassNotFoundException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.inesperado"));
+            alert.showAndWait();
         }
     }
 }

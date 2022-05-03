@@ -134,6 +134,11 @@ public class CollectionPresentationController implements Initializable, Translat
             alert.showAndWait();
             return;
         } catch (ClassNotFoundException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.inesperado"));
+            alert.showAndWait();
             return;
         }
 
@@ -224,7 +229,11 @@ public class CollectionPresentationController implements Initializable, Translat
             }
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.cargarPantalla"));
+            alert.showAndWait();
         }
     }
 }

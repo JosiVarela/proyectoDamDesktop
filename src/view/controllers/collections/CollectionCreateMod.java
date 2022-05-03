@@ -3,15 +3,13 @@ package view.controllers.collections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.CollectionManagement;
 import model.entities.Collection;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -82,21 +80,39 @@ public class CollectionCreateMod implements Initializable {
         LocalDate date = txtDate.getValue();
         String argument = txtArgument.getText().trim();
 
-
-        if(operationId == 0){
-            updateCol(name, date, argument);
-        }else{
-            createCol(name, date, argument);
+        try{
+            if(operationId == 0){
+                updateCol(name, date, argument);
+            }else{
+                createCol(name, date, argument);
+            }
+        }catch (SocketException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.noConexion"));
+            alert.showAndWait();
+        }catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.inesperado"));
+            alert.showAndWait();
         }
+
     }
 
-    private void updateCol(String name, LocalDate date, String argument){
+    private void updateCol(String name, LocalDate date, String argument) throws IOException {
         boolean existsCol;
         Object[] serverResponse;
         Collection auxCol;
 
         if(name.isEmpty() || argument.isEmpty()){
-            System.out.println("Debe completar todos los campos");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("errCollectionCreateMod.completarCampos"));
+            alert.showAndWait();
             return;
         }
 
@@ -108,95 +124,120 @@ public class CollectionCreateMod implements Initializable {
         }
 
         if(name.length() > 500){
-            System.out.println("El nombre de la colección no puede superara los 500 caracteres");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("errCollectionCreateMod.coleccion500Car"));
+            alert.showAndWait();
             return;
         }
 
         auxCol = new Collection(collection.getId(), name, date, argument);
 
-        try {
+        serverResponse = CollectionManagement.existsCollectionWithName(auxCol.getId(), name);
 
-
-            serverResponse = CollectionManagement.existsCollectionWithName(auxCol.getId(), name);
-
-            if (serverResponse[0].equals("SQLE Error")) {
-                System.out.println("Se produjo un error al guardar los datos");
-                return;
-            }
-
-            existsCol = (boolean) serverResponse[1];
-
-            if (existsCol) {
-                System.out.println("Ya existe una colección con el mismo nombre");
-                return;
-            }
-
-            serverResponse[0] = CollectionManagement.updateCollection(auxCol);
-
-            if(serverResponse[0].equals("SQLE Error")){
-                System.out.println("Error al actualizar la colección");
-                return;
-            }
-
-            collection = auxCol;
-
-            this.neededUpdate = true;
-
-            Stage stage = (Stage) btnAccept.getScene().getWindow();
-            stage.close();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (serverResponse[0].equals("SQLE Error")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.guardarDatos"));
+            alert.showAndWait();
+            return;
         }
+
+        existsCol = (boolean) serverResponse[1];
+
+        if (existsCol) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("errCollectionCreateMod.colMismoNombre"));
+            alert.showAndWait();
+            return;
+        }
+
+        serverResponse[0] = CollectionManagement.updateCollection(auxCol);
+
+        if(serverResponse[0].equals("SQLE Error")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("errCollectionCreateMod.actualizarCol"));
+            alert.showAndWait();
+            return;
+        }
+
+        collection = auxCol;
+
+        this.neededUpdate = true;
+
+        Stage stage = (Stage) btnAccept.getScene().getWindow();
+        stage.close();
+
+
     }
-    private void createCol(String name, LocalDate date, String argument){
+    private void createCol(String name, LocalDate date, String argument) throws IOException {
         boolean existsCol;
         Object[] serverResponse;
 
         if(name.isEmpty() || argument.isEmpty() || date == null){
-            System.out.println("Debe completar todos los campos");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("errCollectionCreateMod.completarCampos"));
+            alert.showAndWait();
             return;
         }
 
         if(name.length() > 500){
-            System.out.println("El nombre de la colección no puede superara los 500 caracteres");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("errCollectionCreateMod.coleccion500Car"));
+            alert.showAndWait();
             return;
         }
 
         this.collection = new Collection(collection.getId(), name, date, argument);
 
-        try {
+        serverResponse = CollectionManagement.existsCollectionWithName(name);
 
-
-            serverResponse = CollectionManagement.existsCollectionWithName(name);
-
-            if (serverResponse[0].equals("SQLE Error")) {
-                System.out.println("Se produjo un error al guardar los datos");
-                return;
-            }
-
-            existsCol = (boolean) serverResponse[1];
-
-            if (existsCol) {
-                System.out.println("Ya existe una colección con el mismo nombre");
-                return;
-            }
-
-            serverResponse[0] = CollectionManagement.insertCollection(this.collection);
-
-            if(serverResponse[0].equals("SQLE Error")){
-                System.out.println("Error al insertar la colección");
-                return;
-            }
-
-            this.neededUpdate = true;
-
-            Stage stage = (Stage) btnAccept.getScene().getWindow();
-            stage.close();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (serverResponse[0].equals("SQLE Error")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.guardarDatos"));
+            alert.showAndWait();
+            return;
         }
+
+        existsCol = (boolean) serverResponse[1];
+
+        if (existsCol) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("errCollectionCreateMod.colMismoNombre"));
+            alert.showAndWait();
+            return;
+        }
+
+        serverResponse[0] = CollectionManagement.insertCollection(this.collection);
+
+        if(serverResponse[0].equals("SQLE Error")){
+            System.out.println("Error al insertar la colección");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("errCollectionCreateMod.crearCol"));
+            alert.showAndWait();
+            return;
+        }
+
+        this.neededUpdate = true;
+
+        Stage stage = (Stage) btnAccept.getScene().getWindow();
+        stage.close();
 
     }
 }

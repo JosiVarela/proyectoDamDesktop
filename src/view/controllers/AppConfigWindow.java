@@ -68,7 +68,11 @@ public class AppConfigWindow implements Initializable {
             AppConfigurations.storeTranslations("gl");
             Locale.setDefault(new Locale("gl", "ES"));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.inesperado"));
+            alert.showAndWait();
         }
     }
 
@@ -79,7 +83,11 @@ public class AppConfigWindow implements Initializable {
             AppConfigurations.storeTranslations("es");
             Locale.setDefault(new Locale("es", "ES"));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.inesperado"));
+            alert.showAndWait();
         }
     }
 
