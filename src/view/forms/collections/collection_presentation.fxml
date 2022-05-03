@@ -10,57 +10,6 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.collections.CollectionPresentationController">
-   <top>
-      <BorderPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <left>
-            <Label fx:id="lblPanel" style="-fx-font-weight: bold;" text="%mainForm.btnCol" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="10.0" />
-               </BorderPane.margin>
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-         </left>
-         <right>
-            <BorderPane prefHeight="200.0" BorderPane.alignment="CENTER">
-               <left>
-                  <TextField fx:id="txtSearch" onAction="#txtSearchAction" prefWidth="300.0" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets right="3.0" />
-                     </BorderPane.margin>
-                  </TextField>
-               </left>
-               <center>
-                  <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchAction" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets right="10.0" />
-                     </BorderPane.margin>
-                     <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../data/images/search_icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-               </center>
-               <right>
-                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddAction" BorderPane.alignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../data/images/add_icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <BorderPane.margin>
-                        <Insets right="10.0" />
-                     </BorderPane.margin>
-                  </Button>
-               </right>
-            </BorderPane>
-         </right>
-      </BorderPane>
-   </top>
    <center>
       <ScrollPane fitToWidth="true" style="-fx-fit-to-width: true;" BorderPane.alignment="CENTER">
          <content>
@@ -68,4 +17,48 @@
          </content>
       </ScrollPane>
    </center>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblPanel" style="-fx-font-weight: bold;" text="%mainForm.btnCol" HBox.hgrow="NEVER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Pane minWidth="100.0" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="txtSearch" onAction="#txtSearchAction" prefWidth="300.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchAction">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../data/images/search_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddAction">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../data/images/add_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
