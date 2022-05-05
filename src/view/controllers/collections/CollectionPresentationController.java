@@ -13,7 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.CollectionManagement;
+import controller.CollectionManagement;
 import model.entities.Collection;
 import services.Resources;
 

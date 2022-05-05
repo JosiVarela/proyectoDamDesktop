@@ -1,5 +1,6 @@
 package view.controllers.collections;
 
+import controller.CollectionManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +19,9 @@ import model.entities.ComicNumber;
 import services.Resources;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CollectionInfoController implements Initializable {
@@ -155,6 +158,70 @@ public class CollectionInfoController implements Initializable {
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.cargarPantalla"));
             alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void btnDelColAction(ActionEvent event) {
+        String response;
+
+        ButtonType btnAccept = new ButtonType(rb.getString("aceptar"), ButtonBar.ButtonData.OK_DONE);
+        ButtonType btnCancel = new ButtonType(rb.getString("cancelar"), ButtonBar.ButtonData.CANCEL_CLOSE);
+
+
+
+        Alert question = new Alert(Alert.AlertType.CONFIRMATION);
+        question.initOwner(this.owner);
+        question.setHeaderText(null);
+        question.setTitle(rb.getString("eliminar"));
+        question.setContentText(rb.getString("collectionInfoController.seguroEliminar"));
+        question.getButtonTypes().clear();
+        question.getButtonTypes().addAll(btnAccept, btnCancel);
+        ((Button)question.getDialogPane().lookupButton(btnAccept)).setDefaultButton(false);
+        ((Button)question.getDialogPane().lookupButton(btnCancel)).setDefaultButton(true);
+
+        Optional<ButtonType> result = question.showAndWait();
+
+        if(result.isPresent() && result.get() == btnAccept){
+            try {
+
+                response = CollectionManagement.deleteCollection(this.collection.getId());
+
+                switch (response) {
+                    case "OK" -> this.neededUpdate = true;
+                    case "SQLE Foreing" -> {
+                        Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
+                        sqlAlert.initOwner(this.owner);
+                        sqlAlert.setHeaderText(null);
+                        sqlAlert.setTitle(rb.getString("error"));
+                        sqlAlert.setContentText(rb.getString("errCollectionInfoController.eliminarComics"));
+                        sqlAlert.showAndWait();
+                    }
+                    case "SQLE Error" -> {
+                        Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
+                        sqlAlert.initOwner(this.owner);
+                        sqlAlert.setHeaderText(null);
+                        sqlAlert.setTitle(rb.getString("error"));
+                        sqlAlert.setContentText(rb.getString("errCollectionInfoController.delColeccion"));
+                        sqlAlert.showAndWait();
+                    }
+                }
+
+            } catch (SocketException e) {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.initOwner(this.owner);
+                errorAlert.setHeaderText(null);
+                errorAlert.setTitle(rb.getString("error"));
+                errorAlert.setContentText(rb.getString("err.noConexion"));
+                errorAlert.showAndWait();
+            }catch (IOException e) {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.initOwner(this.owner);
+                errorAlert.setHeaderText(null);
+                errorAlert.setTitle(rb.getString("error"));
+                errorAlert.setContentText(rb.getString("err.inesperado"));
+                errorAlert.showAndWait();
+            }
         }
     }
 

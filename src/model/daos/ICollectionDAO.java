@@ -1,4 +1,4 @@
-package daos;
+package model.daos;
 
 import model.entities.Collection;
 
@@ -12,5 +12,6 @@ public interface ICollectionDAO {
     Object[] existsCollectionWithName(String name) throws IOException;
     String updateCollection(Collection collection) throws IOException;
     String insertCollection(Collection collection) throws IOException;
+    String deleteCollection(int idCol) throws IOException;
 
 }

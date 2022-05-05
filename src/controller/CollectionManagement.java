@@ -1,7 +1,7 @@
-package model;
+package controller;
 
 
-import daos.CollectionDAO;
+import model.daos.CollectionDAO;
 import model.entities.Collection;
 
 import java.io.IOException;
@@ -33,5 +33,9 @@ public class CollectionManagement {
 
     public static String insertCollection(Collection collection) throws IOException {
         return new CollectionDAO().insertCollection(collection);
+    }
+
+    public static String deleteCollection(int colId) throws IOException {
+        return new CollectionDAO().deleteCollection(colId);
     }
 }

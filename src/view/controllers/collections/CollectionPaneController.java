@@ -11,7 +11,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.CollectionManagement;
+import controller.CollectionManagement;
 import model.entities.Collection;
 import services.Resources;
 
@@ -39,6 +39,7 @@ public class CollectionPaneController implements Initializable {
 
     public void innitData(Collection collection) {
         this.collection = collection;
+
 
         lblName.setText(this.collection.getTitle());
         lblName.setTooltip(new Tooltip(this.collection.getTitle()));
@@ -88,6 +89,7 @@ public class CollectionPaneController implements Initializable {
             stage.showAndWait();
 
             if(controller.isNeededUpdate()){
+                //TODO SOLUCIONAR ESTO
                 innitData(controller.getCollection());
             }
 

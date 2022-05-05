@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.CollectionManagement;
+import controller.CollectionManagement;
 import model.entities.Collection;
 import services.Resources;
 
@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class CollectionCreateMod implements Initializable {

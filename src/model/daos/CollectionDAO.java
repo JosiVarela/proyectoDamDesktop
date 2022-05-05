@@ -1,4 +1,4 @@
-package daos;
+package model.daos;
 
 import controller.ServerConnection;
 import model.entities.Collection;
@@ -209,6 +209,24 @@ public class CollectionDAO implements ICollectionDAO{
         objectOutputStream = new ObjectOutputStream(ServerConnection.getConnection().getOutputStream());
         objectOutputStream.writeObject(collection);
         objectOutputStream.flush();
+
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        response = dataInputStream.readUTF();
+
+        return response;
+    }
+
+    @Override
+    public String deleteCollection(int idCol) throws IOException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        String response;
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("deleteCollection");
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeInt(idCol);
 
         dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
         response = dataInputStream.readUTF();
