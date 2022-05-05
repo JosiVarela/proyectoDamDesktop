@@ -115,7 +115,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnClose" mnemonicParsing="false" text="%cerrar">
+            <Button fx:id="btnClose" mnemonicParsing="false" onAction="#btnCloseAction" text="%cerrar">
                <HBox.margin>
                   <Insets bottom="5.0" right="5.0" top="5.0" />
                </HBox.margin></Button>

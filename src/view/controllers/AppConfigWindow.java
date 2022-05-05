@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.entities.ServerConfig;
 
 import java.io.DataInputStream;
@@ -150,8 +151,9 @@ public class AppConfigWindow implements Initializable {
     }
 
     @FXML
-    void btnReconnectAction(ActionEvent event) {
-
+    void btnCloseAction(ActionEvent event) {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
     }
 
     private static boolean isConnected(){

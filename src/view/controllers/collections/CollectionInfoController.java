@@ -26,6 +26,7 @@ public class CollectionInfoController implements Initializable {
     private Collection collection;
     private ResourceBundle rb;
     private boolean neededUpdate;
+    private Stage owner;
 
     //<editor-fold desc="FXML vars definition">
     @FXML
@@ -91,6 +92,7 @@ public class CollectionInfoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
+        this.owner = Resources.getMainWindow();
 
         numberList = FXCollections.observableArrayList();
 
@@ -131,6 +133,7 @@ public class CollectionInfoController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.initOwner(this.owner);
             stage.setTitle(rb.getString("collectionCreateMod.modColeccion"));
             stage.setWidth(620);
             stage.setHeight(450);
@@ -147,6 +150,7 @@ public class CollectionInfoController implements Initializable {
 
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.cargarPantalla"));

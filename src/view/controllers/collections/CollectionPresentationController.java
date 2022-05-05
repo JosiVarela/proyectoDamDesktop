@@ -29,6 +29,8 @@ public class CollectionPresentationController implements Initializable, Translat
     private final List<Collection> collectionList = new ArrayList<>();
     private ResourceBundle rb;
 
+    private Stage owner;
+
     //<editor-fold desc="FXML vars Definition">
     @FXML
     private TilePane cardsPane;
@@ -50,7 +52,7 @@ public class CollectionPresentationController implements Initializable, Translat
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
-
+        this.owner = Resources.getMainWindow();
         loadDefaultCollections();
     }
 
@@ -73,6 +75,45 @@ public class CollectionPresentationController implements Initializable, Translat
         loadHints();
         //Translate sub-forms
         loadCollections();
+    }
+    @FXML
+    void btnAddAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_create_mod.fxml"), rb);
+
+        Parent root;
+
+        try{
+            root = fxmlLoader.load();
+
+            CollectionCreateMod controller = fxmlLoader.getController();
+            controller.createOption();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.initOwner(this.owner);
+            stage.setWidth(620);
+            stage.setHeight(450);
+            stage.setMinHeight(450);
+            stage.setMinWidth(620);
+            stage.setTitle(rb.getString("collectionInfo.altaColeccion"));
+            stage.getIcons().add(Resources.APP_ICON);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            if(controller.isNeededUpdate()){
+                loadDefaultCollections();
+            }
+
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
+            alert.setHeaderText(null);
+            alert.setTitle(rb.getString("error"));
+            alert.setContentText(rb.getString("err.cargarPantalla"));
+            alert.showAndWait();
+        }
     }
 
     private void loadCollections(){
@@ -98,6 +139,7 @@ public class CollectionPresentationController implements Initializable, Translat
                 cardsPane.getChildren().add(node);
             } catch (IOException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(this.owner);
                 alert.setHeaderText(null);
                 alert.setTitle(rb.getString("error"));
                 alert.setContentText(rb.getString("err.ObtenerColecciones"));
@@ -121,6 +163,7 @@ public class CollectionPresentationController implements Initializable, Translat
             serverResponse = CollectionManagement.getCollections();
         } catch (SocketException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.noConexion"));
@@ -128,6 +171,7 @@ public class CollectionPresentationController implements Initializable, Translat
             return;
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.ObtenerColecciones"));
@@ -135,6 +179,7 @@ public class CollectionPresentationController implements Initializable, Translat
             return;
         } catch (ClassNotFoundException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.inesperado"));
@@ -144,6 +189,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
         if(serverResponse[0].equals("SQLE Error")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.ObtenerColecciones"));
@@ -171,6 +217,7 @@ public class CollectionPresentationController implements Initializable, Translat
             serverResponse = CollectionManagement.getCollectionsByName(colName);
         } catch (SocketException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.noConexion"));
@@ -178,6 +225,7 @@ public class CollectionPresentationController implements Initializable, Translat
             return;
         }catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.ObtenerColecciones"));
@@ -190,6 +238,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
         if(serverResponse[0].equals("SQLE Error")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.ObtenerColecciones"));
@@ -204,40 +253,5 @@ public class CollectionPresentationController implements Initializable, Translat
         loadCollections();
     }
 
-    @FXML
-    void btnAddAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_create_mod.fxml"), rb);
 
-        Parent root;
-
-        try{
-            root = fxmlLoader.load();
-
-            CollectionCreateMod controller = fxmlLoader.getController();
-            controller.createOption();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setWidth(620);
-            stage.setHeight(450);
-            stage.setMinHeight(450);
-            stage.setMinWidth(620);
-            stage.setTitle(rb.getString("collectionInfo.altaColeccion"));
-            stage.getIcons().add(Resources.APP_ICON);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-
-            if(controller.isNeededUpdate()){
-                loadDefaultCollections();
-            }
-
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.cargarPantalla"));
-            alert.showAndWait();
-        }
-    }
 }

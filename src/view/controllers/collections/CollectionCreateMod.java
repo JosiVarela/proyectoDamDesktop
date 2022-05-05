@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.CollectionManagement;
 import model.entities.Collection;
+import services.Resources;
 
 import java.io.IOException;
 import java.net.SocketException;
@@ -25,6 +26,8 @@ public class CollectionCreateMod implements Initializable {
      * collection will be created
      */
     private int operationId;
+
+    private Stage owner;
 
     //<editor-fold desc="FXML vars Definition">
     @FXML
@@ -72,6 +75,7 @@ public class CollectionCreateMod implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
+        this.owner = Resources.getMainWindow();
     }
 
     @FXML
@@ -88,18 +92,26 @@ public class CollectionCreateMod implements Initializable {
             }
         }catch (SocketException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.noConexion"));
             alert.showAndWait();
         }catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.inesperado"));
             alert.showAndWait();
         }
 
+    }
+
+    @FXML
+    void btnCancelAction(ActionEvent event) {
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
+        stage.close();
     }
 
     private void updateCol(String name, LocalDate date, String argument) throws IOException {
@@ -109,6 +121,7 @@ public class CollectionCreateMod implements Initializable {
 
         if(name.isEmpty() || argument.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("errCollectionCreateMod.completarCampos"));
@@ -125,6 +138,7 @@ public class CollectionCreateMod implements Initializable {
 
         if(name.length() > 500){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("errCollectionCreateMod.coleccion500Car"));
@@ -138,6 +152,7 @@ public class CollectionCreateMod implements Initializable {
 
         if (serverResponse[0].equals("SQLE Error")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.guardarDatos"));
@@ -149,6 +164,7 @@ public class CollectionCreateMod implements Initializable {
 
         if (existsCol) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("errCollectionCreateMod.colMismoNombre"));
@@ -160,6 +176,7 @@ public class CollectionCreateMod implements Initializable {
 
         if(serverResponse[0].equals("SQLE Error")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("errCollectionCreateMod.actualizarCol"));
@@ -182,6 +199,7 @@ public class CollectionCreateMod implements Initializable {
 
         if(name.isEmpty() || argument.isEmpty() || date == null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("errCollectionCreateMod.completarCampos"));
@@ -191,6 +209,7 @@ public class CollectionCreateMod implements Initializable {
 
         if(name.length() > 500){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("errCollectionCreateMod.coleccion500Car"));
@@ -204,6 +223,7 @@ public class CollectionCreateMod implements Initializable {
 
         if (serverResponse[0].equals("SQLE Error")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.guardarDatos"));
@@ -215,6 +235,7 @@ public class CollectionCreateMod implements Initializable {
 
         if (existsCol) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("errCollectionCreateMod.colMismoNombre"));
@@ -227,6 +248,7 @@ public class CollectionCreateMod implements Initializable {
         if(serverResponse[0].equals("SQLE Error")){
             System.out.println("Error al insertar la colección");
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("errCollectionCreateMod.crearCol"));

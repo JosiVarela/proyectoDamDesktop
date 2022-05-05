@@ -16,6 +16,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.ServerConfig;
+import services.Resources;
+import view.controllers.collections.CollectionPresentationController;
 
 
 import javax.swing.*;
@@ -79,6 +81,7 @@ public class MainFormController implements Initializable {
 
         if(ServerConnection.getConnection() == null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.thisStage);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.noConexion"));
@@ -93,10 +96,10 @@ public class MainFormController implements Initializable {
             AnchorPane.setBottomAnchor(node, 0d);
             AnchorPane.setLeftAnchor(node, 0d);
             AnchorPane.setRightAnchor(node, 0d);
-
             mainPane.getChildren().add(node);
         } catch (SocketException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.thisStage);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.noConexion"));
@@ -104,6 +107,7 @@ public class MainFormController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.thisStage);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.cargarPantalla"));
@@ -127,6 +131,7 @@ public class MainFormController implements Initializable {
             Stage stage = new Stage();
             stage.setMaxWidth(700);
             stage.setMaxHeight(900);
+            stage.initOwner(this.thisStage);
             stage.setTitle(rb.getString("configuracion"));
             stage.getIcons().add(new Image("/data/images/app_icon.png"));
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -135,6 +140,7 @@ public class MainFormController implements Initializable {
         }catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
+            alert.initOwner(this.thisStage);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.cargarPantalla"));
             alert.showAndWait();
@@ -174,6 +180,7 @@ public class MainFormController implements Initializable {
 
     public void setStaqe(Stage thisStage){
         this.thisStage = thisStage;
+        Resources.setMainWindow(this.thisStage);
     }
 
     public void startConnection(){
@@ -183,12 +190,14 @@ public class MainFormController implements Initializable {
             ServerConnection.startConnection(serverConfig.getIp(), serverConfig.getPort());
         }catch (SocketException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.thisStage);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.noConexion"));
             alert.showAndWait();
         }catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.thisStage);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.inesperado"));

@@ -26,6 +26,8 @@ public class CollectionPaneController implements Initializable {
     private ResourceBundle rb;
     private Collection collection;
 
+    private Stage owner;
+
     //<editor-fold desc="FXML vars Definition">
     @FXML
     private Label lblName;
@@ -45,6 +47,7 @@ public class CollectionPaneController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
+        this.owner = Resources.getMainWindow();
         comicPane.setOnMouseClicked(event -> mouseClickEvent());
     }
 
@@ -61,6 +64,7 @@ public class CollectionPaneController implements Initializable {
 
             if(requestCol[0].equals("SQLE ERROR") || requestCol[1] == null){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(this.owner);
                 alert.setHeaderText(null);
                 alert.setTitle(rb.getString("error"));
                 alert.setContentText(rb.getString("err.CargarInfoColeccion"));
@@ -73,6 +77,7 @@ public class CollectionPaneController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(this.owner);
             stage.setScene(scene);
             stage.setHeight(700);
             stage.setWidth(600);
@@ -88,18 +93,21 @@ public class CollectionPaneController implements Initializable {
 
         } catch (SocketException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.noConexion"));
             alert.showAndWait();
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.cargarPantalla"));
             alert.showAndWait();
         } catch (ClassNotFoundException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(this.owner);
             alert.setHeaderText(null);
             alert.setTitle(rb.getString("error"));
             alert.setContentText(rb.getString("err.inesperado"));
