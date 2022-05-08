@@ -10,6 +10,7 @@ public interface ICollectionDAO {
     Object[] getCollectionsByName(String name) throws IOException, ClassNotFoundException;
     Object[] existsCollectionWithName(int id, String name) throws IOException;
     Object[] existsCollectionWithName(String name) throws IOException;
+    Object[] existsCollectionWithId(int id) throws IOException;
     String updateCollection(Collection collection) throws IOException;
     String insertCollection(Collection collection) throws IOException;
     String deleteCollection(int idCol) throws IOException;

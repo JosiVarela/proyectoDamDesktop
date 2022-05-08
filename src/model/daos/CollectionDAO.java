@@ -169,6 +169,29 @@ public class CollectionDAO implements ICollectionDAO{
 
     }
 
+    @Override
+    public Object[] existsCollectionWithId(int id) throws IOException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        Object[] response = new Object[2];
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("existCollectionWithId");
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeInt(id);
+
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        response[0] = dataInputStream.readUTF();
+
+        if(response[0].equals("OK")){
+            dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+            response[1] = dataInputStream.readBoolean();
+        }
+
+        return response;
+    }
+
     /**
      * This method updates a collection
      * @param collection Is the collection that we want to update

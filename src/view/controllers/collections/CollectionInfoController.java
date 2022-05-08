@@ -164,6 +164,40 @@ public class CollectionInfoController implements Initializable {
     @FXML
     void btnDelColAction(ActionEvent event) {
         String response;
+        Object[] exitsCol;
+
+        try {
+            exitsCol = CollectionManagement.existsCollectionWithId(this.collection.getId());
+
+            if(exitsCol[0].equals("SQLE Error")){
+                Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
+                sqlAlert.initOwner(this.owner);
+                sqlAlert.setHeaderText(null);
+                sqlAlert.setTitle(rb.getString("error"));
+                sqlAlert.setContentText(rb.getString("errCollectionInfoController.delColeccion"));
+                sqlAlert.showAndWait();
+                return;
+            }
+
+            if(!(boolean) exitsCol[1]){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(this.owner);
+                alert.setHeaderText(null);
+                alert.setTitle(rb.getString("error"));
+                alert.setContentText(rb.getString("collectionPaneController.noExisteColeccion"));
+                alert.showAndWait();
+
+                return;
+            }
+
+        } catch (IOException e) {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.initOwner(this.owner);
+            errorAlert.setHeaderText(null);
+            errorAlert.setTitle(rb.getString("error"));
+            errorAlert.setContentText(rb.getString("err.noConexion"));
+            errorAlert.showAndWait();
+        }
 
         ButtonType btnAccept = new ButtonType(rb.getString("aceptar"), ButtonBar.ButtonData.OK_DONE);
         ButtonType btnCancel = new ButtonType(rb.getString("cancelar"), ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -207,19 +241,12 @@ public class CollectionInfoController implements Initializable {
                     }
                 }
 
-            } catch (SocketException e) {
+            } catch (IOException e) {
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.initOwner(this.owner);
                 errorAlert.setHeaderText(null);
                 errorAlert.setTitle(rb.getString("error"));
                 errorAlert.setContentText(rb.getString("err.noConexion"));
-                errorAlert.showAndWait();
-            }catch (IOException e) {
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.initOwner(this.owner);
-                errorAlert.setHeaderText(null);
-                errorAlert.setTitle(rb.getString("error"));
-                errorAlert.setContentText(rb.getString("err.inesperado"));
                 errorAlert.showAndWait();
             }
         }

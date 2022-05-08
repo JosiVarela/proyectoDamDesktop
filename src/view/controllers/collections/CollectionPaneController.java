@@ -61,6 +61,32 @@ public class CollectionPaneController implements Initializable {
 
             CollectionInfoController controller = fxmlLoader.getController();
 
+            requestCol = CollectionManagement.existsCollectionWithId(this.collection.getId());
+
+            if(requestCol[0].equals("SQLE ERROR")){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(this.owner);
+                alert.setHeaderText(null);
+                alert.setTitle(rb.getString("error"));
+                alert.setContentText(rb.getString("err.CargarInfoColeccion"));
+                alert.showAndWait();
+                return;
+            }
+
+            if(!(boolean) requestCol[1]){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(this.owner);
+                alert.setHeaderText(null);
+                alert.setTitle(rb.getString("error"));
+                alert.setContentText(rb.getString("collectionPaneController.noExisteColeccion"));
+                alert.showAndWait();
+
+                //TODO RECARGAR PÁGINA PRINCIPAL
+
+                return;
+            }
+
+
             requestCol = CollectionManagement.getCollectionInfoById(this.collection.getId());
 
             if(requestCol[0].equals("SQLE ERROR") || requestCol[1] == null){
@@ -89,7 +115,6 @@ public class CollectionPaneController implements Initializable {
             stage.showAndWait();
 
             if(controller.isNeededUpdate()){
-                //TODO SOLUCIONAR ESTO
                 innitData(controller.getCollection());
             }
 
