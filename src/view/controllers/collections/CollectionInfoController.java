@@ -126,7 +126,35 @@ public class CollectionInfoController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_create_mod.fxml"), rb);
 
         Parent root;
+
+        Object[] requestCol;
         try{
+
+            requestCol = CollectionManagement.existsCollectionWithId(this.collection.getId());
+
+            if(requestCol[0].equals("SQLE ERROR")){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(this.owner);
+                alert.setHeaderText(null);
+                alert.setTitle(rb.getString("error"));
+                alert.setContentText(rb.getString("err.CargarInfoColeccion"));
+                alert.showAndWait();
+                return;
+            }
+
+            if(!(boolean) requestCol[1]){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(this.owner);
+                alert.setHeaderText(null);
+                alert.setTitle(rb.getString("error"));
+                alert.setContentText(rb.getString("collectionPaneController.noExisteColeccion"));
+                alert.showAndWait();
+
+                //TODO RECARGAR PÁGINA PRINCIPAL
+
+                return;
+            }
+
             root = fxmlLoader.load();
 
             CollectionCreateMod collectionCreateMod = fxmlLoader.getController();
