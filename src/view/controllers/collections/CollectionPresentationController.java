@@ -53,7 +53,7 @@ public class CollectionPresentationController implements Initializable, Translat
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
         this.owner = Resources.getMainWindow();
-        loadDefaultCollections();
+        getCollections();
     }
 
     @FXML
@@ -103,7 +103,7 @@ public class CollectionPresentationController implements Initializable, Translat
             stage.showAndWait();
 
             if(controller.isNeededUpdate()){
-                loadDefaultCollections();
+                getCollections();
             }
 
         } catch (IOException e) {
@@ -132,7 +132,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
                 CollectionPaneController paneController = fxmlLoader.getController();
 
-                paneController.innitData(col);
+                paneController.innitData(col, this);
 
                 TilePane.setMargin(node, new Insets(5));
 
@@ -154,7 +154,7 @@ public class CollectionPresentationController implements Initializable, Translat
         btnAdd.setTooltip(new Tooltip(rb.getString("collectionPresentation.anhadir")));
     }
 
-    private void loadDefaultCollections(){
+    public void getCollections(){
 
         loadHints();
 
@@ -209,7 +209,7 @@ public class CollectionPresentationController implements Initializable, Translat
         Object[] serverResponse;
 
         if(colName.isEmpty()){
-            loadDefaultCollections();
+            getCollections();
             return;
         }
 

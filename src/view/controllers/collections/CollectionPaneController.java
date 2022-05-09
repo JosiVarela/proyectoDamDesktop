@@ -28,6 +28,8 @@ public class CollectionPaneController implements Initializable {
 
     private Stage owner;
 
+    private CollectionPresentationController presentationController;
+
     //<editor-fold desc="FXML vars Definition">
     @FXML
     private Label lblName;
@@ -37,9 +39,16 @@ public class CollectionPaneController implements Initializable {
     //</editor-fold>
 
 
+    public void innitData(Collection collection, CollectionPresentationController presentationController) {
+        this.collection = collection;
+        this.presentationController = presentationController;
+
+        lblName.setText(this.collection.getTitle());
+        lblName.setTooltip(new Tooltip(this.collection.getTitle()));
+    }
+
     public void innitData(Collection collection) {
         this.collection = collection;
-
 
         lblName.setText(this.collection.getTitle());
         lblName.setTooltip(new Tooltip(this.collection.getTitle()));
@@ -49,10 +58,10 @@ public class CollectionPaneController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
         this.owner = Resources.getMainWindow();
-        comicPane.setOnMouseClicked(event -> mouseClickEvent());
+        comicPane.setOnMouseClicked(event -> collectionPaneClick());
     }
 
-    private void mouseClickEvent(){
+    private void collectionPaneClick(){
         Object[] requestCol;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_info.fxml"), rb);
 
@@ -80,9 +89,7 @@ public class CollectionPaneController implements Initializable {
                 alert.setTitle(rb.getString("error"));
                 alert.setContentText(rb.getString("collectionPaneController.noExisteColeccion"));
                 alert.showAndWait();
-
-                //TODO RECARGAR PÁGINA PRINCIPAL
-
+                presentationController.getCollections();
                 return;
             }
 
@@ -99,6 +106,7 @@ public class CollectionPaneController implements Initializable {
                 return;
             }
 
+            controller.innitData(this.presentationController);
             controller.setCollection((Collection) requestCol[1]);
 
             Scene scene = new Scene(root);

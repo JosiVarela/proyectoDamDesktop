@@ -30,6 +30,7 @@ public class CollectionInfoController implements Initializable {
     private ResourceBundle rb;
     private boolean neededUpdate;
     private Stage owner;
+    private CollectionPresentationController presentationController;
 
     //<editor-fold desc="FXML vars definition">
     @FXML
@@ -82,6 +83,10 @@ public class CollectionInfoController implements Initializable {
         if(!this.neededUpdate){
             populateNumberList();
         }
+    }
+
+    public void innitData(CollectionPresentationController presentationController){
+        this.presentationController = presentationController;
     }
 
     public boolean isNeededUpdate(){
@@ -150,7 +155,7 @@ public class CollectionInfoController implements Initializable {
                 alert.setContentText(rb.getString("collectionPaneController.noExisteColeccion"));
                 alert.showAndWait();
 
-                //TODO RECARGAR PÁGINA PRINCIPAL
+                closeAndReload();
 
                 return;
             }
@@ -215,6 +220,8 @@ public class CollectionInfoController implements Initializable {
                 alert.setContentText(rb.getString("collectionPaneController.noExisteColeccion"));
                 alert.showAndWait();
 
+                closeAndReload();
+
                 return;
             }
 
@@ -250,7 +257,7 @@ public class CollectionInfoController implements Initializable {
                 response = CollectionManagement.deleteCollection(this.collection.getId());
 
                 switch (response) {
-                    case "OK" -> this.neededUpdate = true;
+                    case "OK" -> closeAndReload();
                     case "SQLE Foreing" -> {
                         Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
                         sqlAlert.initOwner(this.owner);
@@ -278,6 +285,11 @@ public class CollectionInfoController implements Initializable {
                 errorAlert.showAndWait();
             }
         }
+    }
+
+    private void closeAndReload(){
+        presentationController.getCollections();
+        ((Stage)btnModifyCol.getScene().getWindow()).close();
     }
 
     private void populateNumberList(){
