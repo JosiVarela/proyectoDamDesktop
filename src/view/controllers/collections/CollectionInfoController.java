@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import model.entities.Collection;
 import model.entities.ComicNumber;
 import services.Resources;
+import view.controllers.comicNumbers.NumbersInfoController;
 
 import java.io.IOException;
 import java.net.SocketException;
@@ -110,19 +111,42 @@ public class CollectionInfoController implements Initializable {
         this.tbColCover.setCellValueFactory(new PropertyValueFactory<>("cover"));
         this.tbColCopies.setCellValueFactory(new PropertyValueFactory<>("copies"));
 
+        this.tbColCover.setCellFactory(param -> {
+            TableCell<ComicNumber, String> cellCover = new TableCell<>(){
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    item = "collectionInfoCover." + item;
+
+                    if(empty || !rb.containsKey(item)){
+                        setText(null);
+                    }else{
+                        this.setText(rb.getString(item));
+                    }
+                }
+            };
+            return cellCover;
+        });
+
+        // This block creates a listener for row double click
+        comicsTable.setRowFactory( tv -> {
+            TableRow<ComicNumber> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    ComicNumber comic = row.getItem();
+
+                    //TODO CHECK IF NUMBER EXISTS
+
+                    loadNumberScreen(comic.getIsbn());
+
+                    System.out.println(comic.getName());
+                }
+            });
+            return row ;
+        });
+
         comicsTable.setPlaceholder(new Label(""));
         neededUpdate = false;
-
-
-
-        /*numberList.add(new ComicNumber("XXXXXXXXXX", 1, "Blanda", 5));
-        numberList.add(new ComicNumber("XXXXXXXXXX", 2, "Blanda", 5));
-        numberList.add(new ComicNumber("XXXXXXXXXX", 3, "Blanda", 5));
-        numberList.add(new ComicNumber("XXXXXXXXXX", 4, "Blanda", 5));
-        numberList.add(new ComicNumber("XXXXXXXXXX", 5, "Blanda", 5));*/
-
-
-
 
     }
 
@@ -295,5 +319,27 @@ public class CollectionInfoController implements Initializable {
     private void populateNumberList(){
         numberList.addAll(collection.getNumberList());
         comicsTable.setItems(numberList);
+    }
+
+    private void loadNumberScreen(String isbn) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_info.fxml"), rb);
+        Parent root;
+
+        try{
+            root = fxmlLoader.load();
+
+            NumbersInfoController infoController = fxmlLoader.getController();
+
+            infoController.innitData();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(this.owner);
+            stage.showAndWait();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
