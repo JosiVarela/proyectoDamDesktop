@@ -1,0 +1,14 @@
+package controller;
+
+import model.daos.ComicNumberDAO;
+
+import java.io.IOException;
+
+public class NumberManagement {
+    public static Object[] existsNumber(String isbn) throws IOException {
+        return new ComicNumberDAO().existsNumber(isbn);
+    }
+    public static Object[] getComicNumber(String isbn) throws IOException, ClassNotFoundException {
+        return new ComicNumberDAO().getComicNumber(isbn);
+    }
+}

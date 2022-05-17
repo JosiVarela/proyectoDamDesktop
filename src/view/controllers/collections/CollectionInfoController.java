@@ -1,6 +1,7 @@
 package view.controllers.collections;
 
 import controller.CollectionManagement;
+import controller.NumberManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -128,22 +129,7 @@ public class CollectionInfoController implements Initializable {
             return cellCover;
         });
 
-        // This block creates a listener for row double click
-        comicsTable.setRowFactory( tv -> {
-            TableRow<ComicNumber> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    ComicNumber comic = row.getItem();
-
-                    //TODO CHECK IF NUMBER EXISTS
-
-                    loadNumberScreen(comic.getIsbn());
-
-                    System.out.println(comic.getName());
-                }
-            });
-            return row ;
-        });
+        createRowClickListener();
 
         comicsTable.setPlaceholder(new Label(""));
         neededUpdate = false;
@@ -317,9 +303,79 @@ public class CollectionInfoController implements Initializable {
     }
 
     private void populateNumberList(){
+        numberList.removeAll();
         numberList.addAll(collection.getNumberList());
         comicsTable.setItems(numberList);
     }
+
+    /**
+     * This method creates a listener for double click event on table row
+     */
+    private void createRowClickListener(){
+
+        System.out.println("Creo Listener");
+        comicsTable.setRowFactory( tv -> {
+            TableRow<ComicNumber> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                Object response[];
+
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    ComicNumber comic = row.getItem();
+
+                    try {
+                        response = NumberManagement.existsNumber(comic.getIsbn());
+
+                        if(!response[0].equals("OK")){
+                            Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
+                            sqlAlert.initOwner(this.owner);
+                            sqlAlert.setHeaderText(null);
+                            sqlAlert.setTitle(rb.getString("error"));
+                            sqlAlert.setContentText(rb.getString("collectionInfoController.errorCargarNumero"));
+                            sqlAlert.showAndWait();
+                            return;
+                        }
+
+                        if(!(boolean) response[1]){
+                            Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
+                            sqlAlert.initOwner(this.owner);
+                            sqlAlert.setHeaderText(null);
+                            sqlAlert.setTitle(rb.getString("error"));
+                            sqlAlert.setContentText(rb.getString("collectionInfoController.errorNoExisteNumero"));
+                            sqlAlert.showAndWait();
+                            //TODO Reload table
+                            populateNumberList();
+                            return;
+                        }
+
+
+                    } catch (SocketException e) {
+                        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                        errorAlert.initOwner(this.owner);
+                        errorAlert.setHeaderText(null);
+                        errorAlert.setTitle(rb.getString("error"));
+                        errorAlert.setContentText(rb.getString("err.noConexion"));
+                        errorAlert.showAndWait();
+                        return;
+                    } catch (IOException e) {
+                        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                        errorAlert.initOwner(this.owner);
+                        errorAlert.setHeaderText(null);
+                        errorAlert.setTitle(rb.getString("error"));
+                        errorAlert.setContentText(rb.getString("err.inesperado"));
+                        errorAlert.showAndWait();
+                        return;
+                    }
+
+                    loadNumberScreen(comic.getIsbn());
+
+                    System.out.println(comic.getName());
+                }
+            });
+            return row ;
+        });
+    }
+
+
 
     private void loadNumberScreen(String isbn) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_info.fxml"), rb);
@@ -330,7 +386,11 @@ public class CollectionInfoController implements Initializable {
 
             NumbersInfoController infoController = fxmlLoader.getController();
 
-            infoController.innitData();
+            infoController.innitData(isbn);
+
+            if(!infoController.isLoaded()){
+                return;
+            }
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -341,5 +401,8 @@ public class CollectionInfoController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    private void reloadNumberTable(){
+
     }
 }

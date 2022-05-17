@@ -15,4 +15,6 @@ public interface ICollectionDAO {
     String insertCollection(Collection collection) throws IOException;
     String deleteCollection(int idCol) throws IOException;
 
+    Object[] getCollectionName(int idCol) throws IOException;
+
 }

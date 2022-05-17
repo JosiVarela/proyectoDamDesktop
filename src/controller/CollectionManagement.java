@@ -42,4 +42,8 @@ public class CollectionManagement {
     public static String deleteCollection(int colId) throws IOException {
         return new CollectionDAO().deleteCollection(colId);
     }
+
+    public static Object[] getCollectionName(int idCol) throws IOException {
+        return new CollectionDAO().getCollectionName(idCol);
+    }
 }

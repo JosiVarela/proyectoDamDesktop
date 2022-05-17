@@ -7,19 +7,29 @@ public class ComicNumber implements Serializable {
     int comicNumber;
     String name;
     String cover;
+    String argument;
     int copies;
     int colId;
+    byte[] image;
 
     public ComicNumber() {
     }
 
-    public ComicNumber(String isbn, int comicNumber, String name, String cover, int copies, int colId) {
+    public ComicNumber(String isbn, int comicNumber, String name,String cover, int copies, int colId) {
         this.isbn = isbn;
         this.comicNumber = comicNumber;
         this.cover = cover;
         this.copies = copies;
         this.colId = colId;
         this.name = name;
+    }
+    public ComicNumber(String isbn, int comicNumber, String cover, int colId, String name, String argument) {
+        this.isbn = isbn;
+        this.comicNumber = comicNumber;
+        this.cover = cover;
+        this.colId = colId;
+        this.name = name;
+        this.argument = argument;
     }
 
     public String getIsbn() {
@@ -68,5 +78,21 @@ public class ComicNumber implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getArgument() {
+        return argument;
+    }
+
+    public void setArgument(String argument) {
+        this.argument = argument;
     }
 }

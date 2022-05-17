@@ -256,4 +256,27 @@ public class CollectionDAO implements ICollectionDAO{
 
         return response;
     }
+
+    @Override
+    public Object[] getCollectionName(int idCol) throws IOException {
+        Object[] response = new Object[2];
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("getCollectionName");
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeInt(idCol);
+
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        response[0] = dataInputStream.readUTF();
+
+        if(response[0].equals("OK")){
+            dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+            response[1] = dataInputStream.readUTF();
+        }
+
+        return response;
+    }
 }
