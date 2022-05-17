@@ -1,17 +1,14 @@
 package view;
 
 import controller.AppConfigurations;
-import controller.ServerConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import services.Resources;
 import view.controllers.MainFormController;
 
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Launch extends Application {
@@ -40,7 +37,7 @@ public class Launch extends Application {
         stage.setScene(scene);
         stage.show();
 
-        mainFormController.setStaqe(stage);
+        mainFormController.setStage(stage);
         mainFormController.startConnection();
     }
 

@@ -73,22 +73,12 @@ public class CollectionPaneController implements Initializable {
             requestCol = CollectionManagement.existsCollectionWithId(this.collection.getId());
 
             if(requestCol[0].equals("SQLE ERROR")){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.initOwner(this.owner);
-                alert.setHeaderText(null);
-                alert.setTitle(rb.getString("error"));
-                alert.setContentText(rb.getString("err.CargarInfoColeccion"));
-                alert.showAndWait();
+                alerts(rb.getString("err.CargarInfoColeccion"));
                 return;
             }
 
             if(!(boolean) requestCol[1]){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.initOwner(this.owner);
-                alert.setHeaderText(null);
-                alert.setTitle(rb.getString("error"));
-                alert.setContentText(rb.getString("collectionPaneController.noExisteColeccion"));
-                alert.showAndWait();
+                alerts(rb.getString("collectionPaneController.noExisteColeccion"));
                 presentationController.getCollections();
                 return;
             }
@@ -97,12 +87,7 @@ public class CollectionPaneController implements Initializable {
             requestCol = CollectionManagement.getCollectionInfoById(this.collection.getId());
 
             if(requestCol[0].equals("SQLE ERROR") || requestCol[1] == null){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.initOwner(this.owner);
-                alert.setHeaderText(null);
-                alert.setTitle(rb.getString("error"));
-                alert.setContentText(rb.getString("err.CargarInfoColeccion"));
-                alert.showAndWait();
+                alerts(rb.getString("err.CargarInfoColeccion"));
                 return;
             }
 
@@ -127,26 +112,20 @@ public class CollectionPaneController implements Initializable {
             }
 
         } catch (SocketException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.noConexion"));
-            alert.showAndWait();
+            alerts(rb.getString("err.noConexion"));
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.cargarPantalla"));
-            alert.showAndWait();
+            alerts(rb.getString("err.cargarPantalla"));
         } catch (ClassNotFoundException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.inesperado"));
-            alert.showAndWait();
+            alerts(rb.getString("err.inesperado"));
         }
+    }
+
+    private void alerts(String alertMsg){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(this.owner);
+        alert.setHeaderText(null);
+        alert.setTitle(rb.getString("error"));
+        alert.setContentText(alertMsg);
+        alert.showAndWait();
     }
 }

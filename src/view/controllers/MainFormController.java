@@ -17,7 +17,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.ServerConfig;
 import services.Resources;
-import view.controllers.collections.CollectionPresentationController;
 
 
 import javax.swing.*;
@@ -25,7 +24,6 @@ import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
 import java.util.Locale;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -80,12 +78,7 @@ public class MainFormController implements Initializable {
         currentLoadedWindow = fxmlLoader;
 
         if(ServerConnection.getConnection() == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.thisStage);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.noConexion"));
-            alert.showAndWait();
+            alerts(rb.getString("err.noConexion"));
             return;
         }
 
@@ -98,20 +91,9 @@ public class MainFormController implements Initializable {
             AnchorPane.setRightAnchor(node, 0d);
             mainPane.getChildren().add(node);
         } catch (SocketException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.thisStage);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.noConexion"));
-            alert.showAndWait();
+            alerts(rb.getString("err.noConexion"));
         } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.thisStage);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.cargarPantalla"));
-            alert.showAndWait();
+            alerts(rb.getString("err.cargarPantalla"));
         }
 
 
@@ -138,12 +120,7 @@ public class MainFormController implements Initializable {
             stage.setScene(scene);
             stage.showAndWait();
         }catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.initOwner(this.thisStage);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.cargarPantalla"));
-            alert.showAndWait();
+            alerts(rb.getString("err.cargarPantalla"));
             return;
         }
 
@@ -178,7 +155,7 @@ public class MainFormController implements Initializable {
         btnConfigMenu.setTooltip(new Tooltip(rb.getString("configuracion")));
     }
 
-    public void setStaqe(Stage thisStage){
+    public void setStage(Stage thisStage){
         this.thisStage = thisStage;
         Resources.setMainWindow(this.thisStage);
     }
@@ -189,19 +166,18 @@ public class MainFormController implements Initializable {
             ServerConfig serverConfig = AppConfigurations.getServerConfig();
             ServerConnection.startConnection(serverConfig.getIp(), serverConfig.getPort());
         }catch (SocketException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.thisStage);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.noConexion"));
-            alert.showAndWait();
+            alerts(rb.getString("err.noConexion"));
         }catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.thisStage);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.inesperado"));
-            alert.showAndWait();
+            alerts(rb.getString("err.inesperado"));
         }
+    }
+
+    private void alerts(String alertMsg){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(this.thisStage);
+        alert.setHeaderText(null);
+        alert.setTitle(rb.getString("error"));
+        alert.setContentText(alertMsg);
+        alert.showAndWait();
     }
 }

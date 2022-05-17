@@ -107,12 +107,7 @@ public class CollectionPresentationController implements Initializable, Translat
             }
 
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.cargarPantalla"));
-            alert.showAndWait();
+            alerts(rb.getString("err.cargarPantalla"));
         }
     }
 
@@ -138,12 +133,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
                 cardsPane.getChildren().add(node);
             } catch (IOException e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.initOwner(this.owner);
-                alert.setHeaderText(null);
-                alert.setTitle(rb.getString("error"));
-                alert.setContentText(rb.getString("err.ObtenerColecciones"));
-                alert.showAndWait();
+                alerts(rb.getString("err.ObtenerColecciones"));
                 return;
             }
         }
@@ -162,38 +152,18 @@ public class CollectionPresentationController implements Initializable, Translat
         try {
             serverResponse = CollectionManagement.getCollections();
         } catch (SocketException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.noConexion"));
-            alert.showAndWait();
+            alerts(rb.getString("err.noConexion"));
             return;
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.ObtenerColecciones"));
-            alert.showAndWait();
+            alerts(rb.getString("err.ObtenerColecciones"));
             return;
         } catch (ClassNotFoundException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.inesperado"));
-            alert.showAndWait();
+            alerts(rb.getString("err.inesperado"));
             return;
         }
 
         if(serverResponse[0].equals("SQLE Error")){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.ObtenerColecciones"));
-            alert.showAndWait();
+            alerts(rb.getString("err.ObtenerColecciones"));
             return;
         }
 
@@ -216,20 +186,10 @@ public class CollectionPresentationController implements Initializable, Translat
         try {
             serverResponse = CollectionManagement.getCollectionsByName(colName);
         } catch (SocketException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.noConexion"));
-            alert.showAndWait();
+            alerts(rb.getString("err.noConexion"));
             return;
         }catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.ObtenerColecciones"));
-            alert.showAndWait();
+            alerts(rb.getString("err.ObtenerColecciones"));
             return;
 
         } catch (ClassNotFoundException e) {
@@ -237,12 +197,7 @@ public class CollectionPresentationController implements Initializable, Translat
         }
 
         if(serverResponse[0].equals("SQLE Error")){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.ObtenerColecciones"));
-            alert.showAndWait();
+            alerts(rb.getString("err.ObtenerColecciones"));
             return;
         }
 
@@ -251,6 +206,15 @@ public class CollectionPresentationController implements Initializable, Translat
         collectionList.addAll((List<Collection>) serverResponse[1]);
 
         loadCollections();
+    }
+
+    private void alerts(String alertMsg){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(this.owner);
+        alert.setHeaderText(null);
+        alert.setTitle(rb.getString("error"));
+        alert.setContentText(alertMsg);
+        alert.showAndWait();
     }
 
 

@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.entities.ServerConfig;
+import services.Resources;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -22,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class AppConfigWindow implements Initializable {
     ResourceBundle rb;
+    private Stage owner;
 
     //<editor-fold desc="FXML vars Definition">
     @FXML
@@ -51,6 +53,7 @@ public class AppConfigWindow implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         this.rb = resources;
+        this.owner = Resources.getMainWindow();
 
         if(AppConfigurations.getTranslations().equals("es")){
             rdLangEsp.setSelected(true);
@@ -99,11 +102,7 @@ public class AppConfigWindow implements Initializable {
         int port;
 
         if(host.isBlank() || portStr.isBlank()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.completarDatos"));
-            alert.showAndWait();
+            alerts(rb.getString("err.completarDatos"));
             return;
         }
 
@@ -111,12 +110,7 @@ public class AppConfigWindow implements Initializable {
                 portStr.equals(String.valueOf(AppConfigurations.getServerConfig().getPort())) &&
                         isConnected()){
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("appConfigErr.yaConectado"));
-            alert.showAndWait();
-
+            alerts(rb.getString("appConfigErr.yaConectado"));
             return;
         }
 
@@ -128,26 +122,14 @@ public class AppConfigWindow implements Initializable {
             AppConfigurations.storeServerConfig(new ServerConfig(host, port));
 
         } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("appConfigErr.puertoNoValido"));
-            alert.showAndWait();
+            alerts(rb.getString("appConfigErr.puertoNoValido"));
             return;
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("appConfigErr.noConServidor"));
-            alert.showAndWait();
+            alerts(rb.getString("appConfigErr.noConServidor"));
             return;
         }
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setTitle(rb.getString("mensaje"));
-        alert.setContentText(rb.getString("appConfig.conexionOk"));
-        alert.showAndWait();
+        alerts(rb.getString("appConfig.conexionOk"));
     }
 
     @FXML
@@ -177,6 +159,15 @@ public class AppConfigWindow implements Initializable {
         }
 
         return haveConnexion;
+    }
+
+    private void alerts(String alertMsg){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(this.owner);
+        alert.setHeaderText(null);
+        alert.setTitle(rb.getString("error"));
+        alert.setContentText(alertMsg);
+        alert.showAndWait();
     }
 
 }

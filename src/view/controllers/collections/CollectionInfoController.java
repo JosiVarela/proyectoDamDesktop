@@ -148,25 +148,14 @@ public class CollectionInfoController implements Initializable {
             requestCol = CollectionManagement.existsCollectionWithId(this.collection.getId());
 
             if(requestCol[0].equals("SQLE ERROR")){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.initOwner(this.owner);
-                alert.setHeaderText(null);
-                alert.setTitle(rb.getString("error"));
-                alert.setContentText(rb.getString("err.CargarInfoColeccion"));
-                alert.showAndWait();
+                alerts(rb.getString("err.CargarInfoColeccion"));
                 return;
             }
 
             if(!(boolean) requestCol[1]){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.initOwner(this.owner);
-                alert.setHeaderText(null);
-                alert.setTitle(rb.getString("error"));
-                alert.setContentText(rb.getString("collectionPaneController.noExisteColeccion"));
-                alert.showAndWait();
+                alerts(rb.getString("collectionPaneController.noExisteColeccion"));
 
                 closeAndReload();
-
                 return;
             }
 
@@ -195,12 +184,7 @@ public class CollectionInfoController implements Initializable {
             }
 
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.cargarPantalla"));
-            alert.showAndWait();
+            alerts(rb.getString("err.cargarPantalla"));
         }
     }
 
@@ -213,35 +197,19 @@ public class CollectionInfoController implements Initializable {
             exitsCol = CollectionManagement.existsCollectionWithId(this.collection.getId());
 
             if(exitsCol[0].equals("SQLE Error")){
-                Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
-                sqlAlert.initOwner(this.owner);
-                sqlAlert.setHeaderText(null);
-                sqlAlert.setTitle(rb.getString("error"));
-                sqlAlert.setContentText(rb.getString("errCollectionInfoController.delColeccion"));
-                sqlAlert.showAndWait();
+                alerts(rb.getString("errCollectionInfoController.delColeccion"));
                 return;
             }
 
             if(!(boolean) exitsCol[1]){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.initOwner(this.owner);
-                alert.setHeaderText(null);
-                alert.setTitle(rb.getString("error"));
-                alert.setContentText(rb.getString("collectionPaneController.noExisteColeccion"));
-                alert.showAndWait();
-
+                alerts(rb.getString("collectionPaneController.noExisteColeccion"));
                 closeAndReload();
 
                 return;
             }
 
         } catch (IOException e) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.initOwner(this.owner);
-            errorAlert.setHeaderText(null);
-            errorAlert.setTitle(rb.getString("error"));
-            errorAlert.setContentText(rb.getString("err.noConexion"));
-            errorAlert.showAndWait();
+            alerts(rb.getString("err.noConexion"));
         }
 
         ButtonType btnAccept = new ButtonType(rb.getString("aceptar"), ButtonBar.ButtonData.OK_DONE);
@@ -269,30 +237,15 @@ public class CollectionInfoController implements Initializable {
                 switch (response) {
                     case "OK" -> closeAndReload();
                     case "SQLE Foreing" -> {
-                        Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
-                        sqlAlert.initOwner(this.owner);
-                        sqlAlert.setHeaderText(null);
-                        sqlAlert.setTitle(rb.getString("error"));
-                        sqlAlert.setContentText(rb.getString("errCollectionInfoController.eliminarComics"));
-                        sqlAlert.showAndWait();
+                        alerts(rb.getString("errCollectionInfoController.eliminarComics"));
                     }
                     case "SQLE Error" -> {
-                        Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
-                        sqlAlert.initOwner(this.owner);
-                        sqlAlert.setHeaderText(null);
-                        sqlAlert.setTitle(rb.getString("error"));
-                        sqlAlert.setContentText(rb.getString("errCollectionInfoController.delColeccion"));
-                        sqlAlert.showAndWait();
+                        alerts(rb.getString("errCollectionInfoController.delColeccion"));
                     }
                 }
 
             } catch (IOException e) {
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.initOwner(this.owner);
-                errorAlert.setHeaderText(null);
-                errorAlert.setTitle(rb.getString("error"));
-                errorAlert.setContentText(rb.getString("err.noConexion"));
-                errorAlert.showAndWait();
+                alerts(rb.getString("err.noConexion"));
             }
         }
     }
@@ -326,22 +279,13 @@ public class CollectionInfoController implements Initializable {
                         response = NumberManagement.existsNumber(comic.getIsbn());
 
                         if(!response[0].equals("OK")){
-                            Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
-                            sqlAlert.initOwner(this.owner);
-                            sqlAlert.setHeaderText(null);
-                            sqlAlert.setTitle(rb.getString("error"));
-                            sqlAlert.setContentText(rb.getString("collectionInfoController.errorCargarNumero"));
-                            sqlAlert.showAndWait();
+                            alerts(rb.getString("collectionInfoController.errorCargarNumero"));
                             return;
                         }
 
                         if(!(boolean) response[1]){
-                            Alert sqlAlert = new Alert(Alert.AlertType.ERROR);
-                            sqlAlert.initOwner(this.owner);
-                            sqlAlert.setHeaderText(null);
-                            sqlAlert.setTitle(rb.getString("error"));
-                            sqlAlert.setContentText(rb.getString("collectionInfoController.errorNoExisteNumero"));
-                            sqlAlert.showAndWait();
+                            alerts(rb.getString("collectionInfoController.errorNoExisteNumero"));
+
                             //TODO Reload table
                             populateNumberList();
                             return;
@@ -349,20 +293,10 @@ public class CollectionInfoController implements Initializable {
 
 
                     } catch (SocketException e) {
-                        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                        errorAlert.initOwner(this.owner);
-                        errorAlert.setHeaderText(null);
-                        errorAlert.setTitle(rb.getString("error"));
-                        errorAlert.setContentText(rb.getString("err.noConexion"));
-                        errorAlert.showAndWait();
+                        alerts(rb.getString("err.noConexion"));
                         return;
                     } catch (IOException e) {
-                        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                        errorAlert.initOwner(this.owner);
-                        errorAlert.setHeaderText(null);
-                        errorAlert.setTitle(rb.getString("error"));
-                        errorAlert.setContentText(rb.getString("err.inesperado"));
-                        errorAlert.showAndWait();
+                        alerts(rb.getString("err.inesperado"));
                         return;
                     }
 
@@ -404,5 +338,13 @@ public class CollectionInfoController implements Initializable {
     }
     private void reloadNumberTable(){
 
+    }
+    private void alerts(String alertMsg){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(this.owner);
+        alert.setHeaderText(null);
+        alert.setTitle(rb.getString("error"));
+        alert.setContentText(alertMsg);
+        alert.showAndWait();
     }
 }

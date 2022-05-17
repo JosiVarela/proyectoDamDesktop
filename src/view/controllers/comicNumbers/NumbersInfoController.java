@@ -79,20 +79,10 @@ public class NumbersInfoController implements Initializable {
             response = NumberManagement.getComicNumber(isbn);
 
             if(response[0].equals("IOE")){
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.initOwner(this.owner);
-                errorAlert.setHeaderText(null);
-                errorAlert.setTitle(rb.getString("error"));
-                errorAlert.setContentText(rb.getString("numberInfo.errorCargaImagen"));
-                errorAlert.showAndWait();
+                alerts(rb.getString("numberInfo.errorCargaImagen"));
                 return;
             } else if (response[0].equals("SQLE Error")) {
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.initOwner(this.owner);
-                errorAlert.setHeaderText(null);
-                errorAlert.setTitle(rb.getString("error"));
-                errorAlert.setContentText(rb.getString("collectionInfoController.errorCargarNumero"));
-                errorAlert.showAndWait();
+                alerts(rb.getString("collectionInfoController.errorCargarNumero"));
                 return;
             }
 
@@ -103,12 +93,7 @@ public class NumbersInfoController implements Initializable {
                 response = CollectionManagement.getCollectionName(comicNumber.getColId());
 
                 if(response[0].equals("SQLE Error")){
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                    errorAlert.initOwner(this.owner);
-                    errorAlert.setHeaderText(null);
-                    errorAlert.setTitle(rb.getString("error"));
-                    errorAlert.setContentText(rb.getString("collectionInfoController.errorCargarNumero"));
-                    errorAlert.showAndWait();
+                    alerts(rb.getString("collectionInfoController.errorCargarNumero"));
                     return;
                 }
 
@@ -118,35 +103,14 @@ public class NumbersInfoController implements Initializable {
 
                 setComicData();
             }else{
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.initOwner(this.owner);
-                errorAlert.setHeaderText(null);
-                errorAlert.setTitle(rb.getString("error"));
-                errorAlert.setContentText(rb.getString("collectionInfoController.errorCargarNumero"));
-                errorAlert.showAndWait();
+                alerts(rb.getString("collectionInfoController.errorCargarNumero"));
             }
         } catch (SocketException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.noConexion"));
-            alert.showAndWait();
+            alerts(rb.getString("err.noConexion"));
         } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.cargarPantalla"));
-            alert.showAndWait();
+            alerts(rb.getString("err.cargarPantalla"));
         } catch (ClassNotFoundException e) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.initOwner(this.owner);
-            errorAlert.setHeaderText(null);
-            errorAlert.setTitle(rb.getString("error"));
-            errorAlert.setContentText(rb.getString("err.inesperado"));
-            errorAlert.showAndWait();
+            alerts(rb.getString("err.inesperado"));
         }
     }
 
@@ -170,12 +134,16 @@ public class NumbersInfoController implements Initializable {
 
     @FXML
     void btnModifyAction(ActionEvent event) {
-        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-        errorAlert.initOwner(this.owner);
-        errorAlert.setHeaderText(null);
-        errorAlert.setTitle(rb.getString("error"));
-        errorAlert.setContentText(rb.getString("numberInfo.errorCargaImagen"));
-        errorAlert.showAndWait();
+
+    }
+
+    private void alerts(String alertMsg){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(this.owner);
+        alert.setHeaderText(null);
+        alert.setTitle(rb.getString("error"));
+        alert.setContentText(alertMsg);
+        alert.showAndWait();
     }
 
 }

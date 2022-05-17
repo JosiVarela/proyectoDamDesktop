@@ -89,19 +89,9 @@ public class CollectionCreateMod implements Initializable {
                 createCol(name, date, argument);
             }
         }catch (SocketException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.noConexion"));
-            alert.showAndWait();
+            alerts(rb.getString("err.noConexion"));
         }catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.inesperado"));
-            alert.showAndWait();
+            alerts(rb.getString("err.inesperado"));
         }
 
     }
@@ -118,12 +108,7 @@ public class CollectionCreateMod implements Initializable {
         Collection auxCol;
 
         if(name.isEmpty() || argument.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("errCollectionCreateMod.completarCampos"));
-            alert.showAndWait();
+            alerts(rb.getString("errCollectionCreateMod.completarCampos"));
             return;
         }
 
@@ -135,12 +120,7 @@ public class CollectionCreateMod implements Initializable {
         }
 
         if(name.length() > 500){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("errCollectionCreateMod.coleccion500Car"));
-            alert.showAndWait();
+            alerts(rb.getString("errCollectionCreateMod.coleccion500Car"));
             return;
         }
 
@@ -149,36 +129,21 @@ public class CollectionCreateMod implements Initializable {
         serverResponse = CollectionManagement.existsCollectionWithName(auxCol.getId(), name);
 
         if (serverResponse[0].equals("SQLE Error")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.guardarDatos"));
-            alert.showAndWait();
+            alerts(rb.getString("err.guardarDatos"));
             return;
         }
 
         existsCol = (boolean) serverResponse[1];
 
         if (existsCol) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("errCollectionCreateMod.colMismoNombre"));
-            alert.showAndWait();
+            alerts(rb.getString("errCollectionCreateMod.colMismoNombre"));
             return;
         }
 
         serverResponse[0] = CollectionManagement.updateCollection(auxCol);
 
         if(serverResponse[0].equals("SQLE Error")){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("errCollectionCreateMod.actualizarCol"));
-            alert.showAndWait();
+            alerts(rb.getString("errCollectionCreateMod.actualizarCol"));
             return;
         }
 
@@ -196,22 +161,12 @@ public class CollectionCreateMod implements Initializable {
         Object[] serverResponse;
 
         if(name.isEmpty() || argument.isEmpty() || date == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("errCollectionCreateMod.completarCampos"));
-            alert.showAndWait();
+            alerts(rb.getString("errCollectionCreateMod.completarCampos"));
             return;
         }
 
         if(name.length() > 500){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("errCollectionCreateMod.coleccion500Car"));
-            alert.showAndWait();
+            alerts(rb.getString("errCollectionCreateMod.coleccion500Car"));
             return;
         }
 
@@ -220,37 +175,21 @@ public class CollectionCreateMod implements Initializable {
         serverResponse = CollectionManagement.existsCollectionWithName(name);
 
         if (serverResponse[0].equals("SQLE Error")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("err.guardarDatos"));
-            alert.showAndWait();
+            alerts(rb.getString("err.guardarDatos"));
             return;
         }
 
         existsCol = (boolean) serverResponse[1];
 
         if (existsCol) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("errCollectionCreateMod.colMismoNombre"));
-            alert.showAndWait();
+            alerts(rb.getString("errCollectionCreateMod.colMismoNombre"));
             return;
         }
 
         serverResponse[0] = CollectionManagement.insertCollection(this.collection);
 
         if(serverResponse[0].equals("SQLE Error")){
-            System.out.println("Error al insertar la colección");
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(this.owner);
-            alert.setHeaderText(null);
-            alert.setTitle(rb.getString("error"));
-            alert.setContentText(rb.getString("errCollectionCreateMod.crearCol"));
-            alert.showAndWait();
+            alerts(rb.getString("errCollectionCreateMod.crearCol"));
             return;
         }
 
@@ -259,5 +198,14 @@ public class CollectionCreateMod implements Initializable {
         Stage stage = (Stage) btnAccept.getScene().getWindow();
         stage.close();
 
+    }
+
+    private void alerts(String alertMsg){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(this.owner);
+        alert.setHeaderText(null);
+        alert.setTitle(rb.getString("error"));
+        alert.setContentText(alertMsg);
+        alert.showAndWait();
     }
 }
