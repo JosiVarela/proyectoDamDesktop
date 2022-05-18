@@ -1,14 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.comicNumbers.NumbersCreateMod">
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="comicImage" fitHeight="170.0" fitWidth="150.0" pickOnBounds="true" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets left="20.0" right="10.0" top="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox>
+                     <children>
+                        <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#btnAddImageAction" prefWidth="70.0" text="Añadir">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnDelImage" mnemonicParsing="false" onAction="#btnDelImageAction" prefWidth="70.0" text="Eliminar">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox GridPane.rowIndex="1">
+               <children>
+                  <Label prefWidth="50.0" text="Nombre">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtName" maxWidth="800.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+            </HBox>
+            <HBox GridPane.rowIndex="2">
+               <children>
+                  <Label prefWidth="50.0" text="Número">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtNumber" maxWidth="800.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin>
+            </HBox>
+            <HBox GridPane.rowIndex="3">
+               <children>
+                  <Label prefWidth="50.0" text="ISBN">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtIsbn" maxWidth="800.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin>
+            </HBox>
+            <HBox GridPane.rowIndex="4">
+               <children>
+                  <Label prefWidth="50.0" text="Tapa">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ChoiceBox fx:id="cmbCover" HBox.hgrow="ALWAYS" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin>
+            </HBox>
+            <TextArea fx:id="txtArgument" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin>
+            </TextArea>
+            <Label text="Argumento" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="20.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnAccept" mnemonicParsing="false" onAction="#btnAcceptAction" text="Aceptar">
+               <HBox.margin>
+                  <Insets bottom="10.0" right="5.0" top="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" text="Cancelar">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="5.0" right="20.0" top="20.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

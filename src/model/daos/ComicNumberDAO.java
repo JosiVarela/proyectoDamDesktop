@@ -3,10 +3,7 @@ package model.daos;
 import controller.ServerConnection;
 import model.entities.ComicNumber;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 public class ComicNumberDAO implements IComicNumberDAO{
     /**
@@ -59,6 +56,26 @@ public class ComicNumberDAO implements IComicNumberDAO{
             objectInputStream = new ObjectInputStream(ServerConnection.getConnection().getInputStream());
             response[1] = objectInputStream.readObject();
         }
+
+        return response;
+    }
+
+    @Override
+    public String insertComicNumber(ComicNumber comicNumber) throws IOException {
+        String response;
+        DataOutputStream dataOutputStream;
+        ObjectOutputStream objectOutputStream;
+        DataInputStream dataInputStream;
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("insertComicNumber");
+
+        objectOutputStream = new ObjectOutputStream(ServerConnection.getConnection().getOutputStream());
+        objectOutputStream.writeObject(comicNumber);
+        objectOutputStream.flush();
+
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        response = dataInputStream.readUTF();
 
         return response;
     }

@@ -75,6 +75,10 @@ public class MainFormController implements Initializable {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collections/collection_presentation.fxml"), rb);
 
+        if(currentLoadedWindow != null && currentLoadedWindow.equals(fxmlLoader)){
+            return;
+        }
+
         currentLoadedWindow = fxmlLoader;
 
         if(ServerConnection.getConnection() == null){
@@ -83,6 +87,7 @@ public class MainFormController implements Initializable {
         }
 
         try {
+
             node = fxmlLoader.load();
 
             AnchorPane.setTopAnchor(node, 0d);

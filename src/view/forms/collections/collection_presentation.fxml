@@ -20,9 +20,9 @@
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblPanel" style="-fx-font-weight: bold;" text="%mainForm.btnCol" HBox.hgrow="NEVER">
+            <Label fx:id="lblPanel" text="%mainForm.btnCol" HBox.hgrow="NEVER">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />

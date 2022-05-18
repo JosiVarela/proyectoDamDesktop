@@ -70,6 +70,7 @@ public class CollectionPresentationController implements Initializable, Translat
         this.rb = resources;
 
         //Controls
+        lblPanel.setText("");
         lblPanel.setText(rb.getString("mainForm.btnCol"));
         //Load Hints
         loadHints();

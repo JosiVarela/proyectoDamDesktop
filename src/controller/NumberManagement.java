@@ -1,6 +1,7 @@
 package controller;
 
 import model.daos.ComicNumberDAO;
+import model.entities.ComicNumber;
 
 import java.io.IOException;
 
@@ -10,5 +11,9 @@ public class NumberManagement {
     }
     public static Object[] getComicNumber(String isbn) throws IOException, ClassNotFoundException {
         return new ComicNumberDAO().getComicNumber(isbn);
+    }
+
+    public static String insertComicNumber(ComicNumber comicNumber) throws IOException {
+        return new ComicNumberDAO().insertComicNumber(comicNumber);
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -98,15 +99,29 @@
                                     <Insets bottom="5.0" left="10.0" top="5.0" />
                                  </HBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" text="Button" HBox.hgrow="NEVER">
+                              <Button mnemonicParsing="false" HBox.hgrow="NEVER">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="10.0" top="5.0" />
                                  </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../data/images/search_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" text="Button" HBox.hgrow="NEVER">
+                              <Button fx:id="btnAddNumber" mnemonicParsing="false" onAction="#btnAddNumberAction" HBox.hgrow="NEVER">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                                  </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../data/images/add_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
                            </children>
                         </HBox>

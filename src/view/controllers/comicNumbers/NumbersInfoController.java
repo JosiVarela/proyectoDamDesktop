@@ -123,9 +123,12 @@ public class NumbersInfoController implements Initializable {
         lblCollection.setText(collectionName);
 
         if(comicNumber.getImage() == null){
-            numberImage.setImage(new Image("/data/images/noImage.png"));
+            numberImage.setImage(new Image("/data/images/noImage.png", numberImage.getFitWidth(), numberImage.getFitHeight(),
+                    true, true));
         }else{
-            numberImage.setImage(new Image(new ByteArrayInputStream(comicNumber.getImage())));
+            System.out.println(comicNumber.getImage());
+            numberImage.setImage(new Image(new ByteArrayInputStream(comicNumber.getImage()),numberImage.getFitWidth(),
+                    numberImage.getFitHeight(),true, true));
         }
     }
     private void loadComicCopies(){

@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import model.entities.Collection;
 import model.entities.ComicNumber;
 import services.Resources;
+import view.controllers.comicNumbers.NumbersCreateMod;
 import view.controllers.comicNumbers.NumbersInfoController;
 
 import java.io.IOException;
@@ -37,7 +38,8 @@ public class CollectionInfoController implements Initializable {
     //<editor-fold desc="FXML vars definition">
     @FXML
     private Button btnModifyCol;
-
+    @FXML
+    private Button btnAddNumber;
     @FXML
     private Button btnDelCol;
 
@@ -249,7 +251,30 @@ public class CollectionInfoController implements Initializable {
             }
         }
     }
+    @FXML
+    void btnAddNumberAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_create_mod.fxml"),
+                rb);
+        Parent root;
 
+        try{
+            root = fxmlLoader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            NumbersCreateMod numbersCreateMod = fxmlLoader.getController();
+
+            numbersCreateMod.innitData(0, collection.getId(),this.owner);
+
+            stage.setScene(scene);
+            stage.initOwner(this.owner);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException e) {
+            alerts(rb.getString("err.cargarPantalla"));
+        }
+    }
     private void closeAndReload(){
         presentationController.getCollections();
         ((Stage)btnModifyCol.getScene().getWindow()).close();
@@ -310,7 +335,10 @@ public class CollectionInfoController implements Initializable {
     }
 
 
-
+    /**
+     * This method loads number screen
+     * @param isbn The number isbn code
+     */
     private void loadNumberScreen(String isbn) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_info.fxml"), rb);
         Parent root;
@@ -329,11 +357,16 @@ public class CollectionInfoController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setWidth(635);
+            stage.setHeight(845);
+            stage.setMinWidth(635);
+            stage.setMinHeight(845);
+            stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(this.owner);
             stage.showAndWait();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            alerts(rb.getString("err.cargarPantalla"));
         }
     }
     private void reloadNumberTable(){
