@@ -79,4 +79,24 @@ public class ComicNumberDAO implements IComicNumberDAO{
 
         return response;
     }
+
+    @Override
+    public String updateComicNumber(ComicNumber comicNumber) throws IOException {
+        String response;
+        DataOutputStream dataOutputStream;
+        ObjectOutputStream objectOutputStream;
+        DataInputStream dataInputStream;
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("updateComicNumber");
+
+        objectOutputStream = new ObjectOutputStream(ServerConnection.getConnection().getOutputStream());
+        objectOutputStream.writeObject(comicNumber);
+        objectOutputStream.flush();
+
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        response = dataInputStream.readUTF();
+
+        return response;
+    }
 }

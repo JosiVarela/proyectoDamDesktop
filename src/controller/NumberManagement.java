@@ -16,4 +16,7 @@ public class NumberManagement {
     public static String insertComicNumber(ComicNumber comicNumber) throws IOException {
         return new ComicNumberDAO().insertComicNumber(comicNumber);
     }
+    public static String updateComicNumber(ComicNumber comicNumber) throws IOException {
+        return new ComicNumberDAO().updateComicNumber(comicNumber);
+    }
 }

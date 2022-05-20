@@ -1,5 +1,6 @@
 package view.controllers.comicNumbers;
 
+import controller.CollectionManagement;
 import controller.NumberManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
@@ -15,12 +16,15 @@ import javafx.stage.Stage;
 import model.entities.ComicNumber;
 import services.Resources;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NumbersCreateMod implements Initializable {
 
@@ -35,6 +39,10 @@ public class NumbersCreateMod implements Initializable {
     private int colId;
 
     private Stage owner;
+
+    private boolean needUpdate;
+
+    private ComicNumber comicNumber;
     @FXML
     private Button btnAddImage;
     @FXML
@@ -58,16 +66,27 @@ public class NumbersCreateMod implements Initializable {
     @FXML
     private Button btnDelImage;
 
-    public void innitData(int operationMode, int colId,Stage owner){
+    public boolean isLoaded(){
+        return comicNumber != null;
+    }
+
+    public boolean isNeedUpdate(){
+        return this.needUpdate;
+    }
+
+    public void innitData(int operationMode, int colId, Stage owner){
         this.operationMode = operationMode;
         this.owner = owner;
         this.colId = colId;
 
-        if(operationMode == 0){
-            loadDefaultData();
-        }else{
+        loadDefaultData();
+    }
 
-        }
+    public void innitData(int operationMode, String isbn, Stage owner){
+        this.operationMode = operationMode;
+        this.owner = owner;
+
+        loadNumberData(isbn);
     }
 
     @Override
@@ -113,7 +132,7 @@ public class NumbersCreateMod implements Initializable {
         if(this.operationMode == 0){
             insertNumber();
         }else{
-
+            updateNumber();
         }
     }
 
@@ -138,6 +157,68 @@ public class NumbersCreateMod implements Initializable {
     }
 
     /**
+     * This method loads
+     */
+    private void loadNumberData(String isbn){
+        Object[] response;
+        ComicNumber comicNumber;
+
+        try {
+            response = NumberManagement.getComicNumber(isbn);
+
+            if(response[0].equals("IOE")){
+                alerts(rb.getString("numberInfo.errorCargaImagen"));
+                return;
+            } else if (response[0].equals("SQLE Error")) {
+                alerts(rb.getString("collectionInfoController.errorCargarNumero"));
+                return;
+            }
+
+            comicNumber = (ComicNumber) response[1];
+
+            if(comicNumber != null){
+
+                response = CollectionManagement.getCollectionName(comicNumber.getColId());
+
+                if(response[0].equals("SQLE Error")){
+                    alerts(rb.getString("collectionInfoController.errorCargarNumero"));
+                    return;
+                }
+
+                this.comicNumber = comicNumber;
+
+                txtName.setText(comicNumber.getName());
+                txtNumber.setText(String.valueOf(comicNumber.getComicNumber()));
+                txtIsbn.setText(comicNumber.getIsbn());
+                txtIsbn.setDisable(true);
+                cmbCover.setValue(rb.getString("collectionInfoCover." + comicNumber.getCover()));
+                txtArgument.setText(comicNumber.getArgument());
+                byteImage = comicNumber.getImage();
+
+                if(byteImage != null){
+                    comicImage.setImage(new Image(new ByteArrayInputStream(byteImage), comicImage.getFitWidth(), comicImage.getFitHeight(),
+                            false, true));
+                }else{
+                    comicImage.setImage(new Image("/data/images/noImage.png", comicImage.getFitWidth(), comicImage.getFitHeight(),
+                            false, true));
+
+                    btnDelImage.setDisable(true);
+                }
+
+
+            }else{
+                alerts(rb.getString("collectionInfoController.errorCargarNumero"));
+            }
+        } catch (SocketException e) {
+            alerts(rb.getString("err.noConexion"));
+        } catch (IOException e) {
+            alerts(rb.getString("err.cargarPantalla"));
+        } catch (ClassNotFoundException e) {
+            alerts(rb.getString("err.inesperado"));
+        }
+    }
+
+    /**
      * This method inserts the number in the DB
      */
     private void insertNumber(){
@@ -149,6 +230,11 @@ public class NumbersCreateMod implements Initializable {
         String cover;
         Object[] response;
         ComicNumber comicNumber;
+        String isbn10 = "^\\d{10}";
+        String isbn13 = "^\\d{13}";
+
+        Pattern isbn10Pattern = Pattern.compile(isbn10);
+        Pattern isbn13Pattern = Pattern.compile(isbn13);
 
         if(cmbCover.getValue().equals(rb.getString("collectionInfoCover.soft"))){
             cover = "soft";
@@ -158,6 +244,11 @@ public class NumbersCreateMod implements Initializable {
 
         if(name.isEmpty() || numberNum.isEmpty() || isbn.isEmpty() || argument.isEmpty()){
             alerts(rb.getString("numberCreateMod.completarCampos"));
+            return;
+        }
+
+        if(!isbn10Pattern.matcher(isbn).matches() || !isbn13Pattern.matcher(isbn).matches()){
+            alerts(rb.getString("numberCreateMod.isbnFormato"));
             return;
         }
 
@@ -211,7 +302,9 @@ public class NumbersCreateMod implements Initializable {
         String name = txtName.getText().trim();
         String numberNum = txtNumber.getText().trim();
         String argument = txtArgument.getText().trim();
+        int numberNumInt;
         String cover;
+        String response;
 
         if(cmbCover.getValue().equals(rb.getString("collectionInfoCover.soft"))){
             cover = "soft";
@@ -219,7 +312,45 @@ public class NumbersCreateMod implements Initializable {
             cover = "hard";
         }
 
+        if(name.isEmpty() || numberNum.isEmpty() || argument.isEmpty()){
+            alerts(rb.getString("numberCreateMod.completarCampos"));
+            return;
+        }
 
+        try {
+
+            numberNumInt = Integer.parseInt(numberNum);
+
+
+            this.comicNumber.setComicNumber(numberNumInt);
+            this.comicNumber.setCover(cover);
+            this.comicNumber.setName(name);
+            this.comicNumber.setArgument(argument);
+
+            if(this.byteImage != this.comicNumber.getImage()){
+                this.comicNumber.setImage(this.byteImage);
+            }
+
+            //update number into DB
+            response = NumberManagement.updateComicNumber(comicNumber);
+
+            if(response.equals("SQLE Error")){
+                alerts(rb.getString("numbersCreateMod.errInsertarNumero"));
+                return;
+            }
+
+            //Update numbers table
+            needUpdate = true;
+
+            ((Stage)btnAccept.getScene().getWindow()).close();
+
+        }catch (NumberFormatException e) {
+            alerts(rb.getString("numbersCreateMod.numeroNoValido"));
+        } catch (SocketException e) {
+            alerts(rb.getString("err.noConexion"));
+        } catch (IOException e) {
+            alerts("err.inesperado");
+        }
     }
 
     private void alerts(String alertMsg){

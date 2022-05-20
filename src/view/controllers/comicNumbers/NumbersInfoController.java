@@ -4,10 +4,14 @@ import controller.CollectionManagement;
 import controller.NumberManagement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.ComicNumber;
 import services.Resources;
@@ -137,7 +141,54 @@ public class NumbersInfoController implements Initializable {
 
     @FXML
     void btnModifyAction(ActionEvent event) {
+        String isbn = comicNumber.getIsbn();
+        Object[] response;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_create_mod.fxml"), rb);
+        Parent root;
 
+        try {
+            response = NumberManagement.existsNumber(isbn);
+
+            if(!response[0].equals("OK")){
+                alerts(rb.getString("collectionInfoController.errorCargarNumero"));
+                return;
+            }
+
+            if(!(boolean) response[1]){
+                alerts(rb.getString("collectionInfoController.errorNoExisteNumero"));
+
+                //TODO Close window and reload
+
+                return;
+            }
+
+
+            root = fxmlLoader.load();
+
+            NumbersCreateMod numbersCreateMod = fxmlLoader.getController();
+
+            numbersCreateMod.innitData(1, isbn, this.owner);
+
+            if(!numbersCreateMod.isLoaded()) return;
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initOwner(this.owner);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+
+            if(numbersCreateMod.isNeedUpdate()){
+                loadComicNumber();
+            }
+
+        } catch (SocketException e) {
+            alerts(rb.getString("err.noConexion"));
+            return;
+        } catch (IOException e) {
+            alerts(rb.getString("err.inesperado"));
+            return;
+        }
     }
 
     private void alerts(String alertMsg){

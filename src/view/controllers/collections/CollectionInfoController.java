@@ -291,11 +291,10 @@ public class CollectionInfoController implements Initializable {
      */
     private void createRowClickListener(){
 
-        System.out.println("Creo Listener");
         comicsTable.setRowFactory( tv -> {
             TableRow<ComicNumber> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                Object response[];
+                Object[] response;
 
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     ComicNumber comic = row.getItem();
