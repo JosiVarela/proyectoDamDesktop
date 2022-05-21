@@ -23,6 +23,11 @@ public class ComicNumber implements Serializable {
         this.colId = colId;
         this.name = name;
     }
+
+    public ComicNumber(String name) {
+        this.name = name;
+    }
+
     public ComicNumber(String isbn, int comicNumber, String cover, int colId, String name, String argument) {
         this.isbn = isbn;
         this.comicNumber = comicNumber;

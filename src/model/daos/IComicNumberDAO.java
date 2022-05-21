@@ -10,4 +10,5 @@ public interface IComicNumberDAO {
     String insertComicNumber(ComicNumber comicNumber) throws IOException;
     String updateComicNumber(ComicNumber comicNumber) throws IOException;
     String deleteComicNumber(String isbn) throws IOException;
+    Object[] getNumbers() throws IOException, ClassNotFoundException;
 }

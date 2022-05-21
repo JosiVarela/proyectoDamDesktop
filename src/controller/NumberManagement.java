@@ -23,4 +23,8 @@ public class NumberManagement {
     public static String deleteComicNumber(String isbn) throws IOException {
         return new ComicNumberDAO().deleteComicNumber(isbn);
     }
+
+    public static Object[] getComicNumbers() throws IOException, ClassNotFoundException {
+        return new ComicNumberDAO().getNumbers();
+    }
 }

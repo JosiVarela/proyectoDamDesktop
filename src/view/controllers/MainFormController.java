@@ -51,6 +51,8 @@ public class MainFormController implements Initializable {
 
     @FXML
     private Button btnInicio;
+    @FXML
+    private Button btnNumber;
     //</editor-fold>
 
     @Override
@@ -94,6 +96,7 @@ public class MainFormController implements Initializable {
             AnchorPane.setBottomAnchor(node, 0d);
             AnchorPane.setLeftAnchor(node, 0d);
             AnchorPane.setRightAnchor(node, 0d);
+            mainPane.getChildren().remove(0, mainPane.getChildren().size());
             mainPane.getChildren().add(node);
         } catch (SocketException e){
             alerts(rb.getString("err.noConexion"));
@@ -141,6 +144,40 @@ public class MainFormController implements Initializable {
             this.translate();
         }
 
+    }
+    @FXML
+    void btnNumberAction(ActionEvent event) {
+        Node node;
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicNumbers/number_presentation.fxml"), rb);
+
+        if(currentLoadedWindow != null && currentLoadedWindow.equals(fxmlLoader)){
+            return;
+        }
+
+        currentLoadedWindow = fxmlLoader;
+
+        if(ServerConnection.getConnection() == null){
+            alerts(rb.getString("err.noConexion"));
+            return;
+        }
+
+        try {
+
+            node = fxmlLoader.load();
+
+            AnchorPane.setTopAnchor(node, 0d);
+            AnchorPane.setBottomAnchor(node, 0d);
+            AnchorPane.setLeftAnchor(node, 0d);
+            AnchorPane.setRightAnchor(node, 0d);
+            mainPane.getChildren().remove(0, mainPane.getChildren().size());
+            mainPane.getChildren().add(node);
+        } catch (SocketException e){
+            alerts(rb.getString("err.noConexion"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            alerts(rb.getString("err.cargarPantalla"));
+        }
     }
 
 

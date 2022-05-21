@@ -4,6 +4,7 @@ import controller.ServerConnection;
 import model.entities.ComicNumber;
 
 import java.io.*;
+import java.net.Socket;
 
 public class ComicNumberDAO implements IComicNumberDAO{
     /**
@@ -116,5 +117,34 @@ public class ComicNumberDAO implements IComicNumberDAO{
         response = dataInputStream.readUTF();
 
         return response;
+    }
+
+    @Override
+    public Object[] getNumbers() throws IOException, ClassNotFoundException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        ObjectInputStream objectInputStream;
+
+        Socket socket = ServerConnection.getConnection();
+
+        Object[] returnObject = new Object[2];
+
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
+        dataOutputStream.writeUTF("getComicNumbers");
+
+        dataInputStream = new DataInputStream(socket.getInputStream());
+
+        String message = dataInputStream.readUTF();
+
+        returnObject[0] = message;
+
+        if(message.equals("OK")){
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+            returnObject[1] = objectInputStream.readObject();
+        }
+
+        return returnObject;
     }
 }
