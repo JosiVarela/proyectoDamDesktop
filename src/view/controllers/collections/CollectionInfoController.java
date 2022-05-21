@@ -241,6 +241,7 @@ public class CollectionInfoController implements Initializable {
 
         } catch (IOException e) {
             alerts(rb.getString("err.noConexion"));
+            return;
         }
 
         ButtonType btnAccept = new ButtonType(rb.getString("aceptar"), ButtonBar.ButtonData.OK_DONE);

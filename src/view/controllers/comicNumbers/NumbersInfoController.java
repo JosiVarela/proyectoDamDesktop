@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class NumbersInfoController implements Initializable {
@@ -35,6 +36,9 @@ public class NumbersInfoController implements Initializable {
     private ComicNumber comicNumber;
 
     private boolean needUpdate;
+
+    @FXML
+    private Button btnDel;
 
     @FXML
     private Label lblCover;
@@ -81,6 +85,120 @@ public class NumbersInfoController implements Initializable {
         this.owner = Resources.getMainWindow();
     }
 
+    @FXML
+    void btnModifyAction(ActionEvent event) {
+        String isbn = comicNumber.getIsbn();
+        Object[] response;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_create_mod.fxml"), rb);
+        Parent root;
+
+        try {
+            response = NumberManagement.existsNumber(isbn);
+
+            if(!response[0].equals("OK")){
+                alerts(rb.getString("collectionInfoController.errorCargarNumero"));
+                return;
+            }
+
+            if(!(boolean) response[1]){
+                alerts(rb.getString("collectionInfoController.errorNoExisteNumero"));
+
+                this.needUpdate = true;
+                ((Stage)btnModify.getScene().getWindow()).close();
+
+                return;
+            }
+
+
+            root = fxmlLoader.load();
+
+            NumbersCreateMod numbersCreateMod = fxmlLoader.getController();
+
+            numbersCreateMod.innitData(1, isbn, this.owner);
+
+            if(!numbersCreateMod.isLoaded()) return;
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initOwner(this.owner);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+
+            if(numbersCreateMod.isNeedUpdate()){
+                loadComicNumber();
+                needUpdate = true;
+            }
+
+        } catch (SocketException e) {
+            alerts(rb.getString("err.noConexion"));
+        } catch (IOException e) {
+            alerts(rb.getString("err.inesperado"));
+        }
+    }
+
+    @FXML
+    void btnDelAction(ActionEvent event) {
+        String isbn = comicNumber.getIsbn();
+        Object[] response;
+        String deleteResponse;
+
+        ButtonType btnAccept = new ButtonType(rb.getString("aceptar"), ButtonBar.ButtonData.OK_DONE);
+        ButtonType btnCancel = new ButtonType(rb.getString("cancelar"), ButtonBar.ButtonData.CANCEL_CLOSE);
+
+
+
+        Alert question = new Alert(Alert.AlertType.CONFIRMATION);
+        question.initOwner(this.owner);
+        question.setHeaderText(null);
+        question.setTitle(rb.getString("eliminar"));
+        question.setContentText(rb.getString("numberInfo.seguroEliminar"));
+        question.getButtonTypes().clear();
+        question.getButtonTypes().addAll(btnAccept, btnCancel);
+        ((Button)question.getDialogPane().lookupButton(btnAccept)).setDefaultButton(false);
+        ((Button)question.getDialogPane().lookupButton(btnCancel)).setDefaultButton(true);
+
+        Optional<ButtonType> result = question.showAndWait();
+
+        if(result.isPresent() && result.get() == btnAccept){
+            try {
+                response = NumberManagement.existsNumber(isbn);
+
+                if(!response[0].equals("OK")){
+                    alerts(rb.getString("collectionInfoController.errorCargarNumero"));
+                    return;
+                }
+
+                if(!(boolean) response[1]){
+                    alerts(rb.getString("collectionInfoController.errorNoExisteNumero"));
+
+                    this.needUpdate = true;
+                    ((Stage)btnModify.getScene().getWindow()).close();
+
+                    return;
+                }
+
+                deleteResponse = NumberManagement.deleteComicNumber(isbn);
+
+                if(deleteResponse.equals("SQLE Error")){
+                    alerts(rb.getString("numberInfo.errorEliminar"));
+                    return;
+                }
+
+                needUpdate = true;
+                ((Stage)btnDel.getScene().getWindow()).close();
+
+            } catch (SocketException e) {
+                alerts(rb.getString("err.noConexion"));
+            } catch (IOException e) {
+                alerts(rb.getString("err.inesperado"));
+            }
+        }
+    }
+
+    /**
+     * This method obtains the comic to display
+     */
     private void loadComicNumber(){
         Object[] response;
         ComicNumber comicNumber;
@@ -124,6 +242,9 @@ public class NumbersInfoController implements Initializable {
         }
     }
 
+    /**
+     * This method establish the comic data in the screen
+     */
     private void setComicData(){
         lblTitle.setText(comicNumber.getName());
         lblCover.setText(rb.getString("collectionInfoCover." + comicNumber.getCover()));
@@ -136,66 +257,17 @@ public class NumbersInfoController implements Initializable {
             numberImage.setImage(new Image("/data/images/noImage.png", numberImage.getFitWidth(), numberImage.getFitHeight(),
                     true, true));
         }else{
-            System.out.println(comicNumber.getImage());
+
             numberImage.setImage(new Image(new ByteArrayInputStream(comicNumber.getImage()),numberImage.getFitWidth(),
                     numberImage.getFitHeight(),true, true));
         }
     }
+
+    /**
+     * This method load the comic copies in the table
+     */
     private void loadComicCopies(){
 
-    }
-
-    @FXML
-    void btnModifyAction(ActionEvent event) {
-        String isbn = comicNumber.getIsbn();
-        Object[] response;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_create_mod.fxml"), rb);
-        Parent root;
-
-        try {
-            response = NumberManagement.existsNumber(isbn);
-
-            if(!response[0].equals("OK")){
-                alerts(rb.getString("collectionInfoController.errorCargarNumero"));
-                return;
-            }
-
-            if(!(boolean) response[1]){
-                alerts(rb.getString("collectionInfoController.errorNoExisteNumero"));
-
-                //TODO Close window and reload
-
-                return;
-            }
-
-
-            root = fxmlLoader.load();
-
-            NumbersCreateMod numbersCreateMod = fxmlLoader.getController();
-
-            numbersCreateMod.innitData(1, isbn, this.owner);
-
-            if(!numbersCreateMod.isLoaded()) return;
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.initOwner(this.owner);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
-
-            if(numbersCreateMod.isNeedUpdate()){
-                loadComicNumber();
-                needUpdate = true;
-            }
-
-        } catch (SocketException e) {
-            alerts(rb.getString("err.noConexion"));
-            return;
-        } catch (IOException e) {
-            alerts(rb.getString("err.inesperado"));
-            return;
-        }
     }
 
     private void alerts(String alertMsg){

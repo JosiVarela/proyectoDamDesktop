@@ -19,4 +19,8 @@ public class NumberManagement {
     public static String updateComicNumber(ComicNumber comicNumber) throws IOException {
         return new ComicNumberDAO().updateComicNumber(comicNumber);
     }
+
+    public static String deleteComicNumber(String isbn) throws IOException {
+        return new ComicNumberDAO().deleteComicNumber(isbn);
+    }
 }

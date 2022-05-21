@@ -99,4 +99,22 @@ public class ComicNumberDAO implements IComicNumberDAO{
 
         return response;
     }
+
+    @Override
+    public String deleteComicNumber(String isbn) throws IOException {
+        String response;
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("deleteComicNumber");
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF(isbn);
+
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        response = dataInputStream.readUTF();
+
+        return response;
+    }
 }

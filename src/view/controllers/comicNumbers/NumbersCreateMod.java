@@ -333,6 +333,8 @@ public class NumbersCreateMod implements Initializable {
                 this.comicNumber.setImage(this.byteImage);
             }
 
+            //TODO CHECK IF NUMBER EXISTS
+
             //update number into DB
             response = NumberManagement.updateComicNumber(comicNumber);
 
