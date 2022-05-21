@@ -84,15 +84,14 @@ public class CollectionPaneController implements Initializable {
             }
 
 
-            requestCol = CollectionManagement.getCollectionInfoById(this.collection.getId());
 
-            if(requestCol[0].equals("SQLE ERROR") || requestCol[1] == null){
-                alerts(rb.getString("err.CargarInfoColeccion"));
-                return;
-            }
 
             controller.innitData(this.presentationController);
-            controller.setCollection((Collection) requestCol[1]);
+            controller.loadCollection(this.collection.getId());
+
+            if(!controller.isLoaded()){
+                return;
+            }
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -115,8 +114,6 @@ public class CollectionPaneController implements Initializable {
             alerts(rb.getString("err.noConexion"));
         } catch (IOException e) {
             alerts(rb.getString("err.cargarPantalla"));
-        } catch (ClassNotFoundException e) {
-            alerts(rb.getString("err.inesperado"));
         }
     }
 

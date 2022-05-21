@@ -77,9 +77,33 @@ public class CollectionInfoController implements Initializable {
     private TextArea txtArgument;
     //</editor-fold>
 
-    public void setCollection(Collection collection){
-        this.collection = collection;
+    public void loadCollection(int idCol){
+        Object[] requestCol;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_info.fxml"), rb);
 
+        try{
+
+            requestCol = CollectionManagement.getCollectionInfoById(idCol);
+
+            if(requestCol[0].equals("SQLE ERROR") || requestCol[1] == null){
+                alerts(rb.getString("err.CargarInfoColeccion"));
+                return;
+            }
+
+            this.collection = (Collection) requestCol[1];
+
+            loadCollectionData();
+
+        } catch (SocketException e){
+            alerts(rb.getString("err.noConexion"));
+        } catch (IOException e) {
+            alerts(rb.getString("err.cargarPantalla"));
+        } catch (ClassNotFoundException e) {
+            alerts(rb.getString("err.inesperado"));
+        }
+    }
+
+    private void loadCollectionData(){
         lblComicTitle.setText(collection.getTitle());
         lblFirstPublish.setText(lblFirstPublish.getText() + " " + collection.getPublishDate());
         lblNumbers.setText(collection.getComicQuantity() + " " + lblNumbers.getText());
@@ -87,6 +111,10 @@ public class CollectionInfoController implements Initializable {
         if(!this.neededUpdate){
             populateNumberList();
         }
+    }
+
+    public boolean isLoaded(){
+        return this.collection != null;
     }
 
     public void innitData(CollectionPresentationController presentationController){
@@ -182,7 +210,8 @@ public class CollectionInfoController implements Initializable {
 
             if(collectionCreateMod.isNeededUpdate()){
                 this.neededUpdate = true;
-                setCollection(collectionCreateMod.getCollection());
+                //setCollection(collectionCreateMod.getCollection());
+                loadCollection(this.getCollection().getId());
             }
 
         } catch (IOException e) {
@@ -271,6 +300,12 @@ public class CollectionInfoController implements Initializable {
             stage.initOwner(this.owner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
+
+            if(numbersCreateMod.isNeedUpdate()){
+                numberList.remove(0, numberList.size());
+                loadCollection(this.collection.getId());
+            }
+
         } catch (IOException e) {
             alerts(rb.getString("err.cargarPantalla"));
         }
@@ -310,8 +345,8 @@ public class CollectionInfoController implements Initializable {
                         if(!(boolean) response[1]){
                             alerts(rb.getString("collectionInfoController.errorNoExisteNumero"));
 
-                            //TODO Reload table
-                            populateNumberList();
+                            numberList.remove(0, numberList.size());
+                            loadCollection(this.collection.getId());
                             return;
                         }
 
@@ -325,8 +360,6 @@ public class CollectionInfoController implements Initializable {
                     }
 
                     loadNumberScreen(comic.getIsbn());
-
-                    System.out.println(comic.getName());
                 }
             });
             return row ;
@@ -364,13 +397,17 @@ public class CollectionInfoController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(this.owner);
             stage.showAndWait();
+
+            if(infoController.isNeedUpdate()){
+                numberList.remove(0, numberList.size());
+                loadCollection(this.collection.getId());
+            }
+
         } catch (IOException e) {
             alerts(rb.getString("err.cargarPantalla"));
         }
     }
-    private void reloadNumberTable(){
 
-    }
     private void alerts(String alertMsg){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(this.owner);

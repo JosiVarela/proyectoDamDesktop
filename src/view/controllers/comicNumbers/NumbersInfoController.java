@@ -34,6 +34,8 @@ public class NumbersInfoController implements Initializable {
 
     private ComicNumber comicNumber;
 
+    private boolean needUpdate;
+
     @FXML
     private Label lblCover;
 
@@ -67,6 +69,10 @@ public class NumbersInfoController implements Initializable {
 
     public boolean isLoaded(){
         return comicNumber != null;
+    }
+
+    public boolean isNeedUpdate(){
+        return needUpdate;
     }
 
     @Override
@@ -180,6 +186,7 @@ public class NumbersInfoController implements Initializable {
 
             if(numbersCreateMod.isNeedUpdate()){
                 loadComicNumber();
+                needUpdate = true;
             }
 
         } catch (SocketException e) {

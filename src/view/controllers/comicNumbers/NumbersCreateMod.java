@@ -247,7 +247,7 @@ public class NumbersCreateMod implements Initializable {
             return;
         }
 
-        if(!isbn10Pattern.matcher(isbn).matches() || !isbn13Pattern.matcher(isbn).matches()){
+        if(!isbn10Pattern.matcher(isbn).matches() && !isbn13Pattern.matcher(isbn).matches()){
             alerts(rb.getString("numberCreateMod.isbnFormato"));
             return;
         }
@@ -282,9 +282,11 @@ public class NumbersCreateMod implements Initializable {
                 alerts(rb.getString("numbersCreateMod.errInsertarNumero"));
                 return;
             }
-            System.out.println("Insertado");
-            //Update numbers table
 
+            //Update numbers table
+            needUpdate = true;
+
+            ((Stage)btnAccept.getScene().getWindow()).close();
 
         }catch (NumberFormatException e) {
             alerts(rb.getString("numbersCreateMod.numeroNoValido"));
