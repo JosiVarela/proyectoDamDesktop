@@ -29,8 +29,8 @@ import java.util.regex.Pattern;
 public class NumbersCreateMod implements Initializable {
 
     private byte[] byteImage;
-    ObservableList<String> cmbValues = FXCollections.observableArrayList();
-    ResourceBundle rb;
+    private final ObservableList<String> cmbValues = FXCollections.observableArrayList();
+    private ResourceBundle rb;
     /**
      * If operationMode = 1 is modification and if operationMode = 0 is insertion
      */

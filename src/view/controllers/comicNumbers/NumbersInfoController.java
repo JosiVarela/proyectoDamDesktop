@@ -2,6 +2,8 @@ package view.controllers.comicNumbers;
 
 import controller.CollectionManagement;
 import controller.NumberManagement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,18 +11,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.entities.ComicCopy;
 import model.entities.ComicNumber;
 import services.Resources;
+import view.controllers.comicCopies.CopiesCreateMod;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -37,14 +45,39 @@ public class NumbersInfoController implements Initializable {
 
     private boolean needUpdate;
 
+    private ObservableList<ComicCopy> comicCopies;
     @FXML
-    private Button btnDel;
+    private Button btnAddCopy;
+
+    @FXML
+    private Button btnSearch;
+
+    @FXML
+    private TableColumn<ComicNumber, LocalDate> tbColPurchase;
+
+    @FXML
+    private TextArea txtArgument;
+
+    @FXML
+    private Button btnModify;
+
+    @FXML
+    private TableView<ComicCopy> copiesTable;
+
+    @FXML
+    private Label lblNumber;
 
     @FXML
     private Label lblCover;
 
     @FXML
-    private TextArea txtArgument;
+    private TableColumn<ComicNumber, Integer> tbColState;
+
+    @FXML
+    private TableColumn<ComicCopy, String> tbColObservations;
+
+    @FXML
+    private ImageView numberImage;
 
     @FXML
     private Label lblTitle;
@@ -53,18 +86,10 @@ public class NumbersInfoController implements Initializable {
     private Label lblIsbn;
 
     @FXML
-    private TableView<?> comicsTable;
+    private Button btnDel;
 
     @FXML
     private Label lblCollection;
-
-    @FXML
-    private ImageView numberImage;
-
-    @FXML
-    private Label lblNumber;
-    @FXML
-    private Button btnModify;
 
     public void innitData(String isbn){
         this.isbn = isbn;
@@ -83,6 +108,55 @@ public class NumbersInfoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
         this.owner = Resources.getMainWindow();
+
+        comicCopies = FXCollections.observableArrayList();
+
+        this.tbColPurchase.setCellValueFactory(new PropertyValueFactory<>("purchaseDate"));
+        this.tbColState.setCellValueFactory(new PropertyValueFactory<>("state"));
+        this.tbColObservations.setCellValueFactory(new PropertyValueFactory<>("observations"));
+
+        this.tbColPurchase.setCellFactory(param -> {
+            TableCell<ComicNumber, LocalDate> cellDate = new TableCell<>(){
+                @Override
+                protected void updateItem(LocalDate item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if(empty){
+                        setText(null);
+                    }else{
+                        this.setText(item.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                    }
+                }
+            };
+            return cellDate;
+        });
+
+        this.tbColState.setCellFactory(param -> {
+            TableCell<ComicNumber, Integer> cellCover = new TableCell<>(){
+                @Override
+                protected void updateItem(Integer item, boolean empty) {
+                    super.updateItem(item, empty);
+
+
+                    if(!empty){
+                        switch (item){
+                            case 0 -> this.setText(rb.getString("copiesCreateMod.cmbNuevo"));
+                            case 1 -> this.setText(rb.getString("copiesCreateMod.cmbComoNuevo"));
+                            case 2 -> this.setText(rb.getString("copiesCreateMod.aceptable"));
+                            case 3 -> this.setText(rb.getString("copiesCreateMod.malo"));
+                        }
+                    }
+
+                }
+            };
+            return cellCover;
+        });
+
+        //createRowClickListener();
+
+        copiesTable.setItems(comicCopies);
+
+        copiesTable.setPlaceholder(new Label(""));
     }
 
     @FXML
@@ -196,6 +270,36 @@ public class NumbersInfoController implements Initializable {
         }
     }
 
+    @FXML
+    void btnSearchAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnAddCopyAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicCopies/copies_create_mod.fxml"), rb);
+        Parent root;
+
+        try{
+            //TODO CHECK IF NUMBER EXISTS
+
+            root = fxmlLoader.load();
+
+            CopiesCreateMod copiesCreateMod = fxmlLoader.getController();
+
+            copiesCreateMod.innitData(comicNumber.getIsbn(), 1, this.owner);
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(this.owner);
+            stage.showAndWait();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * This method obtains the comic to display
      */
@@ -230,6 +334,8 @@ public class NumbersInfoController implements Initializable {
                 this.comicNumber = comicNumber;
 
                 setComicData();
+
+                populateCopiesTable();
             }else{
                 alerts(rb.getString("collectionInfoController.errorCargarNumero"));
             }
@@ -261,6 +367,14 @@ public class NumbersInfoController implements Initializable {
             numberImage.setImage(new Image(new ByteArrayInputStream(comicNumber.getImage()),numberImage.getFitWidth(),
                     numberImage.getFitHeight(),true, true));
         }
+    }
+
+    private void populateCopiesTable(){
+
+
+
+        comicCopies.remove(0, comicCopies.size());
+        comicCopies.addAll(comicNumber.getComicCopyList());
     }
 
     /**
