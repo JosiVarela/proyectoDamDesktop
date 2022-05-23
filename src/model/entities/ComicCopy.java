@@ -28,6 +28,13 @@ public class ComicCopy implements Serializable {
         this.isbn = isbn;
     }
 
+    public ComicCopy(LocalDate purchaseDate, int state, String observations, String isbn) {
+        this.purchaseDate = purchaseDate;
+        this.state = state;
+        this.observations = observations;
+        this.isbn = isbn;
+    }
+
     public int getIdCopy() {
         return idCopy;
     }

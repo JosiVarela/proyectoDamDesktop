@@ -2,6 +2,7 @@ package view.controllers.comicNumbers;
 
 import controller.CollectionManagement;
 import controller.NumberManagement;
+import controller.Translatable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class NumberPresentationController implements Initializable {
+public class NumberPresentationController implements Initializable, Translatable {
     private ResourceBundle rb;
     private Stage owner;
 
@@ -137,5 +138,18 @@ public class NumberPresentationController implements Initializable {
         alert.setTitle(rb.getString("error"));
         alert.setContentText(alertMsg);
         alert.showAndWait();
+    }
+
+    @Override
+    public void translate(ResourceBundle resources) {
+        this.rb = resources;
+
+        //Controls
+        lblPanel.setText("");
+        lblPanel.setText(rb.getString("numberPresentation.numeros"));
+        //Load Hints
+        loadHints();
+        //Translate sub-forms
+        loadNumbers();
     }
 }

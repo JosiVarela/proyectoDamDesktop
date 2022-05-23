@@ -145,6 +145,8 @@ public class NumbersInfoController implements Initializable {
                             case 2 -> this.setText(rb.getString("copiesCreateMod.aceptable"));
                             case 3 -> this.setText(rb.getString("copiesCreateMod.malo"));
                         }
+                    }else{
+                        setText(null);
                     }
 
                 }
@@ -252,6 +254,8 @@ public class NumbersInfoController implements Initializable {
                     return;
                 }
 
+                //TODO CHECK IF NUMBER HASN'T COPIES
+
                 deleteResponse = NumberManagement.deleteComicNumber(isbn);
 
                 if(deleteResponse.equals("SQLE Error")){
@@ -279,9 +283,24 @@ public class NumbersInfoController implements Initializable {
     void btnAddCopyAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicCopies/copies_create_mod.fxml"), rb);
         Parent root;
+        Object[] response;
 
         try{
-            //TODO CHECK IF NUMBER EXISTS
+            response = NumberManagement.existsNumber(isbn);
+
+            if(!response[0].equals("OK")){
+                alerts(rb.getString("collectionInfoController.errorCargarNumero"));
+                return;
+            }
+
+            if(!(boolean) response[1]){
+                alerts(rb.getString("collectionInfoController.errorNoExisteNumero"));
+
+                this.needUpdate = true;
+                ((Stage)btnAddCopy.getScene().getWindow()).close();
+
+                return;
+            }
 
             root = fxmlLoader.load();
 
@@ -295,8 +314,16 @@ public class NumbersInfoController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(this.owner);
             stage.showAndWait();
+
+            if(copiesCreateMod.isNeedUpdate()){
+                comicCopies.remove(0, comicCopies.size());
+                loadComicNumber();
+            }
+
+        } catch (SocketException e) {
+            alerts(rb.getString("err.noConexion"));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            alerts(rb.getString("err.inesperado"));
         }
     }
 
@@ -370,11 +397,9 @@ public class NumbersInfoController implements Initializable {
     }
 
     private void populateCopiesTable(){
-
-
-
-        comicCopies.remove(0, comicCopies.size());
+        comicCopies.removeAll();
         comicCopies.addAll(comicNumber.getComicCopyList());
+        copiesTable.setItems(comicCopies);
     }
 
     /**
