@@ -1,6 +1,7 @@
 package view.controllers.comicNumbers;
 
 import controller.CollectionManagement;
+import controller.NumberCopiesManagement;
 import controller.NumberManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -154,11 +155,52 @@ public class NumbersInfoController implements Initializable {
             return cellCover;
         });
 
-        //createRowClickListener();
+        createRowClickListener();
 
         copiesTable.setItems(comicCopies);
 
         copiesTable.setPlaceholder(new Label(""));
+    }
+
+    private void createRowClickListener() {
+        copiesTable.setRowFactory( tv -> {
+            TableRow<ComicCopy> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                Object[] response;
+
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    ComicCopy comicCopy = row.getItem();
+
+                    try {
+                        response = NumberCopiesManagement.existsCopy(comicCopy.getIdCopy());
+
+                        if(!response[0].equals("OK")){
+                            alerts(rb.getString("copiesCreateMod.errCargaEjemplar"));
+                            return;
+                        }
+
+                        if(!(boolean) response[1]){
+                            alerts(rb.getString("copiesCreateMod.errNoExiste"));
+
+                            comicCopies.remove(0, comicCopies.size());
+                            loadComicNumber();
+                            return;
+                        }
+
+
+                    } catch (SocketException e) {
+                        alerts(rb.getString("err.noConexion"));
+                        return;
+                    } catch (IOException e) {
+                        alerts(rb.getString("err.inesperado"));
+                        return;
+                    }
+
+                    loadCopyScreen(comicCopy.getIdCopy());
+                }
+            });
+            return row ;
+        });
     }
 
     @FXML
@@ -397,7 +439,7 @@ public class NumbersInfoController implements Initializable {
     }
 
     private void populateCopiesTable(){
-        comicCopies.removeAll();
+        comicCopies.remove(0, comicCopies.size());
         comicCopies.addAll(comicNumber.getComicCopyList());
         copiesTable.setItems(comicCopies);
     }
@@ -405,8 +447,34 @@ public class NumbersInfoController implements Initializable {
     /**
      * This method load the comic copies in the table
      */
-    private void loadComicCopies(){
+    private void loadCopyScreen(int id){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicCopies/copies_create_mod.fxml"), rb);
+        Parent root;
 
+        try{
+            root = fxmlLoader.load();
+
+            CopiesCreateMod copiesCreateMod = fxmlLoader.getController();
+            copiesCreateMod.innitData(id, 0, this.owner);
+
+            if(!copiesCreateMod.isLoaded()){
+                return;
+            }
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initOwner(this.owner);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            if(copiesCreateMod.isNeedUpdate()){
+                loadComicNumber();
+            }
+
+        } catch (IOException e) {
+            alerts(rb.getString("err.cargarPantalla"));
+        }
     }
 
     private void alerts(String alertMsg){
