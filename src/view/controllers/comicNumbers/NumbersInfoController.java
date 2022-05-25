@@ -296,12 +296,13 @@ public class NumbersInfoController implements Initializable {
                     return;
                 }
 
-                //TODO CHECK IF NUMBER HASN'T COPIES
-
                 deleteResponse = NumberManagement.deleteComicNumber(isbn);
 
                 if(deleteResponse.equals("SQLE Error")){
                     alerts(rb.getString("numberInfo.errorEliminar"));
+                    return;
+                } else if (deleteResponse.equals("SQLE Foreing")) {
+                    alerts(rb.getString("numbersInfoController.eliminarTieneEjempl"));
                     return;
                 }
 
