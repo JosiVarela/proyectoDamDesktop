@@ -131,7 +131,7 @@ public class ComicNumberDAO implements IComicNumberDAO{
 
         dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
-        dataOutputStream.writeUTF("getComicNumbers");
+        dataOutputStream.writeUTF("getComicNumberList");
 
         dataInputStream = new DataInputStream(socket.getInputStream());
 
