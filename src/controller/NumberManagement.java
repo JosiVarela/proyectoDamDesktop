@@ -27,4 +27,12 @@ public class NumberManagement {
     public static Object[] getComicNumbers() throws IOException, ClassNotFoundException {
         return new ComicNumberDAO().getNumbers();
     }
+
+    public static Object[] getNumbersByName(String name) throws IOException, ClassNotFoundException {
+        return new ComicNumberDAO().getNumbersByName(name);
+    }
+
+    public static Object[] getNumbersByColName(String name) throws IOException, ClassNotFoundException {
+        return new ComicNumberDAO().getNumbersByColName(name);
+    }
 }

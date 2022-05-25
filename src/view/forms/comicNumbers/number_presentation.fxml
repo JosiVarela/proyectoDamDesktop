@@ -29,6 +29,14 @@
                </HBox.margin>
             </Label>
             <Pane minWidth="100.0" HBox.hgrow="ALWAYS" />
+            <ChoiceBox fx:id="cmbSearch">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </ChoiceBox>
             <TextField fx:id="txtSearch" onAction="#txtSearchAction" prefWidth="300.0" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="5.0" top="5.0" />

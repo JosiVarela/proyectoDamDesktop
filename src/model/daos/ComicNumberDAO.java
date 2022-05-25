@@ -147,4 +147,64 @@ public class ComicNumberDAO implements IComicNumberDAO{
 
         return returnObject;
     }
+
+    @Override
+    public Object[] getNumbersByName(String name) throws IOException, ClassNotFoundException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        ObjectInputStream objectInputStream;
+
+        Socket socket = ServerConnection.getConnection();
+
+        Object[] returnObject = new Object[2];
+
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        dataOutputStream.writeUTF("getNumbersByName");
+
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        dataOutputStream.writeUTF(name);
+
+        dataInputStream = new DataInputStream(socket.getInputStream());
+        String message = dataInputStream.readUTF();
+
+        returnObject[0] = message;
+
+        if(message.equals("OK")){
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+            returnObject[1] = objectInputStream.readObject();
+        }
+
+        return returnObject;
+    }
+
+    @Override
+    public Object[] getNumbersByColName(String name) throws IOException, ClassNotFoundException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        ObjectInputStream objectInputStream;
+
+        Socket socket = ServerConnection.getConnection();
+
+        Object[] returnObject = new Object[2];
+
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        dataOutputStream.writeUTF("getNumbersByColName");
+
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        dataOutputStream.writeUTF(name);
+
+        dataInputStream = new DataInputStream(socket.getInputStream());
+        String message = dataInputStream.readUTF();
+
+        returnObject[0] = message;
+
+        if(message.equals("OK")){
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+            returnObject[1] = objectInputStream.readObject();
+        }
+
+        return returnObject;
+    }
 }
