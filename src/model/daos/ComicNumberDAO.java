@@ -179,6 +179,39 @@ public class ComicNumberDAO implements IComicNumberDAO{
     }
 
     @Override
+    public Object[] getNumbersByNameCol(String name, int idCol) throws IOException, ClassNotFoundException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        ObjectInputStream objectInputStream;
+
+        Socket socket = ServerConnection.getConnection();
+
+        Object[] returnObject = new Object[2];
+
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        dataOutputStream.writeUTF("getNumbersByNameCol");
+
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        dataOutputStream.writeUTF(name);
+
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        dataOutputStream.writeInt(idCol);
+
+        dataInputStream = new DataInputStream(socket.getInputStream());
+        String message = dataInputStream.readUTF();
+
+        returnObject[0] = message;
+
+        if(message.equals("OK")){
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+
+            returnObject[1] = objectInputStream.readObject();
+        }
+
+        return returnObject;
+    }
+
+    @Override
     public Object[] getNumbersByColName(String name) throws IOException, ClassNotFoundException {
         DataOutputStream dataOutputStream;
         DataInputStream dataInputStream;

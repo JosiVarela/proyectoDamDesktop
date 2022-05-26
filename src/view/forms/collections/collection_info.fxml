@@ -94,12 +94,12 @@
                         <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
                            <children>
                               <Pane minWidth="300.0" HBox.hgrow="ALWAYS" />
-                              <TextField maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <TextField fx:id="txtSearch" maxWidth="1.7976931348623157E308" onAction="#txtSearchAction" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="10.0" top="5.0" />
                                  </HBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" HBox.hgrow="NEVER">
+                              <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchAction" HBox.hgrow="NEVER">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="10.0" top="5.0" />
                                  </HBox.margin>

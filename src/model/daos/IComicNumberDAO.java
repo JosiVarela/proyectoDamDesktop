@@ -12,5 +12,6 @@ public interface IComicNumberDAO {
     String deleteComicNumber(String isbn) throws IOException;
     Object[] getNumbers() throws IOException, ClassNotFoundException;
     Object[] getNumbersByName(String name) throws IOException, ClassNotFoundException;
+    Object[] getNumbersByNameCol(String name, int idCol) throws IOException, ClassNotFoundException;
     Object[] getNumbersByColName(String name) throws IOException, ClassNotFoundException;
 }

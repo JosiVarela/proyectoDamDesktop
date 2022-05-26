@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Collection;
@@ -24,6 +25,7 @@ import view.controllers.comicNumbers.NumbersInfoController;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -42,7 +44,8 @@ public class CollectionInfoController implements Initializable {
     private Button btnAddNumber;
     @FXML
     private Button btnDelCol;
-
+    @FXML
+    private Button btnSearch;
     @FXML
     private Label lblArgument;
 
@@ -54,6 +57,9 @@ public class CollectionInfoController implements Initializable {
 
     @FXML
     private Label lblFirstPublish;
+
+    @FXML
+    private TextField txtSearch;
 
     @FXML
     private TableView<ComicNumber> comicsTable;
@@ -79,7 +85,7 @@ public class CollectionInfoController implements Initializable {
 
     public void loadCollection(int idCol){
         Object[] requestCol;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_info.fxml"), rb);
+        //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_info.fxml"), rb);
 
         try{
 
@@ -311,15 +317,58 @@ public class CollectionInfoController implements Initializable {
             alerts(rb.getString("err.cargarPantalla"));
         }
     }
+
+    @FXML
+    void txtSearchAction(ActionEvent event) {
+        searchNumber();
+    }
+
+    @FXML
+    void btnSearchAction(ActionEvent event) {
+        searchNumber();
+    }
+
     private void closeAndReload(){
         presentationController.getCollections();
         ((Stage)btnModifyCol.getScene().getWindow()).close();
     }
 
     private void populateNumberList(){
-        numberList.removeAll();
+        numberList.remove(0, numberList.size());
         numberList.addAll(collection.getNumberList());
         comicsTable.setItems(numberList);
+    }
+
+    private void populateNumberList(List<ComicNumber> searchList){
+        numberList.remove(0, numberList.size());
+        numberList.addAll(searchList);
+        comicsTable.setItems(numberList);
+    }
+
+    private void searchNumber(){
+        String search = txtSearch.getText().trim();
+        Object[] response;
+
+        if(search.isEmpty()){
+            loadCollection(this.collection.getId());
+            return;
+        }
+
+        try{
+            response = NumberManagement.getNumbersByNameCol(search, this.collection.getId());
+
+            if(!response[0].equals("OK")){
+                alerts(rb.getString("collectionInfoController.errBuscarNumero"));
+                return;
+            }
+
+            populateNumberList((List<ComicNumber>) response[1]);
+
+        } catch (SocketException e) {
+            alerts(rb.getString("err.noConexion"));
+        } catch (IOException | ClassNotFoundException e) {
+            alerts(rb.getString("err.inesperado"));
+        }
     }
 
     /**

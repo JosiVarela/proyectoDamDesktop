@@ -32,6 +32,10 @@ public class NumberManagement {
         return new ComicNumberDAO().getNumbersByName(name);
     }
 
+    public static Object[] getNumbersByNameCol(String name, int idCol) throws IOException, ClassNotFoundException {
+        return new ComicNumberDAO().getNumbersByNameCol(name, idCol);
+    }
+
     public static Object[] getNumbersByColName(String name) throws IOException, ClassNotFoundException {
         return new ComicNumberDAO().getNumbersByColName(name);
     }
