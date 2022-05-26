@@ -41,6 +41,9 @@ public class MainFormController implements Initializable {
     private AnchorPane mainPane;
 
     @FXML
+    private Button btnMainPage;
+
+    @FXML
     private Button btnHelp;
 
     @FXML
@@ -64,6 +67,7 @@ public class MainFormController implements Initializable {
 
         loadHints();
 
+        loadMainPage();
     }
 
     @FXML
@@ -180,7 +184,37 @@ public class MainFormController implements Initializable {
         }
     }
 
+    @FXML
+    void btnMainPageAction(ActionEvent event) {
+        loadMainPage();
+    }
 
+    private void loadMainPage(){
+        Node node;
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/welcome_screen.fxml"), rb);
+
+        if(currentLoadedWindow != null && currentLoadedWindow.equals(fxmlLoader)){
+            return;
+        }
+
+        currentLoadedWindow = fxmlLoader;
+
+        try {
+
+            node = fxmlLoader.load();
+
+            AnchorPane.setTopAnchor(node, 0d);
+            AnchorPane.setBottomAnchor(node, 0d);
+            AnchorPane.setLeftAnchor(node, 0d);
+            AnchorPane.setRightAnchor(node, 0d);
+            mainPane.getChildren().remove(0, mainPane.getChildren().size());
+            mainPane.getChildren().add(node);
+        }catch (IOException e) {
+            e.printStackTrace();
+            alerts(rb.getString("err.cargarPantalla"));
+        }
+    }
 
     private void translate() {
         //Controls
