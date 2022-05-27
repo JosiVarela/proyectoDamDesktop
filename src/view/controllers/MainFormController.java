@@ -54,9 +54,6 @@ public class MainFormController implements Initializable {
 
     @FXML
     private Button btnConfigMenu;
-
-    @FXML
-    private Button btnInicio;
     @FXML
     private Button btnNumber;
     //</editor-fold>
@@ -144,8 +141,9 @@ public class MainFormController implements Initializable {
 
             if(currentLoadedWindow != null){
                 Translatable translatable = currentLoadedWindow.getController();
-
-                translatable.translate(rb);
+                if(translatable != null){
+                    translatable.translate(rb);
+                }
             }
 
             this.translate();
@@ -252,7 +250,7 @@ public class MainFormController implements Initializable {
 
     private void translate() {
         //Controls
-        btnInicio.setText(rb.getString("mainForm.btnInicio"));
+        btnMainPage.setText(rb.getString("mainForm.btnInicio"));
         btnCollection.setText(rb.getString("mainForm.btnCol"));
         thisStage.setTitle(rb.getString("titulo.principal"));
 

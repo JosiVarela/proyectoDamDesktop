@@ -207,7 +207,7 @@ public class NumbersInfoController implements Initializable {
     void btnModifyAction(ActionEvent event) {
         String isbn = comicNumber.getIsbn();
         Object[] response;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_create_mod.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicNumbers/numbers_create_mod.fxml"), rb);
         Parent root;
 
         try {
