@@ -15,7 +15,7 @@
          <content>
             <TilePane fx:id="cardsPane">
                <children>
-                  <BorderPane fx:id="comicPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                  <BorderPane fx:id="colReport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -23,7 +23,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </TilePane.margin>
                      <bottom>
-                        <Label fx:id="lblName" style="-fx-font-weight: bold;" text="Informe de colecciones" BorderPane.alignment="CENTER">
+                        <Label style="-fx-font-weight: bold;" text="Informe de colecciones" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="10.0" />
                            </BorderPane.margin></Label>
@@ -36,9 +36,9 @@
                         </ImageView>
                      </center>
                   </BorderPane>
-                  <BorderPane fx:id="comicPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
+                  <BorderPane fx:id="colReportName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
                      <bottom>
-                        <Label fx:id="lblName1" style="-fx-font-weight: bold;" text="Informe de colecciones por nombre" BorderPane.alignment="CENTER">
+                        <Label style="-fx-font-weight: bold;" text="Informe de colecciones por nombre" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets />
                            </BorderPane.margin>
@@ -61,9 +61,9 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </TilePane.margin>
                   </BorderPane>
-                  <BorderPane fx:id="comicPane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
+                  <BorderPane fx:id="numberReport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
                      <bottom>
-                        <Label fx:id="lblName2" style="-fx-font-weight: bold;" text="Informe de números" BorderPane.alignment="CENTER">
+                        <Label style="-fx-font-weight: bold;" text="Informe de números" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="10.0" />
                            </BorderPane.margin>
@@ -83,9 +83,9 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </TilePane.margin>
                   </BorderPane>
-                  <BorderPane fx:id="comicPane4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
+                  <BorderPane fx:id="numberReportCol" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
                      <bottom>
-                        <Label fx:id="lblName4" style="-fx-font-weight: bold;" text="Informe de números por colección" BorderPane.alignment="CENTER">
+                        <Label style="-fx-font-weight: bold;" text="Informe de números por colección" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="10.0" />
                            </BorderPane.margin>
@@ -105,9 +105,9 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </TilePane.margin>
                   </BorderPane>
-                  <BorderPane fx:id="comicPane3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
+                  <BorderPane fx:id="numberReportName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
                      <bottom>
-                        <Label fx:id="lblName3" style="-fx-font-weight: bold;" text="Informe de números por nombre" BorderPane.alignment="CENTER">
+                        <Label style="-fx-font-weight: bold;" text="Informe de números por nombre" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="10.0" />
                            </BorderPane.margin>

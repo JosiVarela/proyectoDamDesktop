@@ -23,7 +23,7 @@ public class Launch extends Application {
 
         ResourceBundle resourceBundle = ResourceBundle.getBundle("data.language.language");
 
-        fxmlLoader = new FXMLLoader(getClass().getResource("forms/main_form.fxml"), resourceBundle);
+        fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/main_form.fxml"), resourceBundle);
         Parent root = fxmlLoader.load();
         mainFormController = fxmlLoader.getController();
 

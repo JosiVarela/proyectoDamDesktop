@@ -51,6 +51,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("Cargo esto");
         this.rb = resources;
         this.owner = Resources.getMainWindow();
         getCollections();
@@ -79,7 +80,7 @@ public class CollectionPresentationController implements Initializable, Translat
     }
     @FXML
     void btnAddAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_create_mod.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/collections/collection_create_mod.fxml"), rb);
 
         Parent root;
 
@@ -120,7 +121,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
         for(Collection col : collectionList){
 
-            fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_pane_form.fxml"), rb);
+            fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/collections/collection_pane_form.fxml"), rb);
 
             try {
 

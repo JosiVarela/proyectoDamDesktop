@@ -82,7 +82,7 @@ public class MainFormController implements Initializable {
     void btnCollectionAction(ActionEvent event) {
         Node node;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/collections/collection_presentation.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/collections/collection_presentation.fxml"), rb);
 
         if(currentLoadedWindow != null && currentLoadedWindow.equals(fxmlLoader)){
             return;
@@ -119,7 +119,7 @@ public class MainFormController implements Initializable {
         Locale initLocale = Locale.getDefault();
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../forms/app_config_window.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/forms/app_config_window.fxml"));
         loader.setResources(rb);
 
         try {
@@ -193,7 +193,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void btnReportsAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/reports/reports_presentation.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/reports/reports_presentation.fxml"), rb);
         Parent node;
 
         if(currentLoadedWindow != null && currentLoadedWindow.equals(fxmlLoader)){

@@ -79,7 +79,7 @@ public class NumberPaneController implements Initializable {
     }
 
     private void loadNumberScreen(String isbn) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_info.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicNumbers/numbers_info.fxml"), rb);
         Parent root;
 
         try{

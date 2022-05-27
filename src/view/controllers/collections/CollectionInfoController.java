@@ -174,7 +174,7 @@ public class CollectionInfoController implements Initializable {
 
     @FXML
     void btnModifyAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_create_mod.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/collections/collection_create_mod.fxml"), rb);
 
         Parent root;
 
@@ -289,7 +289,7 @@ public class CollectionInfoController implements Initializable {
     }
     @FXML
     void btnAddNumberAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_create_mod.fxml"),
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicNumbers/numbers_create_mod.fxml"),
                 rb);
         Parent root;
 
@@ -422,7 +422,7 @@ public class CollectionInfoController implements Initializable {
      * @param isbn The number isbn code
      */
     private void loadNumberScreen(String isbn) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/comicNumbers/numbers_info.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicNumbers/numbers_info.fxml"), rb);
         Parent root;
 
         try{

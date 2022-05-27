@@ -63,7 +63,7 @@ public class CollectionPaneController implements Initializable {
 
     private void collectionPaneClick(){
         Object[] requestCol;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_info.fxml"), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/collections/collection_info.fxml"), rb);
 
         try{
             Parent root = fxmlLoader.load();
