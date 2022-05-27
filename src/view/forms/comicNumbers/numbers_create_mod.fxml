@@ -33,12 +33,12 @@
                   </ImageView>
                   <VBox>
                      <children>
-                        <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#btnAddImageAction" prefWidth="70.0" text="Añadir">
+                        <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#btnAddImageAction" prefWidth="70.0" text="%numbersCreateMod.anadir">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btnDelImage" mnemonicParsing="false" onAction="#btnDelImageAction" prefWidth="70.0" text="Eliminar">
+                        <Button fx:id="btnDelImage" mnemonicParsing="false" onAction="#btnDelImageAction" prefWidth="70.0" text="%numbersCreateMod.eliminar">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
@@ -52,7 +52,7 @@
             </HBox>
             <HBox GridPane.rowIndex="1">
                <children>
-                  <Label prefWidth="50.0" text="Nombre">
+                  <Label prefWidth="50.0" text="%numbersCreateMod.nombre">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -65,7 +65,7 @@
             </HBox>
             <HBox GridPane.rowIndex="2">
                <children>
-                  <Label prefWidth="50.0" text="Número">
+                  <Label prefWidth="50.0" text="%numbersCreateMod.numero">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -91,7 +91,7 @@
             </HBox>
             <HBox GridPane.rowIndex="4">
                <children>
-                  <Label prefWidth="50.0" text="Tapa">
+                  <Label prefWidth="50.0" text="%numbersCreateMod.tapa">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -107,7 +107,7 @@
                   <Insets left="20.0" right="20.0" top="10.0" />
                </GridPane.margin>
             </TextArea>
-            <Label text="Argumento" GridPane.rowIndex="5">
+            <Label text="%numbersCreateMod.argumento" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="20.0" top="10.0" />
                </GridPane.margin>
@@ -118,12 +118,12 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnAccept" mnemonicParsing="false" onAction="#btnAcceptAction" text="Aceptar">
+            <Button fx:id="btnAccept" mnemonicParsing="false" onAction="#btnAcceptAction" text="%numbersCreateMod.aceptar">
                <HBox.margin>
                   <Insets bottom="10.0" right="5.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Cancelar">
+            <Button mnemonicParsing="false" text="%numbersCreateMod.cancelar">
                <HBox.margin>
                   <Insets bottom="10.0" left="5.0" right="20.0" top="20.0" />
                </HBox.margin>
