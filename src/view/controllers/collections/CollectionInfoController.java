@@ -206,10 +206,10 @@ public class CollectionInfoController implements Initializable {
             stage.setScene(scene);
             stage.initOwner(this.owner);
             stage.setTitle(rb.getString("collectionCreateMod.modColeccion"));
-            stage.setWidth(620);
-            stage.setHeight(450);
-            stage.setMinHeight(450);
-            stage.setMinWidth(620);
+            stage.setWidth(635);
+            stage.setHeight(845);
+            stage.setMinWidth(635);
+            stage.setMinHeight(845);
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
@@ -303,8 +303,15 @@ public class CollectionInfoController implements Initializable {
 
             numbersCreateMod.innitData(0, collection.getId(),this.owner);
 
+            ;
             stage.setScene(scene);
             stage.initOwner(this.owner);
+            stage.setTitle(rb.getString("collectionInfo.altaNumero"));
+            stage.setWidth(635);
+            stage.setHeight(845);
+            stage.setMinWidth(635);
+            stage.setMinHeight(845);
+            stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 

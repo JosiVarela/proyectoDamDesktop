@@ -26,8 +26,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -238,9 +236,15 @@ public class NumbersInfoController implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.initOwner(this.owner);
-            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
+            stage.setWidth(635);
+            stage.setHeight(845);
+            stage.setMinWidth(635);
+            stage.setMinHeight(845);
+            stage.getIcons().add(Resources.APP_ICON);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(this.owner);
+            stage.setTitle(rb.getString("numbersInfo.modificarEjemplar"));
             stage.showAndWait();
 
             if(numbersCreateMod.isNeedUpdate()){
@@ -319,7 +323,7 @@ public class NumbersInfoController implements Initializable {
 
     @FXML
     void btnSearchAction(ActionEvent event) {
-
+        //TODO
     }
 
     @FXML
@@ -354,8 +358,14 @@ public class NumbersInfoController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setWidth(635);
+            stage.setHeight(845);
+            stage.setMinWidth(635);
+            stage.setMinHeight(845);
+            stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(this.owner);
+            stage.setTitle(rb.getString("numbersInfo.altaEjemplar"));
             stage.showAndWait();
 
             if(copiesCreateMod.isNeedUpdate()){
@@ -449,6 +459,7 @@ public class NumbersInfoController implements Initializable {
      * This method load the comic copies in the table
      */
     private void loadCopyScreen(int id){
+        System.out.println("Entro");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicCopies/copies_create_mod.fxml"), rb);
         Parent root;
 
@@ -465,9 +476,16 @@ public class NumbersInfoController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.initOwner(this.owner);
+            stage.setWidth(635);
+            stage.setHeight(845);
+            stage.setMinWidth(635);
+            stage.setMinHeight(845);
+            stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(this.owner);
+            stage.setTitle(rb.getString("numbersInfo.modificarEjemplar"));
             stage.showAndWait();
+
 
             if(copiesCreateMod.isNeedUpdate()){
                 loadComicNumber();

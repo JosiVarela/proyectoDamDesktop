@@ -51,7 +51,6 @@ public class CollectionPresentationController implements Initializable, Translat
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Cargo esto");
         this.rb = resources;
         this.owner = Resources.getMainWindow();
         getCollections();

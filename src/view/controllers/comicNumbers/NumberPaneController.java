@@ -78,6 +78,10 @@ public class NumberPaneController implements Initializable {
         loadNumberScreen(comicNumber.getIsbn());
     }
 
+    /**
+     * This method show number info screen
+     * @param isbn
+     */
     private void loadNumberScreen(String isbn) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicNumbers/numbers_info.fxml"), rb);
         Parent root;
@@ -103,6 +107,7 @@ public class NumberPaneController implements Initializable {
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(this.owner);
+            stage.setTitle(rb.getString("numberPan.infoNumero"));
             stage.showAndWait();
 
             if(infoController.isNeedUpdate()){
