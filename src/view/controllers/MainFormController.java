@@ -41,6 +41,9 @@ public class MainFormController implements Initializable {
     private AnchorPane mainPane;
 
     @FXML
+    private Button btnReports;
+
+    @FXML
     private Button btnMainPage;
 
     @FXML
@@ -179,7 +182,6 @@ public class MainFormController implements Initializable {
         } catch (SocketException e){
             alerts(rb.getString("err.noConexion"));
         } catch (IOException e) {
-            e.printStackTrace();
             alerts(rb.getString("err.cargarPantalla"));
         }
     }
@@ -187,6 +189,38 @@ public class MainFormController implements Initializable {
     @FXML
     void btnMainPageAction(ActionEvent event) {
         loadMainPage();
+    }
+
+    @FXML
+    void btnReportsAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../forms/reports/reports_presentation.fxml"), rb);
+        Parent node;
+
+        if(currentLoadedWindow != null && currentLoadedWindow.equals(fxmlLoader)){
+            return;
+        }
+
+        currentLoadedWindow = fxmlLoader;
+
+        if(ServerConnection.getConnection() == null){
+            alerts(rb.getString("err.noConexion"));
+            return;
+        }
+
+        try {
+
+            node = fxmlLoader.load();
+
+            AnchorPane.setTopAnchor(node, 0d);
+            AnchorPane.setBottomAnchor(node, 0d);
+            AnchorPane.setLeftAnchor(node, 0d);
+            AnchorPane.setRightAnchor(node, 0d);
+            mainPane.getChildren().remove(0, mainPane.getChildren().size());
+            mainPane.getChildren().add(node);
+        }  catch (IOException e) {
+            alerts(rb.getString("err.cargarPantalla"));
+        }
+
     }
 
     private void loadMainPage(){

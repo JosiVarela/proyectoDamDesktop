@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.reports.ReportsPresentation">
+   <center>
+      <ScrollPane fitToWidth="true" style="-fx-fit-to-width: true;" BorderPane.alignment="CENTER">
+         <content>
+            <TilePane fx:id="cardsPane">
+               <children>
+                  <BorderPane fx:id="comicPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <TilePane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </TilePane.margin>
+                     <bottom>
+                        <Label fx:id="lblName" style="-fx-font-weight: bold;" text="Informe de colecciones" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" />
+                           </BorderPane.margin></Label>
+                     </bottom>
+                     <center>
+                        <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../../../data/images/reportIcon.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                  </BorderPane>
+                  <BorderPane fx:id="comicPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
+                     <bottom>
+                        <Label fx:id="lblName1" style="-fx-font-weight: bold;" text="Informe de colecciones por nombre" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </Label>
+                     </bottom>
+                     <center>
+                        <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../../../data/images/reportIcon.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <TilePane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </TilePane.margin>
+                  </BorderPane>
+                  <BorderPane fx:id="comicPane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
+                     <bottom>
+                        <Label fx:id="lblName2" style="-fx-font-weight: bold;" text="Informe de números" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </bottom>
+                     <center>
+                        <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../../../data/images/reportIcon.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <TilePane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </TilePane.margin>
+                  </BorderPane>
+                  <BorderPane fx:id="comicPane4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
+                     <bottom>
+                        <Label fx:id="lblName4" style="-fx-font-weight: bold;" text="Informe de números por colección" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </bottom>
+                     <center>
+                        <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../../../data/images/reportIcon.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <TilePane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </TilePane.margin>
+                  </BorderPane>
+                  <BorderPane fx:id="comicPane3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
+                     <bottom>
+                        <Label fx:id="lblName3" style="-fx-font-weight: bold;" text="Informe de números por nombre" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </bottom>
+                     <center>
+                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../../../data/images/reportIcon.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <TilePane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </TilePane.margin>
+                  </BorderPane>
+               </children></TilePane>
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblPanel" text="%mainForm.btnReports" HBox.hgrow="NEVER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Pane minWidth="100.0" HBox.hgrow="ALWAYS" />
+            <ChoiceBox>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </ChoiceBox>
+            <TextField prefWidth="300.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../data/images/search_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../data/images/add_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
