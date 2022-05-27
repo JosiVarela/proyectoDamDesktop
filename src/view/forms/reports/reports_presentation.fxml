@@ -23,7 +23,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </TilePane.margin>
                      <bottom>
-                        <Label style="-fx-font-weight: bold;" text="Informe de colecciones" BorderPane.alignment="CENTER">
+                        <Label fx:id="lblColReport" style="-fx-font-weight: bold;" text="%reports.informeColecciones" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="10.0" />
                            </BorderPane.margin></Label>
@@ -38,7 +38,7 @@
                   </BorderPane>
                   <BorderPane fx:id="colReportName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
                      <bottom>
-                        <Label style="-fx-font-weight: bold;" text="Informe de colecciones por nombre" BorderPane.alignment="CENTER">
+                        <Label fx:id="lblColReportName" style="-fx-font-weight: bold;" text="%reports.informeColeccionesNombre" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets />
                            </BorderPane.margin>
@@ -63,7 +63,7 @@
                   </BorderPane>
                   <BorderPane fx:id="numberReport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
                      <bottom>
-                        <Label style="-fx-font-weight: bold;" text="Informe de números" BorderPane.alignment="CENTER">
+                        <Label fx:id="lblNumberReport" style="-fx-font-weight: bold;" text="%reports.informeNumeros" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="10.0" />
                            </BorderPane.margin>
@@ -85,7 +85,7 @@
                   </BorderPane>
                   <BorderPane fx:id="numberReportCol" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
                      <bottom>
-                        <Label style="-fx-font-weight: bold;" text="Informe de números por colección" BorderPane.alignment="CENTER">
+                        <Label fx:id="lblNumberReportCol" style="-fx-font-weight: bold;" text="%reports.informeNumerosColec" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="10.0" />
                            </BorderPane.margin>
@@ -107,7 +107,7 @@
                   </BorderPane>
                   <BorderPane fx:id="numberReportName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
                      <bottom>
-                        <Label style="-fx-font-weight: bold;" text="Informe de números por nombre" BorderPane.alignment="CENTER">
+                        <Label fx:id="lblNumberReportName" style="-fx-font-weight: bold;" text="%reports.informeNumerosNombre" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="10.0" />
                            </BorderPane.margin>
@@ -146,43 +146,6 @@
                </HBox.margin>
             </Label>
             <Pane minWidth="100.0" HBox.hgrow="ALWAYS" />
-            <ChoiceBox>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
-            </ChoiceBox>
-            <TextField prefWidth="300.0" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </HBox.margin>
-            </TextField>
-            <Button mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../data/images/search_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="5.0" right="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../data/images/add_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
    </top>
