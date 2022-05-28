@@ -1,6 +1,6 @@
 package controller;
 
-import model.daos.NumberCopiesDAO;
+import daos.NumberCopiesDAO;
 import model.entities.ComicCopy;
 
 import java.io.IOException;

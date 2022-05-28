@@ -28,7 +28,8 @@ public class Launch extends Application {
         mainFormController = fxmlLoader.getController();
 
         Scene scene = new Scene(root);
-        stage.setTitle(resourceBundle.getString("titulo.principal"));
+        //stage.setTitle(resourceBundle.getString("titulo.principal"));
+        stage.setTitle("Norma Comics");
         stage.getIcons().add(Resources.APP_ICON);
         stage.setWidth(1000);
         stage.setHeight(500);

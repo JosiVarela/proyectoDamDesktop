@@ -1,7 +1,7 @@
 package controller;
 
 
-import model.daos.CollectionDAO;
+import daos.CollectionDAO;
 import model.entities.Collection;
 
 import java.io.IOException;

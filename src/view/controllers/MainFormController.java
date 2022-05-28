@@ -252,7 +252,7 @@ public class MainFormController implements Initializable {
         //Controls
         btnMainPage.setText(rb.getString("mainForm.btnInicio"));
         btnCollection.setText(rb.getString("mainForm.btnCol"));
-        thisStage.setTitle(rb.getString("titulo.principal"));
+        //thisStage.setTitle(rb.getString("titulo.principal"));
 
         //Load hints
         loadHints();

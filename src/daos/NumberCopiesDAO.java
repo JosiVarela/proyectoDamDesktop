@@ -1,4 +1,4 @@
-package model.daos;
+package daos;
 
 import controller.ServerConnection;
 import model.entities.ComicCopy;

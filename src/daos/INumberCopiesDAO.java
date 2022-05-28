@@ -1,4 +1,4 @@
-package model.daos;
+package daos;
 
 import model.entities.ComicCopy;
 
