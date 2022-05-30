@@ -2,80 +2,68 @@ package view.controllers.reports;
 
 import com.github.gbfragoso.JasperViewerFX;
 import controller.ReportsManagement;
-import controller.Translatable;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.TilePane;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import net.sf.jasperreports.engine.JasperPrint;
-import services.Resources;
 import view.controllers.LoadScreenController;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ReportsPresentation implements Initializable, Translatable {
+public class ColNameReport implements Initializable {
     private ResourceBundle rb;
-
     private Stage owner;
 
     @FXML
-    private Label lblNumberReportName;
+    private Button btnAccept;
 
     @FXML
-    private BorderPane numberReportCol;
+    private TextField txtColName;
 
     @FXML
-    private Label lblNumberReportCol;
-
-    @FXML
-    private BorderPane colReportName;
-
-    @FXML
-    private TilePane cardsPane;
-
-    @FXML
-    private Label lblColReport;
-
-    @FXML
-    private Label lblNumberReport;
-
-    @FXML
-    private Label lblColReportName;
-
-    @FXML
-    private Label lblPanel;
-
-    @FXML
-    private BorderPane numberReport;
-
-    @FXML
-    private BorderPane colReport;
-
-    @FXML
-    private BorderPane numberReportName;
-
+    private Button btnCancel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
-        this.owner = Resources.getMainWindow();
-
-        colReport.setOnMouseClicked(event -> colReportAction());
-        colReportName.setOnMouseClicked(event -> colNameReportAction());
     }
 
-    private void colReportAction(){
+    @FXML
+    void btnAcceptAction(ActionEvent event) {
+        loadReport();
+    }
+
+    @FXML
+    void txtColNameAction(ActionEvent event) {
+        loadReport();
+    }
+
+    @FXML
+    void btnCancelAction(ActionEvent event) {
+        ((Stage)btnCancel.getScene().getWindow()).close();
+    }
+
+    private void loadReport(){
+        String name = txtColName.getText().trim();
+
+        if(name.isEmpty()){
+            System.out.println("debe introducir un nombre de colección");
+            return;
+        }
+
+        ((Stage)btnAccept.getScene().getWindow()).close();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/load_screen.fxml"));
         Parent root;
@@ -99,7 +87,7 @@ public class ReportsPresentation implements Initializable, Translatable {
             Object[] response;
 
             try{
-                response = ReportsManagement.getCollectionReport();
+                response = ReportsManagement.getCollectionReportByName(name);
 
                 switch ((String)response[0]){
                     case "SQLE Error" -> {
@@ -139,29 +127,6 @@ public class ReportsPresentation implements Initializable, Translatable {
         th.start();
 
         stage.show();
-
-    }
-
-    private void colNameReportAction(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/reports/col_name_report.fxml"), rb);
-        Parent root;
-
-        try{
-            root = fxmlLoader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.getIcons().add(Resources.APP_ICON);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(this.owner);
-            stage.showAndWait();
-
-
-        } catch (IOException e) {
-            alerts(rb.getString("err.inesperado"));
-        }
     }
 
     private void alerts(String alertMsg){
@@ -171,14 +136,5 @@ public class ReportsPresentation implements Initializable, Translatable {
         alert.setTitle(rb.getString("error"));
         alert.setContentText(alertMsg);
         alert.showAndWait();
-    }
-
-    @Override
-    public void translate(ResourceBundle resources) {
-        lblColReport.setText(resources.getString("reports.informeColecciones"));
-        lblColReportName.setText(resources.getString("reports.informeColeccionesNombre"));
-        lblNumberReport.setText(resources.getString("reports.informeNumeros"));
-        lblNumberReportCol.setText(resources.getString("reports.informeNumerosColec"));
-        lblNumberReportName.setText(resources.getString("reports.informeNumerosNombre"));
     }
 }
