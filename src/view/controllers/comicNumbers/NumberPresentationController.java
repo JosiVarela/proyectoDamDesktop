@@ -69,10 +69,8 @@ public class NumberPresentationController implements Initializable, Translatable
         }
 
         if(cmbSearch.getValue().equals(rb.getString("numberPresentation.numeros"))){
-            System.out.println("Entro números");
             searchNumber();
         }else{
-            System.out.println("Entro colecciones");
             searchCollection();
         }
     }
