@@ -61,23 +61,12 @@ public class NumberPresentationController implements Initializable, Translatable
 
     @FXML
     void txtSearchAction(ActionEvent event) {
-        String search = txtSearch.getText().trim();
-
-        if(search.isEmpty()){
-            getNumbers();
-            return;
-        }
-
-        if(cmbSearch.getValue().equals(rb.getString("numberPresentation.numeros"))){
-            searchNumber();
-        }else{
-            searchCollection();
-        }
+        search();
     }
 
     @FXML
     void btnSearchAction(ActionEvent event) {
-
+        search();
     }
 
     @FXML
@@ -145,6 +134,21 @@ public class NumberPresentationController implements Initializable, Translatable
                 alerts(rb.getString("err.ObtenerColecciones"));
                 return;
             }
+        }
+    }
+
+    private void search(){
+        String search = txtSearch.getText().trim();
+
+        if(search.isEmpty()){
+            getNumbers();
+            return;
+        }
+
+        if(cmbSearch.getValue().equals(rb.getString("numberPresentation.numeros"))){
+            searchNumber();
+        }else{
+            searchCollection();
         }
     }
 
