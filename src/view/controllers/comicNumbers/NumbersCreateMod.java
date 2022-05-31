@@ -57,6 +57,9 @@ public class NumbersCreateMod implements Initializable {
     private TextField txtNumber;
 
     @FXML
+    private Button btnCancel;
+
+    @FXML
     private TextArea txtArgument;
 
     @FXML
@@ -142,6 +145,11 @@ public class NumbersCreateMod implements Initializable {
         comicImage.setImage(new Image("/data/images/noImage.png", comicImage.getFitWidth(), comicImage.getFitHeight(),
                 false, true));
         btnDelImage.setDisable(true);
+    }
+
+    @FXML
+    void btnCancelAction(ActionEvent event) {
+        ((Stage)btnCancel.getScene().getWindow()).close();
     }
 
     /**
