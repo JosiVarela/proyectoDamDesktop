@@ -51,19 +51,7 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets left="5.0" right="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddAction">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../data/images/add_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets right="5.0" />
+                  <Insets left="5.0" right="10.0" />
                </HBox.margin>
             </Button>
          </children>

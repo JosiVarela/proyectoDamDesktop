@@ -41,9 +41,6 @@ public class NumberPresentationController implements Initializable, Translatable
     private TilePane cardsPane;
 
     @FXML
-    private Button btnAdd;
-
-    @FXML
     private TextField txtSearch;
 
     @FXML
@@ -69,14 +66,8 @@ public class NumberPresentationController implements Initializable, Translatable
         search();
     }
 
-    @FXML
-    void btnAddAction(ActionEvent event) {
-
-    }
-
     private void loadHints(){
         btnSearch.setTooltip(new Tooltip(rb.getString("buscar")));
-        btnAdd.setTooltip(new Tooltip(rb.getString("collectionPresentation.anhadir")));
     }
 
     public void getNumbers(){
