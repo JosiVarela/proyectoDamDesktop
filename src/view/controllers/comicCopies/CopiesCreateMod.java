@@ -58,7 +58,7 @@ public class CopiesCreateMod implements Initializable {
     public void innitData(int idCopie, int idOperation, Stage owner){
         this.idOperation = idOperation;
         this.owner = owner;
-
+        loadCombo();
         loadCopieData(idCopie);
     }
 
@@ -157,8 +157,12 @@ public class CopiesCreateMod implements Initializable {
     }
 
     private void loadCombo(){
+        System.out.println("Cargo combo");
         comboList.addAll(rb.getString("copiesCreateMod.cmbNuevo"), rb.getString("copiesCreateMod.cmbComoNuevo"),
                 rb.getString("copiesCreateMod.aceptable"), rb.getString("copiesCreateMod.malo"));
+
+        System.out.println("Longitud combo" + comboList.size());
+
 
         cmbState.setItems(comboList);
     }
@@ -166,7 +170,7 @@ public class CopiesCreateMod implements Initializable {
     private void insertCopie(){
         LocalDate purchaseDate = txtDate.getValue();
         String state = cmbState.getValue();
-        String observations = txtObservations.getText().trim();
+        String observations = (txtObservations.getText() == null ? "" : txtObservations.getText()).trim();
         int stateInt;
         ComicCopy comicCopy;
         Object[] response;
@@ -225,7 +229,7 @@ public class CopiesCreateMod implements Initializable {
     private void updateCopy(){
         LocalDate purchaseDate = txtDate.getValue();
         String state = cmbState.getValue();
-        String observations = txtObservations.getText().trim();
+        String observations = (txtObservations.getText() == null ? "" : txtObservations.getText()).trim();
         int stateInt;
         ComicCopy comicCopy;
         Object[] response;
