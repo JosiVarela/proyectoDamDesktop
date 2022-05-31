@@ -7,7 +7,7 @@ import java.util.List;
 public class Collection implements Serializable {
     private int id;
     private String title;
-    private LocalDate publishDate;
+    private LocalDate creationDate;
     private String argument;
     private int comicQuantity;
     private List<ComicNumber> numberList;
@@ -16,10 +16,16 @@ public class Collection implements Serializable {
     public Collection() {
     }
 
-    public Collection(int id, String title, LocalDate publishDate, String argument) {
+    public Collection(int id, String title, LocalDate creationDate, String argument) {
         this.id = id;
         this.title = title;
-        this.publishDate = publishDate;
+        this.creationDate = creationDate;
+        this.argument = argument;
+    }
+
+    public Collection(int id, String title, String argument) {
+        this.id = id;
+        this.title = title;
         this.argument = argument;
     }
 
@@ -39,12 +45,12 @@ public class Collection implements Serializable {
         this.title = title;
     }
 
-    public LocalDate getPublishDate() {
-        return publishDate;
+    public LocalDate getCreationDate() {
+        return creationDate;
     }
 
-    public void setPublishDate(LocalDate publishDate) {
-        this.publishDate = publishDate;
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getArgument() {

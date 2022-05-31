@@ -8,12 +8,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Collection;
@@ -25,6 +23,7 @@ import view.controllers.comicNumbers.NumbersInfoController;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -56,7 +55,7 @@ public class CollectionInfoController implements Initializable {
     private Label lblNumbers;
 
     @FXML
-    private Label lblFirstPublish;
+    private Label lblCreationDate;
 
     @FXML
     private TextField txtSearch;
@@ -111,8 +110,8 @@ public class CollectionInfoController implements Initializable {
 
     private void loadCollectionData(){
         lblComicTitle.setText(collection.getTitle());
-        lblFirstPublish.setText(lblFirstPublish.getText() + " " + collection.getPublishDate());
-        lblNumbers.setText(collection.getComicQuantity() + " " + lblNumbers.getText());
+        lblCreationDate.setText(collection.getCreationDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        lblNumbers.setText(String.valueOf(collection.getComicQuantity()));
         txtArgument.setText(collection.getArgument());
         if(!this.neededUpdate){
             populateNumberList();

@@ -35,9 +35,6 @@ public class CollectionCreateMod implements Initializable {
     private TextField txtName;
 
     @FXML
-    private DatePicker txtDate;
-
-    @FXML
     private Button btnAccept;
 
     @FXML
@@ -50,7 +47,6 @@ public class CollectionCreateMod implements Initializable {
         this.neededUpdate = false;
 
         txtName.setText(collection.getTitle());
-        txtDate.setValue(collection.getPublishDate());
         txtArgument.setText(collection.getArgument());
 
     }
@@ -79,14 +75,13 @@ public class CollectionCreateMod implements Initializable {
     @FXML
     void btnAcceptAction(ActionEvent event) {
         String name = txtName.getText().trim();
-        LocalDate date = txtDate.getValue();
         String argument = txtArgument.getText().trim();
 
         try{
             if(operationId == 0){
-                updateCol(name, date, argument);
+                updateCol(name, argument);
             }else{
-                createCol(name, date, argument);
+                createCol(name, argument);
             }
         }catch (SocketException e) {
             alerts(rb.getString("err.noConexion"));
@@ -102,7 +97,7 @@ public class CollectionCreateMod implements Initializable {
         stage.close();
     }
 
-    private void updateCol(String name, LocalDate date, String argument) throws IOException {
+    private void updateCol(String name, String argument) throws IOException {
         boolean existsCol;
         Object[] serverResponse;
         Collection auxCol;
@@ -112,19 +107,12 @@ public class CollectionCreateMod implements Initializable {
             return;
         }
 
-        if(collection.getTitle().equals(name) && collection.getPublishDate().equals(date) &&
-                collection.getArgument().equals(argument)){
-            Stage stage = (Stage) btnAccept.getScene().getWindow();
-            stage.close();
-            return;
-        }
-
         if(name.length() > 500){
             alerts(rb.getString("errCollectionCreateMod.coleccion500Car"));
             return;
         }
 
-        auxCol = new Collection(collection.getId(), name, date, argument);
+        auxCol = new Collection(collection.getId(), name, argument);
 
         serverResponse = CollectionManagement.existsCollectionWithName(auxCol.getId(), name);
 
@@ -156,11 +144,11 @@ public class CollectionCreateMod implements Initializable {
 
 
     }
-    private void createCol(String name, LocalDate date, String argument) throws IOException {
+    private void createCol(String name, String argument) throws IOException {
         boolean existsCol;
         Object[] serverResponse;
 
-        if(name.isEmpty() || argument.isEmpty() || date == null){
+        if(name.isEmpty() || argument.isEmpty()){
             alerts(rb.getString("errCollectionCreateMod.completarCampos"));
             return;
         }
@@ -170,7 +158,7 @@ public class CollectionCreateMod implements Initializable {
             return;
         }
 
-        this.collection = new Collection(collection.getId(), name, date, argument);
+        this.collection = new Collection(collection.getId(), name, LocalDate.now(), argument);
 
         serverResponse = CollectionManagement.existsCollectionWithName(name);
 

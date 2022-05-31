@@ -35,10 +35,6 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblNumbers" text="%collectionInfo.numeros" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
                   <Button fx:id="btnModifyCol" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnModifyAction" prefHeight="50.0" text="%collectionInfo.modificar" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="50.0" right="50.0" top="20.0" />
@@ -49,11 +45,6 @@
                         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label fx:id="lblFirstPublish" text="%collectionInfo.primPublicacion" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="lblArgument" text="%collectionInfo.argumento" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets left="50.0" />
@@ -67,6 +58,26 @@
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
                   </TextArea>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="%collectionInfo.fechaCreacion" HBox.hgrow="NEVER" />
+                        <Label fx:id="lblCreationDate" text="Label" HBox.hgrow="NEVER">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                     <children>
+                        <Label text="%collectionInfo.numeros" HBox.hgrow="NEVER" />
+                        <Label fx:id="lblNumbers" text="Label" HBox.hgrow="NEVER">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </GridPane>
          </content>
