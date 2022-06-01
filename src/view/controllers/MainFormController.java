@@ -131,6 +131,10 @@ public class MainFormController implements Initializable {
             Stage stage = new Stage();
             stage.setMaxWidth(700);
             stage.setMaxHeight(900);
+            stage.setWidth(620);
+            stage.setHeight(440);
+            stage.setMinWidth(620);
+            stage.setMinHeight(440);
             stage.initOwner(this.thisStage);
             stage.setTitle(rb.getString("configuracion"));
             stage.getIcons().add(new Image("/data/images/app_icon.png"));
