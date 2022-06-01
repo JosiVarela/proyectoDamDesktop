@@ -33,7 +33,7 @@ public class CollectionInfoController implements Initializable {
     private Collection collection;
     private ResourceBundle rb;
     private boolean neededUpdate;
-    private Stage owner;
+    private Scene owner;
     private CollectionPresentationController presentationController;
 
     //<editor-fold desc="FXML vars definition">
@@ -82,9 +82,12 @@ public class CollectionInfoController implements Initializable {
     private TextArea txtArgument;
     //</editor-fold>
 
+    public void setScene(Scene scene){
+        this.owner = scene;
+    }
+
     public void loadCollection(int idCol){
         Object[] requestCol;
-        //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../forms/collections/collection_info.fxml"), rb);
 
         try{
 
@@ -137,7 +140,7 @@ public class CollectionInfoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
-        this.owner = Resources.getMainWindow();
+        //this.owner = Resources.getMainWindow();
 
         numberList = FXCollections.observableArrayList();
 
@@ -202,8 +205,9 @@ public class CollectionInfoController implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            collectionCreateMod.setOwner(scene);
             stage.setScene(scene);
-            stage.initOwner(this.owner);
+            stage.initOwner(this.owner.getWindow());
             stage.setTitle(rb.getString("collectionCreateMod.modColeccion"));
             stage.setWidth(635);
             stage.setHeight(845);
@@ -255,7 +259,7 @@ public class CollectionInfoController implements Initializable {
 
 
         Alert question = new Alert(Alert.AlertType.CONFIRMATION);
-        question.initOwner(this.owner);
+        question.initOwner(this.owner.getWindow());
         question.setHeaderText(null);
         question.setTitle(rb.getString("eliminar"));
         question.setContentText(rb.getString("collectionInfoController.seguroEliminar"));
@@ -299,12 +303,14 @@ public class CollectionInfoController implements Initializable {
             Stage stage = new Stage();
 
             NumbersCreateMod numbersCreateMod = fxmlLoader.getController();
+            numbersCreateMod.innitData(0, collection.getId(), (Stage) this.owner.getWindow());
 
-            numbersCreateMod.innitData(0, collection.getId(),this.owner);
 
-            ;
             stage.setScene(scene);
-            stage.initOwner(this.owner);
+            stage.initOwner(this.owner.getWindow());
+
+            numbersCreateMod.setOwner(scene);
+
             stage.setTitle(rb.getString("collectionInfo.altaNumero"));
             stage.setWidth(635);
             stage.setHeight(845);
@@ -428,6 +434,7 @@ public class CollectionInfoController implements Initializable {
      * @param isbn The number isbn code
      */
     private void loadNumberScreen(String isbn) {
+        //TODO SET SCENE
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicNumbers/numbers_info.fxml"), rb);
         Parent root;
 
@@ -451,7 +458,7 @@ public class CollectionInfoController implements Initializable {
             stage.setMinHeight(845);
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(this.owner);
+            stage.initOwner(this.owner.getWindow());
             stage.showAndWait();
 
             if(infoController.isNeedUpdate()){
@@ -466,7 +473,7 @@ public class CollectionInfoController implements Initializable {
 
     private void alerts(String alertMsg){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(this.owner);
+        alert.initOwner(this.owner.getWindow());
         alert.setHeaderText(null);
         alert.setTitle(rb.getString("error"));
         alert.setContentText(alertMsg);

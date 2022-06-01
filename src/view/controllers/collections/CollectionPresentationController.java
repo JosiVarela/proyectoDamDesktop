@@ -29,7 +29,9 @@ public class CollectionPresentationController implements Initializable, Translat
     private final List<Collection> collectionList = new ArrayList<>();
     private ResourceBundle rb;
 
-    private Stage owner;
+    private Scene owner;
+
+    private Stage thisStage;
 
     //<editor-fold desc="FXML vars Definition">
     @FXML
@@ -49,11 +51,19 @@ public class CollectionPresentationController implements Initializable, Translat
     //</editor-fold>
 
 
+    public void setOwner(Scene scene){
+        this.owner = scene;
+    }
+
+    public void innitData(){
+        getCollections();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
-        this.owner = Resources.getMainWindow();
-        getCollections();
+        //this.owner = Resources.getMainWindow();
+
     }
 
     @FXML
@@ -93,7 +103,7 @@ public class CollectionPresentationController implements Initializable, Translat
             Stage stage = new Stage();
 
             stage.setScene(scene);
-            stage.initOwner(this.owner);
+            stage.initOwner(this.owner.getWindow());
             stage.setWidth(620);
             stage.setHeight(450);
             stage.setMinHeight(450);
@@ -114,7 +124,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
     private void loadCollections(){
         FXMLLoader fxmlLoader;
-        Node node;
+        Parent node;
 
         cardsPane.getChildren().remove(0, cardsPane.getChildren().size());
 
@@ -128,11 +138,15 @@ public class CollectionPresentationController implements Initializable, Translat
 
                 CollectionPaneController paneController = fxmlLoader.getController();
 
+                paneController.setOwner(owner);
+
                 paneController.innitData(col, this);
 
                 TilePane.setMargin(node, new Insets(5));
 
                 cardsPane.getChildren().add(node);
+
+
             } catch (IOException e) {
                 alerts(rb.getString("err.ObtenerColecciones"));
                 return;
@@ -211,7 +225,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
     private void alerts(String alertMsg){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(this.owner);
+        alert.initOwner(this.owner.getWindow());
         alert.setHeaderText(null);
         alert.setTitle(rb.getString("error"));
         alert.setContentText(alertMsg);

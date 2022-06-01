@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,7 +39,7 @@ public class NumbersCreateMod implements Initializable {
 
     private int colId;
 
-    private Stage owner;
+    private Scene owner;
 
     private boolean needUpdate;
 
@@ -69,6 +70,10 @@ public class NumbersCreateMod implements Initializable {
     @FXML
     private Button btnDelImage;
 
+    public void setOwner(Scene owner) {
+        this.owner = owner;
+    }
+
     public boolean isLoaded(){
         return comicNumber != null;
     }
@@ -79,15 +84,13 @@ public class NumbersCreateMod implements Initializable {
 
     public void innitData(int operationMode, int colId, Stage owner){
         this.operationMode = operationMode;
-        this.owner = owner;
         this.colId = colId;
 
         loadDefaultData();
     }
 
-    public void innitData(int operationMode, String isbn, Stage owner){
+    public void innitData(int operationMode, String isbn){
         this.operationMode = operationMode;
-        this.owner = owner;
 
         loadNumberData(isbn);
     }
@@ -106,7 +109,7 @@ public class NumbersCreateMod implements Initializable {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("*.png, *.jpg", "*.png", "*.jpg")
         );
-        file = fileChooser.showOpenDialog(Resources.getMainWindow());
+        file = fileChooser.showOpenDialog(this.owner.getWindow());
 
         if(file == null){
             return;
@@ -367,7 +370,7 @@ public class NumbersCreateMod implements Initializable {
 
     private void alerts(String alertMsg){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(this.owner);
+        alert.initOwner(this.owner.getWindow());
         alert.setHeaderText(null);
         alert.setTitle(rb.getString("error"));
         alert.setContentText(alertMsg);

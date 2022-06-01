@@ -91,7 +91,7 @@ public class ReportsPresentation implements Initializable, Translatable {
 
         Scene scene = new Scene(root);
         Stage stage = new Stage(StageStyle.UNDECORATED);
-
+        stage.initOwner(this.owner);
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
 

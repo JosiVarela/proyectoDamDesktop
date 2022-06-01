@@ -26,7 +26,7 @@ public class CollectionPaneController implements Initializable {
     private ResourceBundle rb;
     private Collection collection;
 
-    private Stage owner;
+    private Scene owner;
 
     private CollectionPresentationController presentationController;
 
@@ -38,6 +38,10 @@ public class CollectionPaneController implements Initializable {
     private BorderPane comicPane;
     //</editor-fold>
 
+
+    public void setOwner(Scene owner){
+        this.owner = owner;
+    }
 
     public void innitData(Collection collection, CollectionPresentationController presentationController) {
         this.collection = collection;
@@ -57,7 +61,7 @@ public class CollectionPaneController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
-        this.owner = Resources.getMainWindow();
+        //this.owner = Resources.getMainWindow();
         comicPane.setOnMouseClicked(event -> collectionPaneClick());
     }
 
@@ -83,11 +87,9 @@ public class CollectionPaneController implements Initializable {
                 return;
             }
 
-
-
-
             controller.innitData(this.presentationController);
             controller.loadCollection(this.collection.getId());
+
 
             if(!controller.isLoaded()){
                 return;
@@ -95,8 +97,9 @@ public class CollectionPaneController implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            controller.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(this.owner);
+            stage.initOwner(this.owner.getWindow());
             stage.setScene(scene);
             stage.setWidth(635);
             stage.setHeight(845);
@@ -120,7 +123,7 @@ public class CollectionPaneController implements Initializable {
 
     private void alerts(String alertMsg){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(this.owner);
+        alert.initOwner(this.owner.getWindow());
         alert.setHeaderText(null);
         alert.setTitle(rb.getString("error"));
         alert.setContentText(alertMsg);

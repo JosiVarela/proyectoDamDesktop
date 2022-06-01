@@ -16,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import net.sf.jasperreports.engine.JasperPrint;
+import services.Resources;
 import view.controllers.LoadScreenController;
 
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class ColNameReport implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
+        this.owner = Resources.getMainWindow();
     }
 
     @FXML
@@ -79,7 +81,8 @@ public class ColNameReport implements Initializable {
 
         Scene scene = new Scene(root);
         Stage stage = new Stage(StageStyle.UNDECORATED);
-
+        System.out.println(this.owner);
+        stage.initOwner(this.owner);
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
 

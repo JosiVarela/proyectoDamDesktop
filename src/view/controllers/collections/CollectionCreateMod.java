@@ -3,6 +3,7 @@ package view.controllers.collections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import controller.CollectionManagement;
@@ -25,7 +26,7 @@ public class CollectionCreateMod implements Initializable {
      */
     private int operationId;
 
-    private Stage owner;
+    private Scene owner;
 
     //<editor-fold desc="FXML vars Definition">
     @FXML
@@ -40,6 +41,10 @@ public class CollectionCreateMod implements Initializable {
     @FXML
     private TextArea txtArgument;
     //</editor-fold>
+
+    public void setOwner(Scene owner) {
+        this.owner = owner;
+    }
 
     public void modifyOption(Collection collection){
         this.operationId = 0;
@@ -69,7 +74,7 @@ public class CollectionCreateMod implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
-        this.owner = Resources.getMainWindow();
+        //this.owner = Resources.getMainWindow();
     }
 
     @FXML
@@ -190,7 +195,7 @@ public class CollectionCreateMod implements Initializable {
 
     private void alerts(String alertMsg){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(this.owner);
+        alert.initOwner(this.owner.getWindow());
         alert.setHeaderText(null);
         alert.setTitle(rb.getString("error"));
         alert.setContentText(alertMsg);

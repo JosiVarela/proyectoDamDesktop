@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.entities.ComicCopy;
@@ -27,7 +28,7 @@ public class CopiesCreateMod implements Initializable {
     private int idOperation;
     private ComicCopy comicCopy;
     private boolean needUpdate;
-    private Stage owner;
+    private Scene owner;
     private String isbn;
 
     private ObservableList<String> comboList = FXCollections.observableArrayList();
@@ -50,21 +51,23 @@ public class CopiesCreateMod implements Initializable {
     @FXML
     private Button btnDel;
 
+    public void setOwner(Scene owner) {
+        this.owner = owner;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
     }
 
-    public void innitData(int idCopie, int idOperation, Stage owner){
+    public void innitData(int idCopie, int idOperation){
         this.idOperation = idOperation;
-        this.owner = owner;
         loadCombo();
         loadCopieData(idCopie);
     }
 
-    public void innitData(String isbn, int idOperation, Stage owner){
+    public void innitData(String isbn, int idOperation){
         this.idOperation = idOperation;
-        this.owner = owner;
         this.isbn = isbn;
         btnDel.setVisible(false);
         loadCombo();
@@ -95,7 +98,7 @@ public class CopiesCreateMod implements Initializable {
 
 
         Alert question = new Alert(Alert.AlertType.CONFIRMATION);
-        question.initOwner(this.owner);
+        question.initOwner(this.owner.getWindow());
         question.setHeaderText(null);
         question.setTitle(rb.getString("eliminar"));
         question.setContentText(rb.getString("copiesCreateMod.seguroEliminar"));
@@ -335,7 +338,7 @@ public class CopiesCreateMod implements Initializable {
 
     private void alerts(String alertMsg){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(this.owner);
+        alert.initOwner(this.owner.getWindow());
         alert.setHeaderText(null);
         alert.setTitle(rb.getString("error"));
         alert.setContentText(alertMsg);

@@ -36,7 +36,7 @@ public class NumbersInfoController implements Initializable {
 
     private String isbn;
 
-    private Stage owner;
+    private Scene owner;
 
     private String collectionName;
 
@@ -90,6 +90,10 @@ public class NumbersInfoController implements Initializable {
     @FXML
     private Label lblCollection;
 
+    public void setOwner(Scene owner) {
+        this.owner = owner;
+    }
+
     public void innitData(String isbn){
         this.isbn = isbn;
         loadComicNumber();
@@ -106,7 +110,6 @@ public class NumbersInfoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.rb = resources;
-        this.owner = Resources.getMainWindow();
 
         comicCopies = FXCollections.observableArrayList();
 
@@ -230,12 +233,15 @@ public class NumbersInfoController implements Initializable {
 
             NumbersCreateMod numbersCreateMod = fxmlLoader.getController();
 
-            numbersCreateMod.innitData(1, isbn, this.owner);
+            numbersCreateMod.innitData(1, isbn);
 
             if(!numbersCreateMod.isLoaded()) return;
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+
+            numbersCreateMod.setOwner(scene);
+
             stage.setScene(scene);
             stage.setWidth(635);
             stage.setHeight(845);
@@ -243,7 +249,7 @@ public class NumbersInfoController implements Initializable {
             stage.setMinHeight(845);
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(this.owner);
+            stage.initOwner(this.owner.getWindow());
             stage.setTitle(rb.getString("numbersInfo.modificarEjemplar"));
             stage.showAndWait();
 
@@ -271,7 +277,7 @@ public class NumbersInfoController implements Initializable {
 
 
         Alert question = new Alert(Alert.AlertType.CONFIRMATION);
-        question.initOwner(this.owner);
+        question.initOwner(this.owner.getWindow());
         question.setHeaderText(null);
         question.setTitle(rb.getString("eliminar"));
         question.setContentText(rb.getString("numberInfo.seguroEliminar"));
@@ -322,11 +328,6 @@ public class NumbersInfoController implements Initializable {
     }
 
     @FXML
-    void btnSearchAction(ActionEvent event) {
-        //TODO
-    }
-
-    @FXML
     void btnAddCopyAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicCopies/copies_create_mod.fxml"), rb);
         Parent root;
@@ -353,10 +354,13 @@ public class NumbersInfoController implements Initializable {
 
             CopiesCreateMod copiesCreateMod = fxmlLoader.getController();
 
-            copiesCreateMod.innitData(comicNumber.getIsbn(), 1, this.owner);
+            copiesCreateMod.innitData(comicNumber.getIsbn(), 1);
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+
+            copiesCreateMod.setOwner(scene);
+
             stage.setScene(scene);
             stage.setWidth(635);
             stage.setHeight(845);
@@ -364,7 +368,7 @@ public class NumbersInfoController implements Initializable {
             stage.setMinHeight(845);
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(this.owner);
+            stage.initOwner(this.owner.getWindow());
             stage.setTitle(rb.getString("numbersInfo.altaEjemplar"));
             stage.showAndWait();
 
@@ -467,7 +471,7 @@ public class NumbersInfoController implements Initializable {
             root = fxmlLoader.load();
 
             CopiesCreateMod copiesCreateMod = fxmlLoader.getController();
-            copiesCreateMod.innitData(id, 0, this.owner);
+            copiesCreateMod.innitData(id, 0);
 
             if(!copiesCreateMod.isLoaded()){
                 return;
@@ -475,6 +479,9 @@ public class NumbersInfoController implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+
+            copiesCreateMod.setOwner(scene);
+
             stage.setScene(scene);
             stage.setWidth(635);
             stage.setHeight(845);
@@ -482,7 +489,7 @@ public class NumbersInfoController implements Initializable {
             stage.setMinHeight(845);
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(this.owner);
+            stage.initOwner(this.owner.getWindow());
             stage.setTitle(rb.getString("numbersInfo.modificarEjemplar"));
             stage.showAndWait();
 
@@ -498,7 +505,7 @@ public class NumbersInfoController implements Initializable {
 
     private void alerts(String alertMsg){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(this.owner);
+        alert.initOwner(this.owner.getWindow());
         alert.setHeaderText(null);
         alert.setTitle(rb.getString("error"));
         alert.setContentText(alertMsg);

@@ -17,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.ServerConfig;
 import services.Resources;
+import view.controllers.collections.CollectionPresentationController;
 
 
 import javax.swing.*;
@@ -77,7 +78,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void btnCollectionAction(ActionEvent event) {
-        Node node;
+        Parent node;
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/collections/collection_presentation.fxml"), rb);
 
@@ -96,12 +97,17 @@ public class MainFormController implements Initializable {
 
             node = fxmlLoader.load();
 
+            CollectionPresentationController controller = fxmlLoader.getController();
+
             AnchorPane.setTopAnchor(node, 0d);
             AnchorPane.setBottomAnchor(node, 0d);
             AnchorPane.setLeftAnchor(node, 0d);
             AnchorPane.setRightAnchor(node, 0d);
             mainPane.getChildren().remove(0, mainPane.getChildren().size());
             mainPane.getChildren().add(node);
+
+            controller.setOwner(node.getScene());
+            controller.innitData();
         } catch (SocketException e){
             alerts(rb.getString("err.noConexion"));
         } catch (IOException e) {
