@@ -129,7 +129,13 @@ public class AppConfigWindow implements Initializable {
             return;
         }
 
-        alerts(rb.getString("appConfig.conexionOk"));
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initOwner(this.owner);
+        alert.setHeaderText(null);
+        alert.setTitle(rb.getString("mensaje"));
+        alert.setContentText(rb.getString("appConfig.conexionOk"));
+        alert.showAndWait();
+
     }
 
     @FXML
