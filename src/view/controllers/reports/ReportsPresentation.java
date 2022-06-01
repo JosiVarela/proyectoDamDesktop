@@ -73,6 +73,33 @@ public class ReportsPresentation implements Initializable, Translatable {
 
         colReport.setOnMouseClicked(event -> colReportAction());
         colReportName.setOnMouseClicked(event -> colNameReportAction());
+        numberReportName.setOnMouseClicked(event -> numberReportNameAction());
+    }
+
+    private void numberReportNameAction() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/reports/numbers_report.fxml"), rb);
+        Parent root;
+
+        try{
+            root = fxmlLoader.load();
+
+            NumberNameReport numberNameReport = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            numberNameReport.setOwner(scene);
+
+            stage.getIcons().add(Resources.APP_ICON);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(this.owner);
+            stage.showAndWait();
+
+
+        } catch (IOException e) {
+            alerts(rb.getString("err.inesperado"));
+        }
     }
 
     private void colReportAction(){
@@ -149,8 +176,13 @@ public class ReportsPresentation implements Initializable, Translatable {
         try{
             root = fxmlLoader.load();
 
+            ColNameReport colNameReport = fxmlLoader.getController();
+
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+
+            colNameReport.setOwner(scene);
+
             stage.setScene(scene);
             stage.setResizable(false);
             stage.getIcons().add(Resources.APP_ICON);

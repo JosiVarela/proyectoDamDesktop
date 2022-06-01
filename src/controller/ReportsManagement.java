@@ -12,4 +12,8 @@ public class ReportsManagement {
     public static Object[] getCollectionReportByName(String name) throws IOException, ClassNotFoundException {
         return new ReportsDAO().getCollectionReportByName(name);
     }
+
+    public static Object[] getNumbersReportByName(String numberName, String colName) throws IOException, ClassNotFoundException {
+        return new ReportsDAO().getNumbersReportByName(numberName, colName);
+    }
 }

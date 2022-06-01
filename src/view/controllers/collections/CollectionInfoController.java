@@ -451,6 +451,9 @@ public class CollectionInfoController implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+
+            infoController.setOwner(scene);
+
             stage.setScene(scene);
             stage.setWidth(635);
             stage.setHeight(845);

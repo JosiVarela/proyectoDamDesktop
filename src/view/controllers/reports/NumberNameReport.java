@@ -16,25 +16,27 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import net.sf.jasperreports.engine.JasperPrint;
-import services.Resources;
 import view.controllers.LoadScreenController;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ColNameReport implements Initializable {
-    private ResourceBundle rb;
+public class NumberNameReport implements Initializable {
     private Scene owner;
+    private ResourceBundle rb;
 
     @FXML
     private Button btnAccept;
 
     @FXML
-    private TextField txtColName;
+    private TextField txtNumberName;
 
     @FXML
     private Button btnCancel;
+
+    @FXML
+    private TextField txtColName;
 
     public void setOwner(Scene owner) {
         this.owner = owner;
@@ -51,22 +53,13 @@ public class ColNameReport implements Initializable {
     }
 
     @FXML
-    void txtColNameAction(ActionEvent event) {
-        loadReport();
-    }
-
-    @FXML
     void btnCancelAction(ActionEvent event) {
         ((Stage)btnCancel.getScene().getWindow()).close();
     }
 
     private void loadReport(){
-        String name = txtColName.getText().trim();
-
-        if(name.isEmpty()){
-            System.out.println("debe introducir un nombre de colección");
-            return;
-        }
+        String numberName = (txtNumberName.getText() == null ? "" : txtNumberName.getText()).trim();
+        String colName = (txtColName.getText() == null ? "" : txtColName.getText()).trim();
 
         ((Stage)btnAccept.getScene().getWindow()).close();
 
@@ -92,7 +85,7 @@ public class ColNameReport implements Initializable {
             Object[] response;
 
             try{
-                response = ReportsManagement.getCollectionReportByName(name);
+                response = ReportsManagement.getNumbersReportByName(numberName, colName);
 
                 switch ((String)response[0]){
                     case "SQLE Error" -> {
@@ -142,4 +135,6 @@ public class ColNameReport implements Initializable {
         alert.setContentText(alertMsg);
         alert.showAndWait();
     }
+
+
 }
