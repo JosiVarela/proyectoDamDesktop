@@ -76,7 +76,7 @@
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                           </rowConstraints>
                            <children>
                               <Label text="%appConfig.direccion">
@@ -95,14 +95,11 @@
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <VBox maxWidth="1.7976931348623157E308" prefHeight="112.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
-                                 <children>
-                                    <Button fx:id="btnConnect" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnConnectAction" text="%appConfig.conectar" VBox.vgrow="ALWAYS">
-                                       <VBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </VBox.margin></Button>
-                                 </children>
-                              </VBox>
+                              <Button fx:id="btnConnect" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnConnectAction" text="%appConfig.conectar" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets bottom="50.0" left="10.0" right="10.0" />
+                                 </GridPane.margin>
+                              </Button>
                            </children>
                         </GridPane>
                      </center>
