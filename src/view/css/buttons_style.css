@@ -11,3 +11,16 @@
 .delete:hover{
     -fx-background-color: #f55e56;
 }
+
+.connect_button{
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-pref-height: 50;
+    -fx-pref-width: 200;
+    -fx-background-color: #2ddbfa;
+    -fx-font-weight: bold;
+}
+
+.connect_button:hover{
+    -fx-background-color: #54e5ff;
+}

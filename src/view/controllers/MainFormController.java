@@ -137,8 +137,8 @@ public class MainFormController implements Initializable {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setMaxWidth(700);
-            stage.setMaxHeight(900);
+            stage.setMaxWidth(1000);
+            stage.setMaxHeight(700);
             stage.setWidth(620);
             stage.setHeight(440);
             stage.setMinWidth(620);
