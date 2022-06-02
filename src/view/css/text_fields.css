@@ -1,0 +1,10 @@
+.search{
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+}
+
+.slow_round{
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-style: solid;
+}

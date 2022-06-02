@@ -278,7 +278,6 @@ public class ReportsPresentation implements Initializable, Translatable {
         lblColReport.setText(resources.getString("reports.informeColecciones"));
         lblColReportName.setText(resources.getString("reports.informeColeccionesNombre"));
         lblNumberReport.setText(resources.getString("reports.informeNumeros"));
-        lblNumberReportCol.setText(resources.getString("reports.informeNumerosColec"));
         lblNumberReportName.setText(resources.getString("reports.informeNumerosNombre"));
     }
 }

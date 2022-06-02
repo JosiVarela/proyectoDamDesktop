@@ -35,15 +35,19 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnModifyCol" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnModifyAction" prefHeight="50.0" text="%collectionInfo.modificar" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
+                  <Button fx:id="btnModifyCol" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnModifyAction" prefHeight="50.0" styleClass="modify_delete" stylesheets="@../../css/buttons_style.css" text="%collectionInfo.modificar" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="50.0" right="50.0" top="20.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="btnDelCol" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDelColAction" prefHeight="50.0" text="%collectionInfo.eliminar" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                  <Button fx:id="btnDelCol" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDelColAction" prefHeight="50.0" stylesheets="@../../css/buttons_style.css" text="%collectionInfo.eliminar" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="modify_delete" />
+                        <String fx:value="delete" />
+                     </styleClass>
                   </Button>
                   <Label fx:id="lblArgument" text="%collectionInfo.argumento" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
@@ -105,7 +109,7 @@
                         <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
                            <children>
                               <Pane minWidth="300.0" HBox.hgrow="ALWAYS" />
-                              <TextField fx:id="txtSearch" maxWidth="1.7976931348623157E308" onAction="#txtSearchAction" HBox.hgrow="ALWAYS">
+                              <TextField fx:id="txtSearch" maxWidth="1.7976931348623157E308" onAction="#txtSearchAction" styleClass="search" stylesheets="@../../css/text_fields.css" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="10.0" top="5.0" />
                                  </HBox.margin>

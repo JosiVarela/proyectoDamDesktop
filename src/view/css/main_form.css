@@ -1,3 +1,16 @@
 .left_content{
-    -fx-pref-width: 300
+    -fx-pref-width: 300;
+}
+
+.buttons_style{
+    -fx-background-color: #59c229;
+    -fx-background-radius: 50;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-pref-height: 60;
+    -fx-border-radius: 50;
+}
+
+.buttons_style:hover{
+    -fx-background-color: #2d873f;
 }

@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.entities.ServerConfig;
 import services.Resources;
 import view.controllers.collections.CollectionPresentationController;
@@ -140,6 +141,7 @@ public class MainFormController implements Initializable {
             stage.getIcons().add(new Image("/data/images/app_icon.png"));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
             stage.showAndWait();
         }catch (IOException e) {
             alerts(rb.getString("err.cargarPantalla"));

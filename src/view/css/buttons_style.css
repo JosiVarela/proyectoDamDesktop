@@ -1,0 +1,13 @@
+.modify_delete{
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-font-weight: bold;
+}
+
+.delete{
+    -fx-background-color: #fa5148;
+}
+
+.delete:hover{
+    -fx-background-color: #f55e56;
+}

@@ -33,15 +33,19 @@
                   <RowConstraints minHeight="10.0" vgrow="NEVER" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnModify" maxWidth="1.7976931348623157E308" minWidth="200.0" mnemonicParsing="false" onAction="#btnModifyAction" prefHeight="50.0" text="%collectionInfoController.modificar" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9">
+                  <Button fx:id="btnModify" maxWidth="1.7976931348623157E308" minWidth="200.0" mnemonicParsing="false" onAction="#btnModifyAction" prefHeight="50.0" styleClass="modify_delete" stylesheets="@../../css/buttons_style.css" text="%collectionInfoController.modificar" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets left="50.0" right="50.0" top="20.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="btnDel" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDelAction" prefHeight="50.0" text="%collectionInfoController.eliminar" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="10">
+                  <Button fx:id="btnDel" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDelAction" prefHeight="50.0" stylesheets="@../../css/buttons_style.css" text="%collectionInfoController.eliminar" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="10">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="delete" />
+                        <String fx:value="modify_delete" />
+                     </styleClass>
                   </Button>
                   <TextArea fx:id="txtArgument" editable="false" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnSpan="2147483647" GridPane.rowIndex="8">
                      <GridPane.margin>
