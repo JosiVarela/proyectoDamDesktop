@@ -38,6 +38,8 @@ public class MainFormController implements Initializable {
 
     private Stage thisStage;
 
+    private Button activeButton;
+
     //<editor-fold desc="FXML vars Definition">
     @FXML
     private AnchorPane mainPane;
@@ -109,6 +111,11 @@ public class MainFormController implements Initializable {
 
             controller.setOwner(node.getScene());
             controller.innitData();
+
+            resetMenuButton();
+            activeButton = btnCollection;
+            activeButton.setStyle("-fx-background-color: #2d873f;");
+
         } catch (SocketException e){
             alerts(rb.getString("err.noConexion"));
         } catch (IOException e) {
@@ -189,6 +196,11 @@ public class MainFormController implements Initializable {
             AnchorPane.setRightAnchor(node, 0d);
             mainPane.getChildren().remove(0, mainPane.getChildren().size());
             mainPane.getChildren().add(node);
+
+            resetMenuButton();
+            activeButton = btnNumber;
+            activeButton.setStyle("-fx-background-color: #2d873f;");
+
         } catch (SocketException e){
             alerts(rb.getString("err.noConexion"));
         } catch (IOException e) {
@@ -227,6 +239,13 @@ public class MainFormController implements Initializable {
             AnchorPane.setRightAnchor(node, 0d);
             mainPane.getChildren().remove(0, mainPane.getChildren().size());
             mainPane.getChildren().add(node);
+
+            resetMenuButton();
+            activeButton = btnReports;
+            activeButton.setStyle("-fx-background-color: #2d873f;");
+
+
+
         }  catch (IOException e) {
             alerts(rb.getString("err.cargarPantalla"));
         }
@@ -254,6 +273,11 @@ public class MainFormController implements Initializable {
             AnchorPane.setRightAnchor(node, 0d);
             mainPane.getChildren().remove(0, mainPane.getChildren().size());
             mainPane.getChildren().add(node);
+
+            resetMenuButton();
+            activeButton = btnMainPage;
+            activeButton.setStyle("-fx-background-color: #2d873f;");
+
         }catch (IOException e) {
             e.printStackTrace();
             alerts(rb.getString("err.cargarPantalla"));
@@ -273,6 +297,24 @@ public class MainFormController implements Initializable {
     private void loadHints(){
         btnHelp.setTooltip(new Tooltip(rb.getString("ayuda")));
         btnConfigMenu.setTooltip(new Tooltip(rb.getString("configuracion")));
+    }
+
+    private void resetMenuButton(){
+        if(activeButton != null){
+            activeButton.setStyle("" +
+                    ".buttons_style{\n" +
+                    "    -fx-background-color: #59c229;\n" +
+                    "    -fx-background-radius: 50;\n" +
+                    "    -fx-font-weight: bold;\n" +
+                    "    -fx-font-size: 15;\n" +
+                    "    -fx-pref-height: 60;\n" +
+                    "    -fx-border-radius: 50;\n" +
+                    "}\n" +
+                    "\n" +
+                    ".buttons_style:hover{\n" +
+                    "    -fx-background-color: #2d873f;\n" +
+                    "}");
+        }
     }
 
     public void setStage(Stage thisStage){
