@@ -52,8 +52,24 @@ public class ReportsDAO implements IReportsDAO{
     }
 
     @Override
-    public Object[] getNumbersReport(String numberName, String colName) throws IOException, ClassNotFoundException {
-        return new Object[0];
+    public Object[] getNumbersReport() throws IOException, ClassNotFoundException {
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        ObjectInputStream objectInputStream;
+        Object[] response = new Object[2];
+
+        dataOutputStream = new DataOutputStream(ServerConnection.getConnection().getOutputStream());
+        dataOutputStream.writeUTF("getNumbersReport");
+
+        dataInputStream = new DataInputStream(ServerConnection.getConnection().getInputStream());
+        response[0] = dataInputStream.readUTF();
+
+        if(response[0].equals("OK")){
+            objectInputStream = new ObjectInputStream(ServerConnection.getConnection().getInputStream());
+            response[1] = objectInputStream.readObject();
+        }
+
+        return response;
     }
 
     @Override

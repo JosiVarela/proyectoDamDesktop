@@ -9,6 +9,10 @@ public class ReportsManagement {
         return new ReportsDAO().getCollectionReport();
     }
 
+    public static Object[] getNumbersReport() throws IOException, ClassNotFoundException {
+        return new ReportsDAO().getNumbersReport();
+    }
+
     public static Object[] getCollectionReportByName(String name) throws IOException, ClassNotFoundException {
         return new ReportsDAO().getCollectionReportByName(name);
     }

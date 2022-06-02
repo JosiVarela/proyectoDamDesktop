@@ -64,7 +64,7 @@ public class ColNameReport implements Initializable {
         String name = txtColName.getText().trim();
 
         if(name.isEmpty()){
-            System.out.println("debe introducir un nombre de colección");
+            alerts(rb.getString("colNameReport.nombreCol"));
             return;
         }
 
