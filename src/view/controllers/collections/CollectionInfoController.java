@@ -462,6 +462,7 @@ public class CollectionInfoController implements Initializable {
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(this.owner.getWindow());
+            stage.setTitle(rb.getString("numberInfo.titulo"));
             stage.showAndWait();
 
             if(infoController.isNeedUpdate()){

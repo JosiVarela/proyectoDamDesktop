@@ -92,6 +92,14 @@ public class ReportsPresentation implements Initializable, Translatable {
 
             numberNameReport.setOwner(scene);
 
+            stage.setMinWidth(620);
+            stage.setMinHeight(440);
+            stage.setWidth(620);
+            stage.setHeight(440);
+            stage.setMaxHeight(440);
+            stage.setMaxWidth(1200);
+            stage.setTitle(rb.getString("reports.informeNumerosNombre"));
+            stage.initStyle(StageStyle.UTILITY);
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(this.owner);
@@ -252,10 +260,17 @@ public class ReportsPresentation implements Initializable, Translatable {
             colNameReport.setOwner(scene);
 
             stage.setScene(scene);
-            stage.setResizable(false);
             stage.getIcons().add(Resources.APP_ICON);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(this.owner);
+            stage.setMinWidth(620);
+            stage.setMinHeight(170);
+            stage.setWidth(620);
+            stage.setHeight(170);
+            stage.setMaxHeight(170);
+            stage.setMaxWidth(1200);
+            stage.setTitle(rb.getString("reports.informeColeccionesNombre"));
+            stage.initStyle(StageStyle.UTILITY);
             stage.showAndWait();
 
 
