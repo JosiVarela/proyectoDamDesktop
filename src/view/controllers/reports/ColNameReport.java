@@ -115,7 +115,7 @@ public class ColNameReport implements Initializable {
                     JasperViewerFX jasperViewer = new JasperViewerFX();
                     jasperViewer.initModality(Modality.APPLICATION_MODAL);
                     jasperViewer.initOwner(owner.getWindow());
-                    jasperViewer.viewReport(rb.getString("reports.informeColecciones"), (JasperPrint) response[1]);
+                    jasperViewer.viewReport(rb.getString("reports.informeColeccionesNombre"), (JasperPrint) response[1]);
                     loadScreenController.closeWindow();
                 });
 

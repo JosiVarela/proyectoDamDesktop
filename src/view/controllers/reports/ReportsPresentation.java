@@ -225,7 +225,7 @@ public class ReportsPresentation implements Initializable, Translatable {
                     JasperViewerFX jasperViewer = new JasperViewerFX();
                     jasperViewer.initModality(Modality.APPLICATION_MODAL);
                     jasperViewer.initOwner(owner);
-                    jasperViewer.viewReport(rb.getString("reports.informeColecciones"), (JasperPrint) response[1]);
+                    jasperViewer.viewReport(rb.getString("reports.informeNumeros"), (JasperPrint) response[1]);
                     loadScreenController.closeWindow();
                 });
 
