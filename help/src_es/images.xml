@@ -11,4 +11,6 @@
     <image id="pestana_num" url="./menuPrincipal/Colecciones/img/pestanaNum.png"/>
     <image id="eliminar_colec" url="./menuPrincipal/Colecciones/img/eliminar_colec.png"/>
     <image id="num_list" url="./menuPrincipal/Colecciones/img/numList.png"/>
+    <!-- Imagenes de Alta/Mod Colección-->
+    <image id="alta_mod_colec" url="./menuPrincipal/Colecciones/img/altaModColec.png"/>
 </images>
