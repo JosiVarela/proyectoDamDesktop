@@ -13,4 +13,8 @@
     <image id="num_list" url="./menuPrincipal/Colecciones/img/numList.png"/>
     <!-- Imagenes de Alta/Mod Colección-->
     <image id="alta_mod_colec" url="./menuPrincipal/Colecciones/img/altaModColec.png"/>
+    <!--Imagenes de Info Numeros-->
+    <image id="info_num" url="./menuPrincipal/Numeros/img/infoNumeros.png"/>
+    <image id="eliminar_num" url="./menuPrincipal/Numeros/img/eliminarNum.png"/>
+    <image id="pestana_ejemplares" url="./menuPrincipal/Numeros/img/verEjemplares.png"/>
 </images>
