@@ -102,6 +102,8 @@ public class CollectionPresentationController implements Initializable, Translat
             Scene scene = new Scene(root);
             Stage stage = new Stage();
 
+            controller.setOwner(scene);
+
             stage.setScene(scene);
             stage.initOwner(this.owner.getWindow());
             stage.setWidth(620);
