@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Pagina Principal"> 
+   La página principal de la aplicación es la siguiente:<br/>
+   <img id="pg_inicio_logo" width="20%"/><br />
+   Esta será la página que se abre por defecto al abrir la aplicación.<br />
+   En esta página no podremos realizar ninguna operación, ya que simplemente incluye el logo de la empresa.
+</article>

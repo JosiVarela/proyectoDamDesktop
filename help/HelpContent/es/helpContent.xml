@@ -3,13 +3,19 @@
     <chapters>
         <chapter name="Menu Principal"> 
             <article name="Menu Principal"/>
-            <chapter name="Colecciones"> 
-                <article name="Colecciones"/> 
-            </chapter>
-            <chapter name="ZTest">
-                <article name="test"/>
-            </chapter>
+            <article name="Pagina Principal"/>
         </chapter>
-         
+        <chapter name="Colecciones">
+            <article name="Colecciones"/>
+        </chapter>
+        <chapter name="Colecciones">
+
+        </chapter>
+        <chapter name="Números">
+
+        </chapter>
+        <chapter name="Informes">
+
+        </chapter>
     </chapters> 
 </helpContent>
