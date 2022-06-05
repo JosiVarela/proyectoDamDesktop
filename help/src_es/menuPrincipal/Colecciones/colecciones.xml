@@ -9,10 +9,10 @@
          Ver el listado de colecciones
       </li>
       <li>
-         <ref id="Pagina Principal" desc="Dar de alta una colección"/>
+         <ref id="Pagina Principal" desc="Ver la información de una colección"/>
       </li>
       <li>
-         <ref id="Pagina Principal" desc="Ver la información de una colección"/>
+         <ref id="Pagina Principal" desc="Dar de alta una colección"/>
       </li>
       <li>
          Buscar una colección
@@ -21,6 +21,8 @@
 
    <title title="Búsqueda de colecciones"/>
 
-   Para buscar una colección simplemente tendremo que escribir en la barra de búsqueda superior el título de la colección que deseamos búscar:<br />
-   <img id="busca_colec" width="20%"/>
+   Para buscar una colección simplemente tendremos que escribir en la barra de búsqueda superior el título de la colección que deseamos búscar:<br />
+   <img id="busca_colec" width="20%"/><br />
+   En caso de querer restablecer la búsqueda simplemente tendremos que dejar el campo en blanco y pulsar en buscar o en la 
+   tecla INTRO.
 </article>

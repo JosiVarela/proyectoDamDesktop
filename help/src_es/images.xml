@@ -6,4 +6,9 @@
     <!-- Imagenes de Listado de colecciones-->
     <image id="lista_colec" url="./menuPrincipal/Colecciones/img/listaColec.png"/>
     <image id="busca_colec" url="./menuPrincipal/Colecciones/img/buscarColec.png"/>
+    <!-- Imagenes de Info Colecciones-->
+    <image id="info_colec" url="./menuPrincipal/Colecciones/img/infoColec.png"/>
+    <image id="pestana_num" url="./menuPrincipal/Colecciones/img/pestanaNum.png"/>
+    <image id="eliminar_colec" url="./menuPrincipal/Colecciones/img/eliminar_colec.png"/>
+    <image id="num_list" url="./menuPrincipal/Colecciones/img/numList.png"/>
 </images>
