@@ -17,4 +17,7 @@
     <image id="info_num" url="./menuPrincipal/Numeros/img/infoNumeros.png"/>
     <image id="eliminar_num" url="./menuPrincipal/Numeros/img/eliminarNum.png"/>
     <image id="pestana_ejemplares" url="./menuPrincipal/Numeros/img/verEjemplares.png"/>
+    <!-- Imagenes Lista Números-->
+    <image id="lista_num" url="./menuPrincipal/Numeros/img/listaNum.png"/>
+    <image id="busca_num" url="./menuPrincipal/Numeros/img/buscaNum.png"/>
 </images>

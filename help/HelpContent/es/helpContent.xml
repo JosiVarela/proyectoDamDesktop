@@ -10,11 +10,9 @@
             <article name="Informacion Coleccion"/>
             <article name="Alta/Modificacion Coleccion"/>
         </chapter>
-        <chapter name="Colecciones">
-
-        </chapter>
         <chapter name="Números">
-
+            <article name="Numeros"/>
+            <article name="Info Numeros"/>
         </chapter>
         <chapter name="Informes">
 
