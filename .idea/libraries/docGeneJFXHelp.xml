@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="docGeneJFXHelp">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../JavaLibs/docGenerator/docGeneHelpChecker.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../JavaLibs/docGenerator/docGeneJFXHelp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../JavaLibs/docGenerator/docGenerator.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../JavaLibs/docGenerator/docGeneSwingHelp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../JavaLibs/docGenerator/javaHelpImporter.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -14,7 +14,6 @@
       <root url="jar://$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jackson-databind-2.13.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jackson-dataformat-xml-2.13.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jasperreports-6.19.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/javahelp-2.0.05.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jcommon-1.0.23.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jfreechart-1.0.19.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/stax2-api-4.2.1.jar!/" />

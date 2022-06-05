@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpContent keepOrder="true"> 
+    <chapters>
+        <chapter name="Menu Principal"> 
+            <article name="Menu Principal"/>
+            <chapter name="Colecciones"> 
+                <article name="Colecciones"/> 
+            </chapter>
+            <chapter name="ZTest">
+                <article name="test"/>
+            </chapter>
+        </chapter>
+         
+    </chapters> 
+</helpContent>

@@ -3,6 +3,21 @@
     <output-path>$PROJECT_DIR$/out/artifacts/ProyectoDamDesktop_jar</output-path>
     <root id="archive" name="ProyectoDamDesktop.jar">
       <element id="module-output" name="ProyectoDamDesktop" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/commons-beanutils-1.9.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/commons-collections-3.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/commons-collections4-4.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/commons-digester-2.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/commons-logging-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/itext-2.1.7.js9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jackson-annotations-2.13.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jackson-core-2.13.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jackson-databind-2.13.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jackson-dataformat-xml-2.13.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jasperreports-6.19.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jcommon-1.0.23.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/jfreechart-1.0.19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/stax2-api-4.2.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/woodstox-core-6.2.7.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/lib/javafx-swt.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/lib/javafx.base.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/lib/javafx.controls.jar" path-in-jar="/" />
@@ -11,6 +26,7 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/lib/javafx.media.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/lib/javafx.swing.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/JasperReports_JavaHelp/JasperViewerFX-1.3.0.jar" path-in-jar="/" />
       <element id="file-copy" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/bin/api-ms-win-core-console-l1-1-0.dll" />
       <element id="file-copy" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/bin/api-ms-win-core-console-l1-2-0.dll" />
       <element id="file-copy" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/bin/api-ms-win-core-datetime-l1-1-0.dll" />
@@ -68,6 +84,11 @@
       <element id="file-copy" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/bin/ucrtbase.dll" />
       <element id="file-copy" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/bin/vcruntime140.dll" />
       <element id="file-copy" path="$PROJECT_DIR$/../../JavaLibs/javafx-sdk-17.0.2/bin/vcruntime140_1.dll" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/docGenerator/docGeneHelpChecker.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/docGenerator/docGeneJFXHelp.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/docGenerator/docGenerator.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/docGenerator/docGeneSwingHelp.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../JavaLibs/docGenerator/javaHelpImporter.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

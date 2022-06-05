@@ -17,9 +17,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entities.ServerConfig;
+import org.docgene.help.JavaHelpFactory;
 import services.Resources;
+import view.JavaHelp;
 import view.controllers.collections.CollectionPresentationController;
-
 
 import javax.swing.*;
 import java.io.IOException;
@@ -39,6 +40,8 @@ public class MainFormController implements Initializable {
     private Stage thisStage;
 
     private Button activeButton;
+
+    private JavaHelp javaHelp;
 
     //<editor-fold desc="FXML vars Definition">
     @FXML
@@ -76,7 +79,8 @@ public class MainFormController implements Initializable {
 
     @FXML
     void btnHelpAction(ActionEvent event) {
-        swingButton.doClick();
+        //swingButton.doClick();
+        javaHelp.start();
     }
 
     @FXML
@@ -320,6 +324,8 @@ public class MainFormController implements Initializable {
     public void setStage(Stage thisStage){
         this.thisStage = thisStage;
         Resources.setMainWindow(this.thisStage);
+
+        javaHelp = new JavaHelp(btnHelp, this.thisStage);
     }
 
     public void startConnection(){
