@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <images>
+    <!-- Imagenes del mennú principal-->
     <image id="menu_principal" url="./menuPrincipal/img/menuPrincipal.png"/>
     <image id="pg_inicio_logo" url="./menuPrincipal/img/pgPrincipalLogo.png"/>
+    <!-- Imagenes de Listado de colecciones-->
+    <image id="lista_colec" url="./menuPrincipal/Colecciones/img/listaColec.png"/>
+    <image id="busca_colec" url="./menuPrincipal/Colecciones/img/buscarColec.png"/>
 </images>

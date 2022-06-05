@@ -9,7 +9,7 @@
          <ref id="Pagina Principal" desc="Página Principal"/>
       </li>
       <li>
-         Colecciones
+         <ref id="Colecciones" desc="Listado de colecciones"/>
       </li>
       <li>
          Números
