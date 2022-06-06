@@ -7,7 +7,7 @@
     Desde esta ventana podemos:
     <ul>
         <li>
-            <ref id="Pagina Principal" desc="Modificar el número"/> <!-- Linkear-->
+            <ref id="Alta/Modificacion Numeros" desc="Modificar el número"/> <!-- Linkear - LISTO-->
         </li>
         <li>
             Eliminar el número

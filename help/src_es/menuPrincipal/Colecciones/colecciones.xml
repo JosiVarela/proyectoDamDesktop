@@ -9,10 +9,10 @@
          Ver el listado de colecciones
       </li>
       <li>
-         <ref id="Pagina Principal" desc="Ver la información de una colección"/>
+         <ref id="Informacion Coleccion" desc="Ver la información de una colección"/>
       </li>
       <li>
-         <ref id="Pagina Principal" desc="Dar de alta una colección"/>
+         <ref id="Alta/Modificacion Coleccion" desc="Dar de alta una colección"/>
       </li>
       <li>
          Buscar una colección

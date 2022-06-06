@@ -38,11 +38,11 @@ colección y la descripción de la colección.
 Para ver el listado de número de la colección, simplemente nos tendremos que dirigir a la pestaña superior de números de
 esta pantalla.<br/>
 <img id="pestana_num" width="20%"/> <br />
-Desde esta ventana podremos consultar el listado de números, búscar por título de número y <!-- Añadir Link --> <ref id="Pagina Principal" desc="dar de alta un nuevo número"/>.<br />
+Desde esta ventana podremos consultar el listado de números, búscar por título de número y <!-- Añadir Link LISTO--> <ref id="Alta/Modificacion Numeros" desc="dar de alta un nuevo número"/>.<br />
 En esta pantalla podremos filtrar de forma ASCENDENTE O DESCENDENTE por el campo que deseemos simplemente pulsando en la cabecera del campo. <br />
 <img id="num_list" width="20%"/><br />
 Tambi&eacute;n podremos consultar la información completa de un número haciendo doble clic sobre el número que deseemos y llevándonos
-a la pantalla <ref id="Pagina Principal" desc="Informaci&oacute;n de numero"/> <!-- Añadir Link-->
+a la pantalla <ref id="Info Numeros" desc="Informaci&oacute;n de numero"/> <!-- Añadir Link LISTO-->
 <br /><box><b>NOTA: </b></box> Los números solo podran ser dados de alta desde esta pantalla en la colección correspondiente pulsando el botón "+" de la parte superior.
 
 <title title="Eliminar la colección"/>
