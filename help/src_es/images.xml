@@ -20,6 +20,10 @@
     <!-- Imagenes Lista Números-->
     <image id="lista_num" url="./menuPrincipal/Numeros/img/listaNum.png"/>
     <image id="busca_num" url="./menuPrincipal/Numeros/img/buscaNum.png"/>
+    <!-- Imagenes Alta/MOD Números-->
+    <image id="alta_num" url="./menuPrincipal/Numeros/img/altaNumero.png"/>
+    <image id="elm_img_num" url="./menuPrincipal/Numeros/img/eliminarImgNumero.png"/>
+    <image id="mod_num" url="./menuPrincipal/Numeros/img/modNumero.png"/>
     <!-- Imagenes Ejemplares-->
     <image id="lista_ejemp" url="./menuPrincipal/Numeros/img/listaEjemplares.png"/>
     <image id="alta_ejemp" url="./menuPrincipal/Numeros/img/altaModEjemplares.png"/>

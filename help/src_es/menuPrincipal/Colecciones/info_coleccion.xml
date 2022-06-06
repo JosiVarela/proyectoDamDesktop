@@ -19,7 +19,10 @@ Desde esta pantalla podremos realizar las siguientes operaciones:
         Ver el listado de números pertenecientes a la colección
     </li>
     <li>
-        <ref id="Pagina Principal" desc="Modificar la coleccion"/> <!-- Añadir Link-->
+        Dar de alta un número
+    </li>
+    <li>
+        <ref id="Alta/Modificacion Coleccion" desc="Modificar la coleccion"/> <!-- Añadir Link LISTO-->
     </li>
     <li>
         Eliminar la colección
@@ -40,7 +43,7 @@ En esta pantalla podremos filtrar de forma ASCENDENTE O DESCENDENTE por el campo
 <img id="num_list" width="20%"/><br />
 Tambi&eacute;n podremos consultar la información completa de un número haciendo doble clic sobre el número que deseemos y llevándonos
 a la pantalla <ref id="Pagina Principal" desc="Informaci&oacute;n de numero"/> <!-- Añadir Link-->
-<br /><box><b>NOTA: </b></box> Los números solo podran ser dados de alta desde esta pantalla en la colección correspondiente.
+<br /><box><b>NOTA: </b></box> Los números solo podran ser dados de alta desde esta pantalla en la colección correspondiente pulsando el botón "+" de la parte superior.
 
 <title title="Eliminar la colección"/>
 Para eliminar la colección simplemente debemos pulsar en el botón eliminar.<br/>
