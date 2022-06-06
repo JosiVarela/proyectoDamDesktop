@@ -20,4 +20,7 @@
     <!-- Imagenes Lista Números-->
     <image id="lista_num" url="./menuPrincipal/Numeros/img/listaNum.png"/>
     <image id="busca_num" url="./menuPrincipal/Numeros/img/buscaNum.png"/>
+    <!-- Imagenes Ejemplares-->
+    <image id="lista_ejemp" url="./menuPrincipal/Numeros/img/listaEjemplares.png"/>
+    <image id="alta_ejemp" url="./menuPrincipal/Numeros/img/altaModEjemplares.png"/>
 </images>
