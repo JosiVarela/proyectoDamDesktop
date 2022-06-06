@@ -42,6 +42,12 @@ public class ReportsPresentation implements Initializable, Translatable {
     private BorderPane colReportName;
 
     @FXML
+    private BorderPane copiesReport;
+
+    @FXML
+    private Label lblCopiesReport;
+
+    @FXML
     private TilePane cardsPane;
 
     @FXML
@@ -75,6 +81,72 @@ public class ReportsPresentation implements Initializable, Translatable {
         colReportName.setOnMouseClicked(event -> colNameReportAction());
         numberReportName.setOnMouseClicked(event -> numberReportNameAction());
         numberReport.setOnMouseClicked(event -> numbersReportAction());
+        copiesReport.setOnMouseClicked(event -> copiesReportAction());
+    }
+
+    private void copiesReportAction() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/load_screen.fxml"));
+        Parent root;
+
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            alerts(rb.getString("err.inesperado"));
+            return;
+        }
+
+        LoadScreenController loadScreenController = fxmlLoader.getController();
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage(StageStyle.UNDECORATED);
+        stage.initOwner(this.owner);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        Thread th = new Thread(() -> {
+            Object[] response;
+
+            try{
+                response = ReportsManagement.getCopiesReport();
+
+                switch ((String)response[0]){
+                    case "SQLE Error" -> {
+                        Platform.runLater(()->{
+                            loadScreenController.closeWindow();
+                            alerts(rb.getString("reports.errSql"));
+                        });
+                        return;
+                    }
+                    case "JRE" -> {
+                        Platform.runLater(()->{
+                            loadScreenController.closeWindow();
+                            alerts(rb.getString("reports.errJasper"));
+                        });
+
+                        return;
+                    }
+                }
+                Platform.runLater(() -> {
+                    JasperViewerFX jasperViewer = new JasperViewerFX();
+                    jasperViewer.initModality(Modality.APPLICATION_MODAL);
+                    jasperViewer.initOwner(owner);
+                    jasperViewer.viewReport(rb.getString("reports.informeEjemplares"), (JasperPrint) response[1]);
+                    loadScreenController.closeWindow();
+                });
+
+
+            } catch (IOException e) {
+                Platform.runLater(()->{
+                    loadScreenController.closeWindow();
+                    alerts(rb.getString("err.inesperado"));
+                });
+            } catch (ClassNotFoundException e) {
+            }
+        });
+
+        th.start();
+
+        stage.show();
     }
 
     private void numberReportNameAction() {

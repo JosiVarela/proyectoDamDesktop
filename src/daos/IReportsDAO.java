@@ -9,4 +9,6 @@ public interface IReportsDAO {
     Object[] getNumbersReport() throws IOException, ClassNotFoundException;
 
     Object[] getNumbersReportByName(String numberName, String colName) throws IOException, ClassNotFoundException;
+
+    Object[] getCopiesReport() throws IOException, ClassNotFoundException;
 }
