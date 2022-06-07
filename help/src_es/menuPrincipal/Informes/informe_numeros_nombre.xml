@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Informe numeros por nombre">
+    Este es un informe personalizado de números que nos permitirá ver los datos de los números filtrados por nombre de número o nombre de colección <br />
+    Al iniciar el informe nos saldrá la siguiente ventana, donde introduciremos los datos. Ninguno de los campos es obligatorío por lo que podremos filtrar por
+    un solo campo o por ninguno.<br />
+    La apariencia de la pantalla de filtrado es la siguiente: <br />
+    <img id="inf_numero_nom_filtrado" width="20%"/>
+    La apariencia del informe es la siguiente: <br />
+    <img id="inf_numero_nom" width="20%"/>
+</article>

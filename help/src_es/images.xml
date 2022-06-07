@@ -33,4 +33,6 @@
     <image id="inf_col_nombre_filtra" url="./menuPrincipal/Informes/img/informeColFiltra.png"/>
     <image id="inf_col_nombre" url="./menuPrincipal/Informes/img/informeColNombre.png"/>
     <image id="inf_numero" url="./menuPrincipal/Informes/img/informeNumero.png"/>
+    <image id="inf_numero_nom_filtrado" url="./menuPrincipal/Informes/img/informeNumeroNombreFiltrado.png"/>
+    <image id="inf_numero_nom" url="./menuPrincipal/Informes/img/informeNumeroNombre.png"/>
 </images>
