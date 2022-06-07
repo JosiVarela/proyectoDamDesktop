@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Informe ejemplares">
+    Este es un informe general de ejemplares que nos permitirá ver los datos de todos los ejemplares del aplicativo <br />
+    La apariencia del informe es la siguiente: <br />
+    <img id="inf_ejemplar" width="20%"/>
+</article>

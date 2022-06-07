@@ -35,4 +35,5 @@
     <image id="inf_numero" url="./menuPrincipal/Informes/img/informeNumero.png"/>
     <image id="inf_numero_nom_filtrado" url="./menuPrincipal/Informes/img/informeNumeroNombreFiltrado.png"/>
     <image id="inf_numero_nom" url="./menuPrincipal/Informes/img/informeNumeroNombre.png"/>
+    <image id="inf_ejemplar" url="./menuPrincipal/Informes/img/informeEjemplares.png"/>
 </images>

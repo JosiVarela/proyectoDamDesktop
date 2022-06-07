@@ -23,6 +23,7 @@
             <article name="Informe Colecciones por nombre"/>
             <article name="Informe numeros"/>
             <article name="Informe numeros por nombre"/>
+            <article name="Informe ejemplares"/>
         </chapter>
     </chapters> 
 </helpContent>
