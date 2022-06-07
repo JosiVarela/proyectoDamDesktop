@@ -130,6 +130,28 @@
                         <Insets left="5.0" right="5.0" />
                      </padding>
                   </BorderPane>
+                  <BorderPane fx:id="copiesReportFiltered" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #cfc8b8; -fx-cursor: hand; -fx-border-radius: 20; -fx-background-radius: 20;">
+                     <bottom>
+                        <Label fx:id="lblCopiesReportFiltered" style="-fx-font-weight: bold;" text="%reports.informeEjemplaresFiltrado" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </bottom>
+                     <center>
+                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../../../data/images/reportIcon.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </BorderPane>
                </children></TilePane>
          </content>
       </ScrollPane>

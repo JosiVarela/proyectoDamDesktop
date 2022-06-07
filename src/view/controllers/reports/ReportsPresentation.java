@@ -33,10 +33,9 @@ public class ReportsPresentation implements Initializable, Translatable {
     private Label lblNumberReportName;
 
     @FXML
-    private BorderPane numberReportCol;
-
+    private Label lblCopiesReportFiltered;
     @FXML
-    private Label lblNumberReportCol;
+    private BorderPane copiesReportFiltered;
 
     @FXML
     private BorderPane colReportName;
@@ -82,6 +81,41 @@ public class ReportsPresentation implements Initializable, Translatable {
         numberReportName.setOnMouseClicked(event -> numberReportNameAction());
         numberReport.setOnMouseClicked(event -> numbersReportAction());
         copiesReport.setOnMouseClicked(event -> copiesReportAction());
+        copiesReportFiltered.setOnMouseClicked(event -> copiesReportFilteredAction());
+    }
+
+    private void copiesReportFilteredAction() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/reports/copies_report_filtered.fxml"), rb);
+        Parent root;
+
+        try{
+            root = fxmlLoader.load();
+
+            CopiesReportFiltered copiesReportFiltered = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            copiesReportFiltered.setOwner(scene);
+
+            stage.setMinWidth(620);
+            stage.setMinHeight(440);
+            stage.setWidth(620);
+            stage.setHeight(440);
+            stage.setMaxHeight(440);
+            stage.setMaxWidth(1200);
+            stage.setTitle(rb.getString("reports.informeEjemplaresFiltrado"));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.getIcons().add(Resources.APP_ICON);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(this.owner);
+            stage.showAndWait();
+
+
+        } catch (IOException e) {
+            alerts(rb.getString("err.inesperado"));
+        }
     }
 
     private void copiesReportAction() {
@@ -366,5 +400,7 @@ public class ReportsPresentation implements Initializable, Translatable {
         lblColReportName.setText(resources.getString("reports.informeColeccionesNombre"));
         lblNumberReport.setText(resources.getString("reports.informeNumeros"));
         lblNumberReportName.setText(resources.getString("reports.informeNumerosNombre"));
+        lblCopiesReport.setText(resources.getString("reports.informeEjemplares"));
+        lblCopiesReportFiltered.setText(resources.getString("reports.informeEjemplaresFiltrado"));
     }
 }
