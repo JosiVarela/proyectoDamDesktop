@@ -23,7 +23,7 @@
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="%collectionInfo.primPublicacion" GridPane.rowIndex="2">
+            <Label text="%numbersInfo.fechaCompra" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
