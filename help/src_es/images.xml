@@ -30,4 +30,6 @@
     <!-- Imagenes Informes-->
     <image id="lista_informes" url="./menuPrincipal/Informes/img/listadoInformes.png"/>
     <image id="inf_col" url="./menuPrincipal/Informes/img/informeCol.png"/>
+    <image id="inf_col_nombre_filtra" url="./menuPrincipal/Informes/img/informeColFiltra.png"/>
+    <image id="inf_col_nombre" url="./menuPrincipal/Informes/img/informeColNombre.png"/>
 </images>
