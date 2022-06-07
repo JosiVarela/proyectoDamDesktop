@@ -27,4 +27,6 @@
     <!-- Imagenes Ejemplares-->
     <image id="lista_ejemp" url="./menuPrincipal/Numeros/img/listaEjemplares.png"/>
     <image id="alta_ejemp" url="./menuPrincipal/Numeros/img/altaModEjemplares.png"/>
+    <!-- Imagenes Informes-->
+    <image id="lista_informes" url="./menuPrincipal/Informes/img/listadoInformes.png"/>
 </images>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Informes">
+    Desde el apartado de informes podemos listar todas las entidades que gestiona la aplicación. La apariencia del listado de informes es la siguiente<br/>
+    <img id="lista_informes" width="20%"/><br/>
+    Desde esta ventana podremos visualizar los siguientes informes:
+    <ul>
+        <li>
+            <ref id="Pagina Principal" desc="Informe de colecciones"/>
+        </li>
+        <li>
+            <ref id="Pagina Principal" desc="Informe de colecciones por nombre"/>
+        </li>
+        <li>
+            <ref id="Pagina Principal" desc="Informe de números"/>
+        </li>
+        <li>
+            <ref id="Pagina Principal" desc="Informe de números por nombre"/>
+        </li>
+        <li>
+            <ref id="Pagina Principal" desc="Informe de ejemplares"/>
+        </li>
+        <li>
+            <ref id="Pagina Principal" desc="Informe de ejemplares filtrado"/>
+        </li>
+    </ul>
+    En caso de querer ver un informe, simplemente tendremos que hacer clic en el que deseemos.
+</article>
