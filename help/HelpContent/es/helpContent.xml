@@ -19,6 +19,7 @@
         </chapter>
         <chapter name="Informes">
             <article name="Informes"/>
+            <article name="Informe Colecciones"/>
         </chapter>
     </chapters> 
 </helpContent>

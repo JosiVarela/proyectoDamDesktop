@@ -29,4 +29,5 @@
     <image id="alta_ejemp" url="./menuPrincipal/Numeros/img/altaModEjemplares.png"/>
     <!-- Imagenes Informes-->
     <image id="lista_informes" url="./menuPrincipal/Informes/img/listadoInformes.png"/>
+    <image id="inf_col" url="./menuPrincipal/Informes/img/informeCol.png"/>
 </images>
