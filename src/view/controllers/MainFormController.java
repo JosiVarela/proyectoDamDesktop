@@ -81,7 +81,7 @@ public class MainFormController implements Initializable {
     void btnHelpAction(ActionEvent event) {
         //swingButton.doClick();
         //javaHelp.start();
-        JavaHelp.showHelp(thisStage);
+        JavaHelp.showHelp(thisStage, rb);
     }
 
     @FXML
@@ -325,8 +325,6 @@ public class MainFormController implements Initializable {
     public void setStage(Stage thisStage){
         this.thisStage = thisStage;
         Resources.setMainWindow(this.thisStage);
-
-        javaHelp = new JavaHelp(btnHelp, this.thisStage);
     }
 
     public void startConnection(){
