@@ -36,4 +36,6 @@
     <image id="inf_numero_nom_filtrado" url="./menuPrincipal/Informes/img/informeNumeroNombreFiltrado.png"/>
     <image id="inf_numero_nom" url="./menuPrincipal/Informes/img/informeNumeroNombre.png"/>
     <image id="inf_ejemplar" url="./menuPrincipal/Informes/img/informeEjemplares.png"/>
+    <image id="inf_ejemplar_nom_filtrado" url="./menuPrincipal/Informes/img/InformeEjemplarNombreFiltrado.png"/>
+    <image id="inf_ejemplar_nom" url="./menuPrincipal/Informes/img/InformeEjemplarNombre.png"/>
 </images>

@@ -24,6 +24,7 @@
             <article name="Informe numeros"/>
             <article name="Informe numeros por nombre"/>
             <article name="Informe ejemplares"/>
+            <article name="Informe ejemplares filtrado"/>
         </chapter>
     </chapters> 
 </helpContent>
