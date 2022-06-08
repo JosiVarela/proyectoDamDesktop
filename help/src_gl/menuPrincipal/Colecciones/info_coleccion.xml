@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article [
+    <!ENTITY oacute "ó">
+    <!ENTITY eacute "é">
+    <!ENTITY uacute "ú;">
+    <!ENTITY aacute "á">
+    <!ENTITY iacute "í">
+]>
+<article desc="Informacion Coleccion">
+Para ver a información de unha colección simplemente teremos que facer clic nunha colección do <ref id="Colecciones" desc="listado de coleccións"/>
+e tras elo mostrarasenos a seguinte pantalla:<br/>
+<img id="info_colec" width="20%"/><br />
+Dende esta pantalla poderemos realizar as seguintes operacións:
+<ul>
+    <li>
+        Ver a información da colección
+    </li>
+    <li>
+        Ver o listado de números pertencentes a colección
+    </li>
+    <li>
+        Dar de alta un número
+    </li>
+    <li>
+        <ref id="Alta/Modificacion Coleccion" desc="Modificar a colección"/> <!-- Añadir Link LISTO-->
+    </li>
+    <li>
+        Eliminar a colección
+    </li>
+</ul>
+
+<title title="Ver a informacion da coleccion"/>
+Ao inicio da pantalla poderemos ver o nome da colección en negriña, despois encontraremonos coa data de creación
+que se rexistrará automáticamente a hora de dar de alta a colección, os números dos que dispón a
+colección e a descripción da colección.
+
+<title title="Ver o listado de numeros da coleccion"/>
+Para ver o listado de números da colección, simplemente teremonos que ir a pestana superior de números de
+esta pantalla.<br/>
+<img id="pestana_num" width="20%"/> <br />
+Dende esta ventá poderemos consultar o listado de números, búscar por título de número e <!-- Añadir Link LISTO--> <ref id="Alta/Modificacion Numeros" desc="dar de alta un novo numero"/>.<br />
+En esta pantalla poderemos filtrar de forma ASCENDENTE ou DESCENDENTE polo campo que desexemos simplemente premendo sobre a cabeceira do campo. <br />
+<img id="num_list" width="20%"/><br />
+Tamén poderemos consultar a información completa de un número facendo dobre clic sobre o número que desexemos levandonos
+a pantalla <ref id="Info Numeros" desc="Informacion de numero"/> <!-- Añadir Link LISTO-->
+<br /><box><b>NOTA: </b></box> Os números solo poderán ser dados de alta dende esta pantalla na colección correspondente pulsando sobre o botón "+" na parte superior.
+
+<title title="Eliminar a coleccion"/>
+Para eliminar a colección simplemente deberemos de pulsar no botón eliminar.<br/>
+<img id="eliminar_colec" width="20%"/><br />
+<br /><box><b>NOTA: </b></box> A colección non poderá ser eliminada se conten números. Debe eliminalos primeiro.
+</article>

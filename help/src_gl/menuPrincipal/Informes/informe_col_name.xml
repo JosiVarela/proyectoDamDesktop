@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Informe Colecciones por nombre">
+    Este será un informe personalizado, no que poderemos filtrar por nome as coleccions que desexemos obter.<br/>
+    Antes de poder renderizar o informe, saliranos a seguinte ventá, donde introduciremos o nome da colección que desexemos buscar.<br />
+    Será obrigatorio introducir o nome de unha colección para poder realizar a búsqueda.<br />
+    <img id="inf_col_nombre_filtra" width="20%"/>
+    A apariencia do informe e a seguinte:<br />
+    <img id="inf_col_nombre" width="20%"/>
+</article>

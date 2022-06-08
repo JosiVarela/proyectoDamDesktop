@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Numeros"> 
+   Eta páxina mostraranos a lista de números que temos na base de datos.<br/>
+   <img id="lista_num" width="20%"/> 
+   <br />
+   Desde a páxina de números poderemos realizar 4 operacións::
+   <ul>
+      <li>
+         Ver o listado de números
+      </li>
+      <li>
+         <ref id="Info Numeros" desc="Ver a información dun número"/>
+      </li>
+      <li>
+         Realizar unha búsqueda por nome de número
+      </li>
+      <li>
+         Realizar una búsqueda por nome de colección
+      </li>
+   </ul>
+
+   <title title="Busqueda de numeros"/>
+
+   Para búscar un número, simplemente temos que indicar no listado da esquerda da búsqueda que queremos, por colección
+   ou por número, escribir o nome e buscar
+   <img id="busca_num" width="20%"/><br /> 
+   En caso de querer restablecer a búsqueda simplemente teremos que deixar o campo en branco e pulsar en buscar ou
+   na tecla INTRO.
+</article>

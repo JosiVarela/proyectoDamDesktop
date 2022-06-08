@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Informe numeros">
+    Este e un informe xeral que nos permitirá ver os datos de todos os números da aplicación<br />
+    A apariencia do informe e a seguinte: <br />
+    <img id="inf_numero" width="20%"/>
+</article>

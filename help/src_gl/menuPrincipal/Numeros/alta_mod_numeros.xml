@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Alta/Modificacion Numeros">
+    Dende esta ventá poderemos dar de alta novos números así como modificar os números actuais.<br/>
+    <title title="Alta Número"/><br />
+    Para dar de alta un número teremos que facelo dende a ventá <ref id="Informacion Coleccion" desc="Información Colección"/> na colección correspondente.<br />
+    La ventana para dar de alta el número tendrá el siguiente aspecto: <br />
+    <img id="alta_num" width="20%"/><br />
+    O único campo non obrigatorio será a imaxen, e en caso de engadir unha imaxe que non desexemos e querer eliminala, simplemente teremos que pulsar
+    sobre o botón eliminar da imaxe. De esta forma restablecerase a imaxe por defecto.
+    <img id="elm_img_num" width="20%"/><br />
+    O resto das restriccións son as seguintes:
+    <ul>
+        <li>
+            O campo nome será alfanúmerico hasta un máximo de 300 caractéres
+        </li>
+        <li>
+            O campo número será de tipo enteiro
+        </li>
+        <li>
+            O campo ISBN será de tipo númerico de 10 ou 13 caractéres (Formato ISBN ou ISBN10 pero sin guións)
+        </li>
+        <li>
+            Poderemos escoller a tapa entre dura ou branda
+        </li>
+        <li>
+            O argumento será de tipo alfanúmerico
+        </li>
+    </ul>
+    <title title="Modificacion Numero"/><br />
+    A hora de modificar un número, cumpliranse as mismas restriccións que o dalo de alta, exceptuando o ISBN, que será un campo bloqueado.
+    <img id="mod_num" width="20%"/>
+</article> 

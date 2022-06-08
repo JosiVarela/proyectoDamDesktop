@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Menu Principal"> 
+   O menú principal da aplicación e o seguinte, o cal está situado na parte esquerda da aplicación:<br/>
+   <img id="menu_principal" width="5%"/><br />
+   Neste menú encontraremonos as seguintes opcións:
+   
+   <ul>
+      <li>
+         <ref id="Pagina Principal" desc="Páxina Principal"/>
+      </li>
+      <li>
+         <ref id="Colecciones" desc="Listado de colecciones"/>
+      </li>
+      <li>
+         Números
+      </li>
+      <li>
+         Informes
+      </li>
+      <li>
+         Axustes
+      </li>
+   </ul>
+   
+</article>

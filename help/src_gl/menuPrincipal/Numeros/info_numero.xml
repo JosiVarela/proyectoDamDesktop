@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Info Numeros">
+    Para acceder a esta ventá, poderemos facelo desde a opción "Números" do <ref id="Menu Principal" desc="Menú Principal"/> ou
+    facendo dobre clic nun número desde a ventá <ref id="Informacion Coleccion" desc="Información colección"/> na sección de números.<br/>
+    O aspecto da ventá e o seguinte:<br />
+    <img id="info_num" width="20%"/><br />
+    Dende esta ventá podemos:
+    <ul>
+        <li>
+            <ref id="Alta/Modificacion Numeros" desc="Modificar o número"/> <!-- Linkear - LISTO-->
+        </li>
+        <li>
+            Eliminar o número
+        </li>
+        <li>
+            Ver os exemplares de este número
+        </li>
+    </ul>
+    <title title="Eliminar o numero"/>
+    Para eliminar o número, simplemente teremos que pulsar sobre o botón eliminar.<br />
+    <img id="eliminar_num" width="20%"/><br />
+    Tras pulsar eliminar, saliranos un mensaxe preguntandonos si realmente desexamos eliminar o número.
+    <box><b>NOTA: </b></box>
+    En caso de que o número teña exemplares, non nos permitirá eliminalo. Para elo, deberemos eliminar todos os exemplares primeiro.
+    
+    <title title="Ver os exemplares do numero"/>
+    Para visualizar os exemplares do número simplemente teremos que facer clic sobre a pestana superior de exemplares, e ahí poderemos ver un listado de estos.<br />
+    <img id="pestana_ejemplares" width="20%"/><br />
+    Dende esta ventá poderemos filtrar de forma ascendente ou descenedente por celda pulsando sobre a cabeceira de esta. Tamén poderemos engadir
+    novos exemplares pulsando sobre "+" na parte superior.
+
+</article>

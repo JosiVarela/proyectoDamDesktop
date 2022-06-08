@@ -80,7 +80,8 @@ public class MainFormController implements Initializable {
     @FXML
     void btnHelpAction(ActionEvent event) {
         //swingButton.doClick();
-        javaHelp.start();
+        //javaHelp.start();
+        JavaHelp.showHelp(thisStage);
     }
 
     @FXML

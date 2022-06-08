@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Locale;
 
 public class JavaHelp {
     private JavaHelpFactory factory = null;
@@ -28,6 +29,44 @@ public class JavaHelp {
     private Stage stage;
 
     private Stage root;
+
+    public static void showHelp(Stage owner){
+        String helpUrl;
+        String title;
+        File file;
+        JavaHelpFactory factory;
+        JFXHelpContentViewer viewer;
+
+        if(Locale.getDefault().equals(new Locale("es", "ES"))){
+            helpUrl = "./help/help_es/articles.zip";
+            title = "Ayuda";
+        }else{
+            helpUrl = "./help/help_gl/articles.zip";
+            title = "Axuda";
+        }
+
+        file = new File(helpUrl);
+
+        if(!file.exists()){
+            System.out.println("Error cargar ayuda");
+            return;
+        }
+
+        try{
+            factory = new JavaHelpFactory(file.toURI().toURL());
+            factory.create();
+
+            viewer = new JFXHelpContentViewer();
+            factory.install(viewer);
+
+            viewer.getHelpWindow(owner, title, 1000, 700).showAndWait();
+
+        }catch (IOException | SAXException ex) {
+        }
+
+    }
+
+
 
     public JavaHelp(Button helpButton, Stage stage) {
         this.helpButton = helpButton;
@@ -64,7 +103,7 @@ public class JavaHelp {
         System.out.println("Antes de crear URL");
         URL url = this.getClass().getResource("articles.zip");
 
-        File file = new File("./help/help_es/articles.zip");
+        File file = new File("./help/help_gl/articles.zip");
 
 
         System.out.println("");

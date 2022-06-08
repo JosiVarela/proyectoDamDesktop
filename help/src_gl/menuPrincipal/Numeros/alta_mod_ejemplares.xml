@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Operaciones Ejemplares">
+    Dende esta ventá poderemos visualizar a información dos exmplares, eliminalos e modificalos. <br/>
+    Tamen será a ventá que se visualice cando demos un de alta. <br/>
+    <img id="alta_ejemp" width="20%"/>
+    A hora de dar de alta un exmplar ou modificalo, os campos estado e data de compra serán obrigatorios, mentras que o campo observacions será opcional.<br />
+    Outro dato a ter en conta será que a data de compra non pode ser superior a data actual, en caso contrario, salirá unha mensaxe de aviso.
+</article>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Informe ejemplares filtrado">
+    Este e un informe personalizado de exmplares que nos permitirá ver os datos dos exmplares filtrados por nome de número, nome de colección
+    ou por un rango de datas. Podemos mesturar todos estos filtros mencionados anteriormente para sacar datos máis conclusos.<br />
+    Ao iniciar o informe saliranos a seguinte ventá donde introduciremos os datos. Ningún dos campos e obrigatorios polo que poderemos filtrar por un
+    un só campo ou por ningún.<br />
+    <box><b>NOTAS: </b></box><br />
+    <ul>
+        <li>
+            En caso de introducir o filtro de data teremos que introducir ambos campos para realizar o filtro de búsqueda
+        </li>
+        <li>
+            A hora de buscar a data de inicio non pode ser maior que a de fin
+        </li>
+        <li>
+            A data de fin non pode ser superior a data do sistema
+        </li>
+        <li>
+            Si ambos campos están vacios buscarase dende o inicio dos rexistros ata o día actual (Todos os datos)
+        </li>
+        <li>
+            Será válido que a data de inicio e a de fin sexan a misma data para buscar rexistros do día actual
+        </li>
+    </ul>
+    A apariencia da pantalla de filtrado e a seguinte: <br />
+    <img id="inf_ejemplar_nom_filtrado" width="20%"/>
+    A apariencia do informe e a seguinte: <br />
+    <img id="inf_ejemplar_nom" width="20%"/>
+</article>

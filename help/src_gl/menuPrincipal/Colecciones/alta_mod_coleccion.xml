@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article [
+    <!ENTITY oacute "ó">
+    <!ENTITY eacute "é">
+    <!ENTITY uacute "ú;">
+    <!ENTITY aacute "á">
+    <!ENTITY iacute "í">
+]>
+<article desc="Alta/Modificacion Coleccion">
+    Para a alta e modificación da colección, utilizaráse a misma pantalla, debendo introducir de maneira obrigatoria o nome da colección
+    e unha descripción<br/>
+    <img id="alta_mod_colec" width="20%"/><br/>
+    O nome da colección non deberá superar os 500 caractéres.<br/>
+    <box><b>NOTA:</b></box>
+    O nome da colección deberá ser único, en caso contrarío saltará unha mensaxe de erro.
+</article>

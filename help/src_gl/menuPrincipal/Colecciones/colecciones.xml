@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Colecciones"> 
+   Esta páxina mostrarános a lista de coleccións que temos na BD.<br/>
+   <img id="lista_colec" width="20%"/>
+   <br />
+   Dende a páxina coleccións poderemos realizar 4 operacións:
+   <ul>
+      <li>
+         Ver o listado de coleccións
+      </li>
+      <li>
+         <ref id="Informacion Coleccion" desc="Ver a información de unha colección"/>
+      </li>
+      <li>
+         <ref id="Alta/Modificacion Coleccion" desc="Dar de alta unha colección"/>
+      </li>
+      <li>
+         Buscar una colección
+      </li>
+   </ul>
+
+   <title title="Busqueda de coleccions"/>
+
+   Para búscar unha colección simplemente teremos que escribir na barra de búsqueda superior o título da colección que desexamos búscar:<br />
+   <img id="busca_colec" width="20%"/><br />
+   En caso de querer restablecer a búsqueda simplemente teremos que deixar o campo en branco e pulsar en buscar ou
+   na tecla INTRO.
+</article>

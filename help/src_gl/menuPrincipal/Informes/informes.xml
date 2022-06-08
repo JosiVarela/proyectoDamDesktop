@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Informes">
+    Dende o aprtado de informes poderemos listar todas as entidades que xestiona a aplicación. A apariencia do listado e a seguinte:<br/>
+    <img id="lista_informes" width="20%"/><br/>
+    Dende esta ventá poderemos visualzar os seguintes informes:
+    <ul>
+        <li>
+            <ref id="Informe Colecciones" desc="Informes de coleccións"/>
+        </li>
+        <li>
+            <ref id="Informe Colecciones por nombre" desc="Informe de coleccións por nome"/>
+        </li>
+        <li>
+            <ref id="Informe numeros" desc="Informe de números"/>
+        </li>
+        <li>
+            <ref id="Informe numeros por nombre" desc="Informe de números por nome"/>
+        </li>
+        <li>
+            <ref id="Informe ejemplares" desc="Informe de exemplares"/>
+        </li>
+        <li>
+            <ref id="Informe ejemplares filtrado" desc="Informe de exemplares filtrado"/>
+        </li>
+    </ul>
+    En caso de querer ver un informe, simplemente teremos que facer clic no que desexemos.
+</article>
