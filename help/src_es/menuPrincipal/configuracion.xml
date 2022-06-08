@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article desc="Configuracion">
+    Desde este apartado podremos cambiar el idioma y el servidor que usará nuestra aplicacion.<br />
+    Para acceder a la configuración, simplemente tendremos que pulsar en el icono del engranaje de la página principal.<br />
+    <img id="engranaje" width="20%"/><br />
+    <title title="Configuracion del idioma"/>
+    A la hora de cambiar el idioma nos saldrá la siguiente pantalla, en la que al pinchar en el idioma y cerrar la ventana este cambiará
+    automáticamente<br />
+    <img id="lenguaje" width="20%"/><br />
+    <title title="Configuracion del servidor"/>
+    Para acceder a la configuiración  del servidor simplemente tendremos que pulsar en la pestaña superior que pone "servidor" y desede 
+    ahí podremos establecer una nueva conexión a un nuevo servidor o reconectarnos en caso de perdida de conexión.<br />
+    En esta aplicación no estará permitido la desconexión del servidor de forma manual, ya que es una aplicación totalmente Online.<br />
+    En caso de querer cambiar de servidor se comprobará antes si el servidor existe, en caso contrario, no se cerrará la conexión con el 
+    servidor actual.<br />
+    <img id="servidor" width="20%"/><br />
+</article>

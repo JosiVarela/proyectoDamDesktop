@@ -5,22 +5,22 @@
     Desde esta ventana podremos visualizar los siguientes informes:
     <ul>
         <li>
-            <ref id="Pagina Principal" desc="Informe de colecciones"/>
+            <ref id="Informe Colecciones" desc="Informe de colecciones"/>
         </li>
         <li>
-            <ref id="Pagina Principal" desc="Informe de colecciones por nombre"/>
+            <ref id="Informe Colecciones por nombre" desc="Informe de colecciones por nombre"/>
         </li>
         <li>
-            <ref id="Pagina Principal" desc="Informe de números"/>
+            <ref id="Informe numeros" desc="Informe de números"/>
         </li>
         <li>
-            <ref id="Pagina Principal" desc="Informe de números por nombre"/>
+            <ref id="Informe numeros por nombre" desc="Informe de números por nombre"/>
         </li>
         <li>
-            <ref id="Pagina Principal" desc="Informe de ejemplares"/>
+            <ref id="Informe ejemplares" desc="Informe de ejemplares"/>
         </li>
         <li>
-            <ref id="Pagina Principal" desc="Informe de ejemplares filtrado"/>
+            <ref id="Informe ejemplares filtrado" desc="Informe de ejemplares filtrado"/>
         </li>
     </ul>
     En caso de querer ver un informe, simplemente tendremos que hacer clic en el que deseemos.

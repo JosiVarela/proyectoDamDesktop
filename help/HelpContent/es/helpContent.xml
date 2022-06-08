@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <helpContent keepOrder="true"> 
     <chapters>
+        <chapter name="Configuracion"> 
+            <article name="Configuracion"/>
+        </chapter>
         <chapter name="Menu Principal"> 
             <article name="Menu Principal"/>
             <article name="Pagina Principal"/>
@@ -10,7 +13,7 @@
             <article name="Informacion Coleccion"/>
             <article name="Alta/Modificacion Coleccion"/>
         </chapter>
-        <chapter name="Números">
+        <chapter name="Numeros">
             <article name="Numeros"/>
             <article name="Info Numeros"/>
             <article name="Alta/Modificacion Numeros"/>

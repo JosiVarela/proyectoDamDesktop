@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <images>
+    <!-- Imagenes Configuracion-->
+    <image id="engranaje" url="./menuPrincipal/img/engranajeConfig.png"/>
+    <image id="lenguaje" url="./menuPrincipal/img/langConfig.png"/>
+    <image id="servidor" url="./menuPrincipal/img/serverConfig.png"/>
     <!-- Imagenes del mennú principal-->
     <image id="menu_principal" url="./menuPrincipal/img/menuPrincipal.png"/>
     <image id="pg_inicio_logo" url="./menuPrincipal/img/pgPrincipalLogo.png"/>
