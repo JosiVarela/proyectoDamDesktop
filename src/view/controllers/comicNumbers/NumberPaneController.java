@@ -101,7 +101,6 @@ public class NumberPaneController implements Initializable {
             Stage stage = new Stage();
 
             infoController.setOwner(scene);
-            //TODO SET SCENE
 
             stage.setScene(scene);
             stage.setWidth(635);

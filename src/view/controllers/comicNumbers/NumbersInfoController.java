@@ -375,6 +375,7 @@ public class NumbersInfoController implements Initializable {
             if(copiesCreateMod.isNeedUpdate()){
                 comicCopies.remove(0, comicCopies.size());
                 loadComicNumber();
+                this.needUpdate = true;
             }
 
         } catch (SocketException e) {
