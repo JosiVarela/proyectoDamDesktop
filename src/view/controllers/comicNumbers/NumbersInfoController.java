@@ -497,6 +497,7 @@ public class NumbersInfoController implements Initializable {
 
             if(copiesCreateMod.isNeedUpdate()){
                 loadComicNumber();
+                this.needUpdate = true;
             }
 
         } catch (IOException e) {
