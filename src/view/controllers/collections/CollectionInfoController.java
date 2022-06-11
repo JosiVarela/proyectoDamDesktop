@@ -35,6 +35,7 @@ public class CollectionInfoController implements Initializable {
     private boolean neededUpdate;
     private Scene owner;
     private CollectionPresentationController presentationController;
+    private boolean filtered = false;
 
     //<editor-fold desc="FXML vars definition">
     @FXML
@@ -367,6 +368,7 @@ public class CollectionInfoController implements Initializable {
         Object[] response;
 
         if(search.isEmpty()){
+            filtered = false;
             loadCollection(this.collection.getId());
             return;
         }
@@ -381,6 +383,7 @@ public class CollectionInfoController implements Initializable {
 
             populateNumberList((List<ComicNumber>) response[1]);
 
+            filtered = true;
         } catch (SocketException e) {
             alerts(rb.getString("err.noConexion"));
         } catch (IOException | ClassNotFoundException e) {
@@ -471,6 +474,10 @@ public class CollectionInfoController implements Initializable {
             stage.showAndWait();
 
             if(infoController.isNeedUpdate()){
+                if(filtered){
+                    searchNumber();
+                    return;
+                }
                 numberList.remove(0, numberList.size());
                 loadCollection(this.collection.getId());
             }
