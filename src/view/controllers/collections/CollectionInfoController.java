@@ -341,7 +341,12 @@ public class CollectionInfoController implements Initializable {
     }
 
     private void closeAndReload(){
-        presentationController.getCollections();
+        if(presentationController.isFiltered()){
+            presentationController.search();
+        }else{
+            presentationController.getCollections();
+        }
+
         ((Stage)btnModifyCol.getScene().getWindow()).close();
     }
 

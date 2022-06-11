@@ -31,7 +31,7 @@ public class CollectionPresentationController implements Initializable, Translat
 
     private Scene owner;
 
-    private Stage thisStage;
+    private boolean filtered = false;
 
     //<editor-fold desc="FXML vars Definition">
     @FXML
@@ -191,11 +191,12 @@ public class CollectionPresentationController implements Initializable, Translat
         loadCollections();
     }
 
-    private void search(){
+    public void search(){
         String colName = txtSearch.getText().trim();
         Object[] serverResponse;
 
         if(colName.isEmpty()){
+            filtered = false;
             getCollections();
             return;
         }
@@ -223,6 +224,11 @@ public class CollectionPresentationController implements Initializable, Translat
         collectionList.addAll((List<Collection>) serverResponse[1]);
 
         loadCollections();
+        filtered = true;
+    }
+
+    public boolean isFiltered() {
+        return filtered;
     }
 
     private void alerts(String alertMsg){
