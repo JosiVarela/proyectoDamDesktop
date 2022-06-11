@@ -25,6 +25,8 @@ public class AppConfigWindow implements Initializable {
     ResourceBundle rb;
     private Stage owner;
 
+    private boolean newConnection = false;
+
     //<editor-fold desc="FXML vars Definition">
     @FXML
     private Button btnConnect;
@@ -129,6 +131,8 @@ public class AppConfigWindow implements Initializable {
             return;
         }
 
+        newConnection = true;
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.initOwner(this.owner);
         alert.setHeaderText(null);
@@ -165,6 +169,10 @@ public class AppConfigWindow implements Initializable {
         }
 
         return haveConnexion;
+    }
+
+    public boolean isNewConnection() {
+        return newConnection;
     }
 
     private void alerts(String alertMsg){

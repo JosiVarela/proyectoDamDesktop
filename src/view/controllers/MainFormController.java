@@ -140,8 +140,12 @@ public class MainFormController implements Initializable {
 
         try {
             Parent root = loader.load();
+
+            AppConfigWindow configWindow = loader.getController();
+
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+
             stage.setMaxWidth(1000);
             stage.setMaxHeight(700);
             stage.setWidth(620);
@@ -155,6 +159,11 @@ public class MainFormController implements Initializable {
             stage.setScene(scene);
             stage.initStyle(StageStyle.UTILITY);
             stage.showAndWait();
+
+            if(configWindow.isNewConnection()){
+                loadMainPage();
+            }
+
         }catch (IOException e) {
             alerts(rb.getString("err.cargarPantalla"));
             return;
