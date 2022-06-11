@@ -114,6 +114,10 @@ public class NumberPaneController implements Initializable {
             stage.showAndWait();
 
             if(infoController.isNeedUpdate()){
+                if(presentationController.isFiltered()){
+                    presentationController.search();
+                    return;
+                }
                 presentationController.getNumbers();
             }
 

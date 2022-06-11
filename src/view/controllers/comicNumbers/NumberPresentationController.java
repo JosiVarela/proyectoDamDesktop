@@ -31,6 +31,7 @@ public class NumberPresentationController implements Initializable, Translatable
     private Stage owner;
     private final List<ComicNumber> numberList = new ArrayList<>();
     private ObservableList<String> comboOpts = FXCollections.observableArrayList();
+    boolean filtered = false;
     @FXML
     private Button btnSearch;
 
@@ -128,10 +129,11 @@ public class NumberPresentationController implements Initializable, Translatable
         }
     }
 
-    private void search(){
+    public void search(){
         String search = txtSearch.getText().trim();
 
         if(search.isEmpty()){
+            filtered = false;
             getNumbers();
             return;
         }
@@ -158,6 +160,7 @@ public class NumberPresentationController implements Initializable, Translatable
             numberList.removeAll(numberList);
             numberList.addAll((Collection<? extends ComicNumber>) serverResponse[1]);
             loadNumbers();
+            filtered = true;
 
         } catch (SocketException e) {
             alerts(rb.getString("err.noConexion"));
@@ -182,7 +185,7 @@ public class NumberPresentationController implements Initializable, Translatable
             numberList.removeAll(numberList);
             numberList.addAll((Collection<? extends ComicNumber>) serverResponse[1]);
             loadNumbers();
-
+            filtered = false;
         } catch (SocketException e) {
             alerts(rb.getString("err.noConexion"));
         }catch (IOException e) {
@@ -226,6 +229,10 @@ public class NumberPresentationController implements Initializable, Translatable
         //Change combo values
         comboOpts.remove(0, comboOpts.size());
         populateCombo(rb);
+    }
+
+    public boolean isFiltered() {
+        return filtered;
     }
 
     private void alerts(String alertMsg){
