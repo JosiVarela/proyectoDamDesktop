@@ -160,11 +160,11 @@ public class CopiesCreateMod implements Initializable {
     }
 
     private void loadCombo(){
-        System.out.println("Cargo combo");
+
         comboList.addAll(rb.getString("copiesCreateMod.cmbNuevo"), rb.getString("copiesCreateMod.cmbComoNuevo"),
                 rb.getString("copiesCreateMod.aceptable"), rb.getString("copiesCreateMod.malo"));
 
-        System.out.println("Longitud combo" + comboList.size());
+
 
 
         cmbState.setItems(comboList);

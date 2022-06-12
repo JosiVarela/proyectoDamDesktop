@@ -464,7 +464,7 @@ public class NumbersInfoController implements Initializable {
      * This method load the comic copies in the table
      */
     private void loadCopyScreen(int id){
-        System.out.println("Entro");
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/forms/comicCopies/copies_create_mod.fxml"), rb);
         Parent root;
 

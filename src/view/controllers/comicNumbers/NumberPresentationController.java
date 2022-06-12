@@ -181,7 +181,7 @@ public class NumberPresentationController implements Initializable, Translatable
                 alerts(rb.getString("err.ObtenerColecciones"));
                 return;
             }
-            System.out.println("Cargo numeros Col");
+
             numberList.removeAll(numberList);
             numberList.addAll((Collection<? extends ComicNumber>) serverResponse[1]);
             loadNumbers();
