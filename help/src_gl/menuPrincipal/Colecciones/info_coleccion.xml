@@ -41,7 +41,7 @@ esta pantalla.<br/>
 Dende esta ventá poderemos consultar o listado de números, búscar por título de número e <!-- Añadir Link LISTO--> <ref id="Alta/Modificacion Numeros" desc="dar de alta un novo numero"/>.<br />
 En esta pantalla poderemos filtrar de forma ASCENDENTE ou DESCENDENTE polo campo que desexemos simplemente premendo sobre a cabeceira do campo. <br />
 <img id="num_list" width="20%"/><br />
-Tamén poderemos consultar a información completa de un número facendo dobre clic sobre o número que desexemos levandonos
+Tam&eacute;n poderemos consultar a información completa de un número facendo dobre clic sobre o número que desexemos levandonos
 a pantalla <ref id="Info Numeros" desc="Informacion de numero"/> <!-- Añadir Link LISTO-->
 <br /><box><b>NOTA: </b></box> Os números solo poderán ser dados de alta dende esta pantalla na colección correspondente pulsando sobre o botón "+" na parte superior.
 

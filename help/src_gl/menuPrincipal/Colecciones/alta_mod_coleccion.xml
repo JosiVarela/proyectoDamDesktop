@@ -10,7 +10,7 @@
     Para a alta e modificación da colección, utilizaráse a misma pantalla, debendo introducir de maneira obrigatoria o nome da colección
     e unha descripción<br/>
     <img id="alta_mod_colec" width="20%"/><br/>
-    O nome da colección non deberá superar os 500 caractéres.<br/>
+    O nome da colección non deberá superar os 500 caract&eacute;res.<br/>
     <box><b>NOTA:</b></box>
     O nome da colección deberá ser único, en caso contrarío saltará unha mensaxe de erro.
 </article>

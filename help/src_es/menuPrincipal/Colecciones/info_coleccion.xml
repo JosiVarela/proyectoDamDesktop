@@ -29,12 +29,12 @@ Desde esta pantalla podremos realizar las siguientes operaciones:
     </li>
 </ul>
 
-<title title="Ver la información de la colección"/>
+<title title="Ver la informacion de la coleccion"/>
 Al inicio de la pantalla podremos ver el nombre de la colección en negrita, despu&eacute;s nos encontraremos con la fecha de
 creación, que se registrará automaticamente a la hora de dar de alta la colección, los números de los que dispone dicha
 colección y la descripción de la colección.
 
-<title title="Ver el listado de números de la colección"/>
+<title title="Ver el listado de numeros de la coleccion"/>
 Para ver el listado de número de la colección, simplemente nos tendremos que dirigir a la pestaña superior de números de
 esta pantalla.<br/>
 <img id="pestana_num" width="20%"/> <br />
@@ -45,7 +45,7 @@ Tambi&eacute;n podremos consultar la información completa de un número haciend
 a la pantalla <ref id="Info Numeros" desc="Informaci&oacute;n de numero"/> <!-- Añadir Link LISTO-->
 <br /><box><b>NOTA: </b></box> Los números solo podran ser dados de alta desde esta pantalla en la colección correspondiente pulsando el botón "+" de la parte superior.
 
-<title title="Eliminar la colección"/>
+<title title="Eliminar la coleccion"/>
 Para eliminar la colección simplemente debemos pulsar en el botón eliminar.<br/>
 <img id="eliminar_colec" width="20%"/><br />
 <br /><box><b>NOTA: </b></box> La colección no podrá ser eliminada si contine números. Debe eliminarlos primero.

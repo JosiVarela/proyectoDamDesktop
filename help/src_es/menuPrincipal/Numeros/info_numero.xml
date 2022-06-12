@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article [
+    <!ENTITY oacute "ó">
+    <!ENTITY eacute "é">
+    <!ENTITY uacute "ú;">
+    <!ENTITY aacute "á">
+    <!ENTITY iacute "í">
+]>
 <article desc="Info Numeros">
     Para acceder a esta ventana, podremos acceder desde la opción "Números" del <ref id="Menu Principal" desc="Menú Principal"/> o
     haciendo doble clic en un número desde la ventana <ref id="Informacion Coleccion" desc="Información colección"/> en la sección de números.<br/>
@@ -16,18 +23,18 @@
             Ver los ejemplares de ese número
         </li>
     </ul>
-    <title title="Eliminar el número"/>
+    <title title="Eliminar el numero"/>
     Para eliminar el número, simplemente tendremos que pulsar sobre el botón de elimar.<br />
     <img id="eliminar_num" width="20%"/><br />
     Tras pulsar eliminar, nos saldrá un mensaje preguntandonos si realmente deseamos eliminar el ejemplar.
     <box><b>NOTA: </b></box>
     En caso de que el número tenga ejemplares, non nos permitirá eliminarlo. Para ello debemos eliminar todos los ejemplares primero.
     
-    <title title="Ver los ejemplares del número"/>
+    <title title="Ver los ejemplares del numero"/>
     Para visualizar los ejemplares simplemente tendremos que hacer clic sobre la pestaña superior de ejemplares, y ahí podremos
     ver un listado de estos.<br />
     <img id="pestana_ejemplares" width="20%"/><br />
-    Desde esta ventana podremos filtrar de forma ascendete o descendente por celda pulsando sobre la cabecera de esta. También podremos añadir
+    Desde esta ventana podremos filtrar de forma ascendete o descendente por celda pulsando sobre la cabecera de esta. Tambi&eacute;n podremos añadir
     nuevos ejemplares pulsansdo sobre "+" en la parte superior.
 
 </article>

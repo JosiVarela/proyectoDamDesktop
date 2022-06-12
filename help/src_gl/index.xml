@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <index> 
-      Paxina de axuda en galego
+     <title title="Paxina de axuda da aplicacion"/>
+     <img id="imagen_principal" width="50%"/>
 </index>

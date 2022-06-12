@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <index> 
-      Página de ayuda de la aplicación
+      <title title="Pagina de ayuda de la aplicacion"/>
+      <img id="main_page" width="20%"/>
 </index>

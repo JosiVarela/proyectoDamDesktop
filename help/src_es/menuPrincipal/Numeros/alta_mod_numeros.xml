@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <article desc="Alta/Modificacion Numeros">
     Desde esta ventana podremos dar de alta nuevos números así como modificar los números actuales.<br/>
-    <title title="Alta Número"/><br />
+    <title title="Alta Numero"/><br />
     Para dar de alta un número tendremos que hacerlo desde la ventana <ref id="Informacion Coleccion" desc="Información Colección"/> en la colección correspondiente.<br />
     La ventana para dar de alta el número tendrá el siguiente aspecto: <br />
     <img id="alta_num" width="20%"/><br />
@@ -26,7 +26,7 @@
             El argumento será de tipo alfarnúmerico
         </li>
     </ul>
-    <title title="Modificación número"/><br />
+    <title title="Modificacion numero"/><br />
     A la hora de modificar un número, se cumplirán las mismas restricciones que al darlo de alta exceptuando el ISBN que será un campo bloqueado.
     <img id="mod_num" width="20%"/>
 </article> 

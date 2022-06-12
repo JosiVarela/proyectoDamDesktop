@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article [
+    <!ENTITY oacute "ó">
+    <!ENTITY eacute "é">
+    <!ENTITY uacute "ú;">
+    <!ENTITY aacute "á">
+    <!ENTITY iacute "í">
+]>
 <article desc="Ejemplares">
     Desde esta ventana podremos visualizar toda la información de los ejemplares. <br/>
     <img id="lista_ejemp" width="20%"/>
     En caso de querer modificar, eliminar o ver las observaciones, podremos hacerlo haciendo doble clic sobre el ejemplar que deseemos. Esto
     nos llevará a la ventana <ref id="Operaciones Ejemplares" desc="Alta/Modificación Ejemplar"/><br /> <!--Linkear LISTO-->
-    También podremos dar de alta un ejemplar desde esta ventana pulsando sobre "+".
+    Tambi&eacute;n podremos dar de alta un ejemplar desde esta ventana pulsando sobre "+".
 </article> 

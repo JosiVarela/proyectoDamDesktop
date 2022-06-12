@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article [
+    <!ENTITY oacute "ó">
+    <!ENTITY eacute "é">
+    <!ENTITY uacute "ú;">
+    <!ENTITY aacute "á">
+    <!ENTITY iacute "í">
+]>
 <article desc="Operaciones Ejemplares">
     Desde esta ventana podremos visualizar la información de los ejemplares, eliminarlos, modificarlos. <br/>
-    También será la pantalla que se visualice cuando deamos uno de alta. <br/>
+    Tambi&eacute;n será la pantalla que se visualice cuando deamos uno de alta. <br/>
     <img id="alta_ejemp" width="20%"/>
     A la hora de dar de alta o modificar un ejemplar los campos estado y primera publicación serán campos obligatorios, mientras que el campo observaciones será opcional.<br />
     Otro dato a tener en cuenta será que la fecha de compra no puede ser superior a la fecha actual. En caso contrario, saldrá un mesaje de aviso 

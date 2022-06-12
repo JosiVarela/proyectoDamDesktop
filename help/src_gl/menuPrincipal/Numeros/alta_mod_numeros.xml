@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article [
+    <!ENTITY oacute "ó">
+    <!ENTITY eacute "é">
+    <!ENTITY uacute "ú;">
+    <!ENTITY aacute "á">
+    <!ENTITY iacute "í">
+]>
 <article desc="Alta/Modificacion Numeros">
     Dende esta ventá poderemos dar de alta novos números así como modificar os números actuais.<br/>
     <title title="Alta Número"/><br />
@@ -11,13 +18,13 @@
     O resto das restriccións son as seguintes:
     <ul>
         <li>
-            O campo nome será alfanúmerico hasta un máximo de 300 caractéres
+            O campo nome será alfanúmerico hasta un máximo de 300 caract&eacute;res
         </li>
         <li>
             O campo número será de tipo enteiro
         </li>
         <li>
-            O campo ISBN será de tipo númerico de 10 ou 13 caractéres (Formato ISBN ou ISBN10 pero sin guións)
+            O campo ISBN será de tipo númerico de 10 ou 13 caract&eacute;res (Formato ISBN ou ISBN10 pero sin guións)
         </li>
         <li>
             Poderemos escoller a tapa entre dura ou branda

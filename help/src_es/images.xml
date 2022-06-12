@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <images>
+    <!-- Index-->
+    <image id="main_page" url="./help.png"/>
     <!-- Imagenes Configuracion-->
     <image id="engranaje" url="./menuPrincipal/img/engranajeConfig.png"/>
     <image id="lenguaje" url="./menuPrincipal/img/langConfig.png"/>
