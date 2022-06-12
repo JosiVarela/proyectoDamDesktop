@@ -129,7 +129,7 @@ public class NumbersCreateMod implements Initializable {
             btnDelImage.setDisable(false);
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            alerts(rb.getString("numberCreateMod.errImagen"));
         }
     }
 
