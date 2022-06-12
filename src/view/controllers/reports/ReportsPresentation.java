@@ -21,6 +21,7 @@ import services.Resources;
 import view.controllers.LoadScreenController;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -169,6 +170,11 @@ public class ReportsPresentation implements Initializable, Translatable {
                 });
 
 
+            } catch (SocketException e) {
+                Platform.runLater(()->{
+                    loadScreenController.closeWindow();
+                    alerts(rb.getString("err.noConexion"));
+                });
             } catch (IOException e) {
                 Platform.runLater(()->{
                     loadScreenController.closeWindow();
@@ -269,6 +275,11 @@ public class ReportsPresentation implements Initializable, Translatable {
                 });
 
 
+            } catch (SocketException e) {
+                Platform.runLater(()->{
+                    loadScreenController.closeWindow();
+                    alerts(rb.getString("err.noConexion"));
+                });
             } catch (IOException e) {
                 Platform.runLater(()->{
                     loadScreenController.closeWindow();
@@ -336,6 +347,11 @@ public class ReportsPresentation implements Initializable, Translatable {
                 });
 
 
+            } catch (SocketException e) {
+                Platform.runLater(()->{
+                    loadScreenController.closeWindow();
+                    alerts(rb.getString("err.noConexion"));
+                });
             } catch (IOException e) {
                 Platform.runLater(()->{
                     loadScreenController.closeWindow();

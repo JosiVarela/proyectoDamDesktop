@@ -17,6 +17,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import view.controllers.LoadScreenController;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -164,6 +165,11 @@ public class CopiesReportFiltered implements Initializable {
                 });
 
 
+            } catch (SocketException e) {
+                Platform.runLater(()->{
+                    loadScreenController.closeWindow();
+                    alerts(rb.getString("err.noConexion"));
+                });
             } catch (IOException e) {
                 Platform.runLater(()->{
                     loadScreenController.closeWindow();

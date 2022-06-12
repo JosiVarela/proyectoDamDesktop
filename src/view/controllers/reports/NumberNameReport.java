@@ -19,6 +19,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import view.controllers.LoadScreenController;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -113,6 +114,11 @@ public class NumberNameReport implements Initializable {
                 });
 
 
+            } catch (SocketException e) {
+                Platform.runLater(()->{
+                    loadScreenController.closeWindow();
+                    alerts(rb.getString("err.noConexion"));
+                });
             } catch (IOException e) {
                 Platform.runLater(()->{
                     loadScreenController.closeWindow();
