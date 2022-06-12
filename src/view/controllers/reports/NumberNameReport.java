@@ -106,10 +106,19 @@ public class NumberNameReport implements Initializable {
                     }
                 }
                 Platform.runLater(() -> {
+                    JasperPrint jasperPrint;
+                    jasperPrint = (JasperPrint) response[1];
+
+                    if(jasperPrint.getPages().size() <= 0){
+                        loadScreenController.closeWindow();
+                        alerts(rb.getString("reports.noRegistros"));
+                        return;
+                    }
+
                     JasperViewerFX jasperViewer = new JasperViewerFX();
                     jasperViewer.initModality(Modality.APPLICATION_MODAL);
                     jasperViewer.initOwner(owner.getWindow());
-                    jasperViewer.viewReport(rb.getString("reports.informeNumerosNombre"), (JasperPrint) response[1]);
+                    jasperViewer.viewReport(rb.getString("reports.informeNumerosNombre"), jasperPrint);
                     loadScreenController.closeWindow();
                 });
 

@@ -162,10 +162,19 @@ public class ReportsPresentation implements Initializable, Translatable {
                     }
                 }
                 Platform.runLater(() -> {
+                    JasperPrint jasperPrint;
+                    jasperPrint = (JasperPrint) response[1];
+
+                    if(jasperPrint.getPages().size() <= 0){
+                        loadScreenController.closeWindow();
+                        alerts(rb.getString("reports.noRegistros"));
+                        return;
+                    }
+
                     JasperViewerFX jasperViewer = new JasperViewerFX();
                     jasperViewer.initModality(Modality.APPLICATION_MODAL);
                     jasperViewer.initOwner(owner);
-                    jasperViewer.viewReport(rb.getString("reports.informeEjemplares"), (JasperPrint) response[1]);
+                    jasperViewer.viewReport(rb.getString("reports.informeEjemplares"), jasperPrint);
                     loadScreenController.closeWindow();
                 });
 
@@ -267,10 +276,19 @@ public class ReportsPresentation implements Initializable, Translatable {
                     }
                 }
                 Platform.runLater(() -> {
+                    JasperPrint jasperPrint;
+                    jasperPrint = (JasperPrint) response[1];
+
+                    if(jasperPrint.getPages().size() <= 0){
+                        loadScreenController.closeWindow();
+                        alerts(rb.getString("reports.noRegistros"));
+                        return;
+                    }
+
                     JasperViewerFX jasperViewer = new JasperViewerFX();
                     jasperViewer.initModality(Modality.APPLICATION_MODAL);
                     jasperViewer.initOwner(owner);
-                    jasperViewer.viewReport(rb.getString("reports.informeColecciones"), (JasperPrint) response[1]);
+                    jasperViewer.viewReport(rb.getString("reports.informeColecciones"), jasperPrint);
                     loadScreenController.closeWindow();
                 });
 
@@ -339,10 +357,19 @@ public class ReportsPresentation implements Initializable, Translatable {
                     }
                 }
                 Platform.runLater(() -> {
+                    JasperPrint jasperPrint;
+                    jasperPrint = (JasperPrint) response[1];
+
+                    if(jasperPrint.getPages().size() <= 0){
+                        loadScreenController.closeWindow();
+                        alerts(rb.getString("reports.noRegistros"));
+                        return;
+                    }
+
                     JasperViewerFX jasperViewer = new JasperViewerFX();
                     jasperViewer.initModality(Modality.APPLICATION_MODAL);
                     jasperViewer.initOwner(owner);
-                    jasperViewer.viewReport(rb.getString("reports.informeNumeros"), (JasperPrint) response[1]);
+                    jasperViewer.viewReport(rb.getString("reports.informeNumeros"), jasperPrint);
                     loadScreenController.closeWindow();
                 });
 
@@ -418,5 +445,6 @@ public class ReportsPresentation implements Initializable, Translatable {
         lblNumberReportName.setText(resources.getString("reports.informeNumerosNombre"));
         lblCopiesReport.setText(resources.getString("reports.informeEjemplares"));
         lblCopiesReportFiltered.setText(resources.getString("reports.informeEjemplaresFiltrado"));
+        this.rb = resources;
     }
 }
