@@ -33,20 +33,12 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <TextArea fx:id="txtObservations" maxWidth="1.7976931348623157E308" wrapText="true" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+            <Label text="%copiesCreateMod.estado" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="10.0" right="10.0" />
+                  <Insets left="10.0" />
                </GridPane.margin>
-            </TextArea>
-            <DatePicker fx:id="txtDate" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="10.0" right="10.0" />
-               </GridPane.margin>
-            </DatePicker>
+            </Label>
             <Button fx:id="btnDel" mnemonicParsing="false" onAction="#btnDelAction" stylesheets="@../../css/buttons_style.css" text="%eliminar" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
-               <GridPane.margin>
-                  <Insets right="10.0" top="10.0" />
-               </GridPane.margin>
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -54,17 +46,25 @@
                   <String fx:value="modify_delete" />
                   <String fx:value="delete" />
                </styleClass>
-            </Button>
-            <Label text="%copiesCreateMod.estado" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="10.0" />
+                  <Insets right="10.0" top="10.0" />
                </GridPane.margin>
-            </Label>
+            </Button>
             <ChoiceBox fx:id="cmbState" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </ChoiceBox>
+            <DatePicker fx:id="txtDate" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <TextArea fx:id="txtObservations" maxWidth="1.7976931348623157E308" wrapText="true" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </TextArea>
          </children>
       </GridPane>
    </center>
