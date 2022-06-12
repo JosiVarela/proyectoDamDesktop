@@ -64,6 +64,7 @@ public class JavaHelp {
 
             help = viewer.getHelpWindow(owner, title, 1000, 700);
             help.getIcons().add(Resources.APP_ICON);
+            help.initModality(Modality.APPLICATION_MODAL);
             help.showAndWait();
 
         }catch (IOException | SAXException ex) {
