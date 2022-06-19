@@ -2,7 +2,8 @@
     Proyecto DAM Desktop 2022
 </h1>
 <h3>Descripción:</h3>
-Parte del cliente del proyecto de DAM
+Parte del cliente del proyecto de DAM. <br/>
+En la carpeta target podremos encontrar el proyecto compilado y el instalador.
 <h3>Requisitos:</h3>
 <ul>
     <li>
