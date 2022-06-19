@@ -59,8 +59,10 @@ public class AppConfigWindow implements Initializable {
 
         if(AppConfigurations.getTranslations().equals("es")){
             rdLangEsp.setSelected(true);
+            txtLangSelec.setText("Castellano");
         }else{
             rdLangGal.setSelected(true);
+            txtLangSelec.setText("Galego");
         }
 
         txtHost.setText(AppConfigurations.getServerConfig().getIp());
