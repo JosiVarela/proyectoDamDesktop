@@ -6,7 +6,7 @@
     <!ENTITY aacute "á">
     <!ENTITY iacute "í">
 ]>
-<article desc="Informe numeros por nombre">
+<article desc="Informe numeros por nome">
     Este &eacute; un informe personalizado de números que nos permitirá ver os datos dos números filtrados por nome do número e por nome da colección <br />
     Ao iniciar o informe sairanos a seguinte ventá, donde introduciremos os datos. Ningún dos campos e obrigatorio, polo que poderemos filtrar por un só campo ou por ningún.<br />
     A apariencia da pantalla de filtrado e a seguinte: <br />

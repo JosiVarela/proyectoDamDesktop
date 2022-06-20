@@ -6,10 +6,10 @@
    
    <ul>
       <li>
-         <ref id="Pagina Principal" desc="Páxina Principal"/>
+         <ref id="Paxina Principal" desc="Páxina Principal"/>
       </li>
       <li>
-         <ref id="Colecciones" desc="Listado de colecciones"/>
+         <ref id="Coleccions" desc="Listado de colecciones"/>
       </li>
       <li>
          Números

@@ -7,7 +7,7 @@
     <!ENTITY iacute "í">
 ]>
 <article desc="Informacion Coleccion">
-Para ver a información de unha colección simplemente teremos que facer clic nunha colección do <ref id="Colecciones" desc="listado de coleccións"/>
+Para ver a información de unha colección simplemente teremos que facer clic nunha colección do <ref id="Coleccions" desc="listado de coleccións"/>
 e tras elo mostrarasenos a seguinte pantalla:<br/>
 <img id="info_colec" width="20%"/><br />
 Dende esta pantalla poderemos realizar as seguintes operacións:
