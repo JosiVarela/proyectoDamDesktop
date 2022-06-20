@@ -6,10 +6,10 @@
         </chapter>
         <chapter name="Menu Principal"> 
             <article name="Menu Principal"/>
-            <article name="Pagina Principal"/>
+            <article name="Paxina Principal"/>
         </chapter>
-        <chapter name="Colecciones">
-            <article name="Colecciones"/>
+        <chapter name="Coleccions">
+            <article name="Coleccions"/>
             <article name="Informacion Coleccion"/>
             <article name="Alta/Modificacion Coleccion"/>
         </chapter>
@@ -17,17 +17,17 @@
             <article name="Numeros"/>
             <article name="Info Numeros"/>
             <article name="Alta/Modificacion Numeros"/>
-            <article name="Ejemplares"/>
-            <article name="Operaciones Ejemplares"/>
+            <article name="Exemplares"/>
+            <article name="Operacions Exemplares"/>
         </chapter>
         <chapter name="Informes">
             <article name="Informes"/>
-            <article name="Informe Colecciones"/>
-            <article name="Informe Colecciones por nombre"/>
+            <article name="Informe Coleccions"/>
+            <article name="Informe Coleccions por nome"/>
             <article name="Informe numeros"/>
-            <article name="Informe numeros por nombre"/>
-            <article name="Informe ejemplares"/>
-            <article name="Informe ejemplares filtrado"/>
+            <article name="Informe numeros por nome"/>
+            <article name="Informe exemplares"/>
+            <article name="Informe exemplares filtrado"/>
         </chapter>
     </chapters> 
 </helpContent>

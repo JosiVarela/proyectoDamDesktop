@@ -6,10 +6,10 @@
     <!ENTITY aacute "á">
     <!ENTITY iacute "í">
 ]>
-<article desc="Ejemplares">
+<article desc="Exemplares">
     Dende esta ventá poderemos visualizar a información dos exemplares. <br/>
     <img id="lista_ejemp" width="20%"/>
     En caso de querer modificar, eliminar ou ver as observacións, poderemos facelo facendo dobre clic sobre o exemplar que desexemos. Isto
-    levaranos a ventá <ref id="Operaciones Exemplares" desc="Alta/Modificación Exemplar"/><br /> <!--Linkear LISTO-->
+    levaranos a ventá <ref id="Operacions Exemplares" desc="Alta/Modificación Exemplar"/><br /> <!--Linkear LISTO-->
     Tam&eacute;n poderemos dar de alta un exemplar premendo sobre "+".
 </article> 
